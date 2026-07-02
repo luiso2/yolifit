@@ -16,15 +16,15 @@ interface GradientTextProps {
 }
 
 const VARIANT_STYLES = {
-  default: 'font-heading font-normal tracking-[0.1em]',
-  hero: 'font-display font-light tracking-[0.28em] uppercase leading-[0.92]',
+  default: 'font-heading italic tracking-[0.1em]',
+  hero: 'font-display font-light italic tracking-[0.16em] uppercase leading-[0.92]',
 } as const;
 
 const GRADIENT_STYLES = {
   default:
-    'bg-gradient-to-r from-[#8B5E2F] via-[#B19073] via-[#E8D4B8] via-[#B19073] to-[#8B5E2F]',
+    'bg-gradient-to-r from-[#8B6914] via-[#C9A227] via-[#F0E0B8] via-[#C9A227] to-[#8B6914]',
   hero:
-    'bg-gradient-to-r from-[#6B4A22] via-[#A27043] via-[#D4B87A] via-[#F5ECD8] via-[#C9A84C] via-[#A27043] to-[#6B4A22]',
+    'bg-gradient-to-r from-[#7A5A12] via-[#A67C00] via-[#D4AF37] via-[#F7E7B0] via-[#FFE9A8] via-[#D4AF37] via-[#B8860B] via-[#9A7B1F] to-[#7A5A12]',
 } as const;
 
 const GradientText: React.FC<GradientTextProps> = ({
@@ -45,7 +45,7 @@ const GradientText: React.FC<GradientTextProps> = ({
       {/* Soft gold aura */}
       <span
         aria-hidden
-        className={`absolute inset-0 -z-20 block ${gradientClass} bg-[length:220%_auto] bg-clip-text text-transparent blur-2xl opacity-30 scale-105`}
+        className={`absolute inset-0 -z-20 block ${gradientClass} bg-[length:240%_auto] bg-clip-text text-transparent blur-2xl scale-105 ${isHero ? 'opacity-50' : 'opacity-30'}`}
         style={{
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
@@ -56,7 +56,7 @@ const GradientText: React.FC<GradientTextProps> = ({
 
       {/* Base metallic layer */}
       <span
-        className={`block text-transparent ${gradientClass} bg-[length:220%_auto] bg-clip-text opacity-90`}
+        className={`block text-transparent ${gradientClass} bg-[length:240%_auto] bg-clip-text ${isHero ? 'opacity-100 saturate-125' : 'opacity-90'}`}
         style={{
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
@@ -67,9 +67,9 @@ const GradientText: React.FC<GradientTextProps> = ({
 
       {/* Animated shimmer */}
       <motion.span
-        className={`absolute inset-0 z-10 block ${gradientClass} bg-[length:220%_auto] bg-clip-text text-transparent will-change-[background-position]`}
+        className={`absolute inset-0 z-10 block ${gradientClass} bg-[length:240%_auto] bg-clip-text text-transparent will-change-[background-position] ${isHero ? 'saturate-150 brightness-105' : ''}`}
         animate={{
-          backgroundPosition: ['0% center', '220% center'],
+          backgroundPosition: ['0% center', '240% center'],
         }}
         transition={{
           duration: isHero ? 14 : 10,
@@ -93,7 +93,7 @@ const GradientText: React.FC<GradientTextProps> = ({
           aria-hidden
           className="absolute inset-0 z-20 block text-transparent pointer-events-none"
           style={{
-            WebkitTextStroke: '0.35px rgba(255, 248, 235, 0.35)',
+            WebkitTextStroke: '0.4px rgba(255, 228, 150, 0.55)',
           }}
         >
           {text}

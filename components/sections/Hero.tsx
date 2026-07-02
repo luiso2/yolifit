@@ -81,7 +81,7 @@ const Hero: React.FC = () => {
               <GradientText
                 text="STUDIO"
                 variant="hero"
-                className="block text-[9vw] md:text-[2.75rem] lg:text-[3.25rem] tracking-[0.55em] text-center md:text-left md:ml-1 mt-1 md:mt-2 opacity-95"
+                className="block text-[9vw] md:text-[2.75rem] lg:text-[3.25rem] tracking-[0.42em] text-center md:text-left md:ml-1 mt-1 md:mt-2 opacity-95"
               />
             </h1>
 
