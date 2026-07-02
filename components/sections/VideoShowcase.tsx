@@ -20,7 +20,7 @@ export default function VideoShowcase() {
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-brand-brown">Dentro del estudio</span>
           </div>
           <h2 className="font-heading text-4xl md:text-5xl text-brand-ink mb-6 leading-tight">
-            Vive la experiencia <span className="italic text-brand-caramel">Yoly Studio</span>
+            Vive la experiencia <span className="font-script text-5xl md:text-6xl text-brand-bronze">Yoly Studio</span>
           </h2>
           <p className="text-brand-brown leading-relaxed mb-8 max-w-md">
             Un santuario boutique en Miami donde cada detalle está pensado para tu bienestar.
@@ -45,16 +45,18 @@ export default function VideoShowcase() {
           <div className="relative w-full max-w-[320px]">
             <div className="absolute -inset-6 bg-gradient-to-tr from-brand-caramel/25 via-brand-sand/40 to-transparent rounded-[3rem] blur-2xl" aria-hidden />
             <div className="relative rounded-[2.2rem] overflow-hidden border border-white/50 shadow-2xl shadow-brand-bronze/20 bg-white/30 backdrop-blur-sm p-2">
-              <video
-                className="w-full aspect-[480/816] object-cover rounded-[1.8rem]"
-                src="/media/yoly-studio.mp4"
-                poster="/media/yoly-studio-poster.jpg"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-              />
+              <div className="relative w-full aspect-[480/816] overflow-hidden rounded-[1.8rem]">
+                <video
+                  className="absolute inset-0 h-full w-full object-cover object-center scale-[1.14]"
+                  src="/media/yoly-studio.mp4"
+                  poster="/media/yoly-studio-poster.jpg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                />
+              </div>
             </div>
           </div>
         </motion.div>

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Award, ShieldCheck, Heart } from 'lucide-react';
 import GradientText from '@/components/GradientText';
 
-const heroImage = '/media/spa_cabin_hero_1782918660892.jpg';
+const heroImage = '/media/yoly-experience.jpg';
 
 const FEATURES = [
   { icon: Award, title: 'Cosmetóloga Licenciada & Full Specialist', desc: 'Acreditada legalmente con capacitaciones avanzadas en rejuvenecimiento no invasivo, peelings químicos y aparatología regeneradora.' },
@@ -52,7 +52,7 @@ const Experience: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Right side: Studio interior visual */}
+          {/* Right side: Yoly portrait */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -64,18 +64,21 @@ const Experience: React.FC = () => {
             <div className="relative h-full w-full rounded-3xl overflow-hidden border border-black/[0.05] group shadow-xl bg-brand-cream">
               <img
                 src={heroImage}
-                alt="Yoly Studio Cosmetology Cabin"
-                className="h-full w-full object-cover transition-transform duration-[2s] group-hover:scale-105 will-change-transform"
+                alt="Yoly, cosmetóloga y notaria en Yoly Studio"
+                className="h-full w-full object-cover object-center transition-transform duration-[2s] group-hover:scale-105 will-change-transform"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/35 via-transparent to-transparent opacity-70" />
 
               <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-10 text-white">
-                <div className="text-4xl md:text-6xl font-heading font-light tracking-widest text-white/30">
-                  CABINA SANITARIA
+                <div className="text-[10px] md:text-xs font-mono tracking-[0.45em] uppercase text-brand-sand/90 mb-2 md:mb-3">
+                  Clinical
                 </div>
-                <div className="text-xs md:text-sm font-mono tracking-widest uppercase mt-2 text-brand-bronze">
-                  Ambiente Estéril de Bienestar de Alta Gama
+                <div className="text-4xl md:text-6xl font-heading font-light tracking-widest text-white/40">
+                  YOLY
+                </div>
+                <div className="text-xs md:text-sm font-mono tracking-widest uppercase mt-2 text-brand-sand">
+                  Cosmetóloga Licenciada & Notary Public
                 </div>
               </div>
             </div>

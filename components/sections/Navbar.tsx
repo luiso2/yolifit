@@ -46,11 +46,13 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, setMobileMenuOpen }) =>
             className="w-11 h-11 md:w-12 md:h-12 object-contain shrink-0"
           />
           <div className="font-heading text-xl md:text-2xl font-bold tracking-tight text-black cursor-default flex flex-col items-start leading-none">
-            <div className="flex items-center gap-1.5">
-              <span className="font-semibold tracking-widest text-brand-bronze">YOLY</span>
-              <span className="font-light text-gray-500">STUDIO</span>
+            <span className="text-[9px] md:text-[10px] font-mono tracking-[0.35em] uppercase text-brand-caramel">
+              Clinical
+            </span>
+            <div className="flex items-center gap-1.5 mt-1">
+              <span className="font-semibold tracking-wide text-brand-bronze">Yoly</span>
+              <span className="font-light text-gray-500">Studio</span>
             </div>
-            <span className="text-[9px] font-mono tracking-[0.25em] text-brand-caramel mt-1">ESTÉTICA & NOTARÍA</span>
           </div>
         </div>
 

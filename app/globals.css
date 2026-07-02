@@ -7,9 +7,10 @@
   --color-brand-bronze: #A27043;
   --color-brand-brown: #5B4D3C;
   --color-brand-ink: #2A241C;
-  --font-sans: var(--font-inter), sans-serif;
-  --font-heading: var(--font-playfair), serif;
-  --font-display: var(--font-cormorant), var(--font-playfair), serif;
+  --font-sans: var(--font-montserrat), sans-serif;
+  --font-heading: var(--font-montserrat), sans-serif;
+  --font-script: var(--font-great-vibes), cursive;
+  --font-display: var(--font-montserrat), sans-serif;
 }
 
 html {
@@ -17,7 +18,6 @@ html {
   scroll-padding-top: 100px;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  font-style: italic;
 }
 
 ::-webkit-scrollbar {
@@ -25,14 +25,16 @@ html {
 }
 
 body {
-  font-family: var(--font-inter), sans-serif;
-  font-style: italic;
+  font-family: var(--font-montserrat), sans-serif;
   background-color: #F6F1EA;
   color: #2A241C;
   overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6, .font-heading, .font-display {
-  font-family: var(--font-playfair), serif;
-  font-style: italic;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.font-script {
+  font-family: var(--font-great-vibes), cursive;
 }

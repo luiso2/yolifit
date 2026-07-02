@@ -1,19 +1,17 @@
 import type { Metadata } from 'next';
-import { Cormorant_Garamond, Inter, Playfair_Display } from 'next/font/google';
+import { Great_Vibes, Montserrat, Playfair_Display } from 'next/font/google';
 import './globals.css';
 
-const inter = Inter({
+const montserrat = Montserrat({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-  variable: '--font-inter',
+  variable: '--font-montserrat',
 });
 const playfair = Playfair_Display({ subsets: ['latin'], style: ['normal', 'italic'], weight: ['400', '600', '700'], variable: '--font-playfair' });
-const cormorant = Cormorant_Garamond({
+const greatVibes = Great_Vibes({
   subsets: ['latin'],
-  style: ['normal', 'italic'],
-  weight: ['300', '400', '500', '600'],
-  variable: '--font-cormorant',
+  weight: ['400'],
+  variable: '--font-great-vibes',
 });
 
 export const metadata: Metadata = {
@@ -25,7 +23,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <body className={`${inter.variable} ${playfair.variable} ${cormorant.variable} italic`}>{children}</body>
+      <body className={`${montserrat.variable} ${playfair.variable} ${greatVibes.variable}`}>{children}</body>
     </html>
   );
 }

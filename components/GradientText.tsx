@@ -12,19 +12,22 @@ interface GradientTextProps {
   text: string;
   as?: 'h1' | 'h2' | 'h3' | 'p' | 'span';
   className?: string;
-  variant?: 'default' | 'hero';
+  variant?: 'default' | 'hero' | 'hero-sub';
 }
 
 const VARIANT_STYLES = {
-  default: 'font-heading italic tracking-[0.1em]',
-  hero: 'font-display font-light italic tracking-[0.16em] uppercase leading-[0.92]',
+  default: 'font-sans font-bold not-italic tracking-[0.12em] uppercase',
+  hero: 'font-sans font-bold not-italic tracking-[0.06em] uppercase leading-[0.9]',
+  'hero-sub': 'font-sans font-light not-italic tracking-[0.55em] uppercase leading-none',
 } as const;
 
 const GRADIENT_STYLES = {
   default:
-    'bg-gradient-to-r from-[#8B6914] via-[#C9A227] via-[#F0E0B8] via-[#C9A227] to-[#8B6914]',
+    'bg-gradient-to-r from-brand-brown via-brand-bronze via-brand-caramel via-brand-bronze to-brand-brown',
   hero:
-    'bg-gradient-to-r from-[#7A5A12] via-[#A67C00] via-[#D4AF37] via-[#F7E7B0] via-[#FFE9A8] via-[#D4AF37] via-[#B8860B] via-[#9A7B1F] to-[#7A5A12]',
+    'bg-gradient-to-r from-brand-brown via-brand-bronze via-brand-caramel via-brand-bronze to-brand-brown',
+  'hero-sub':
+    'bg-gradient-to-r from-brand-bronze via-brand-caramel via-brand-bronze to-brand-caramel',
 } as const;
 
 const GradientText: React.FC<GradientTextProps> = ({
@@ -33,19 +36,15 @@ const GradientText: React.FC<GradientTextProps> = ({
   className = '',
   variant = 'default',
 }) => {
-  const isHero = variant === 'hero';
+  const isHero = variant === 'hero' || variant === 'hero-sub';
   const gradientClass = GRADIENT_STYLES[variant];
   const variantClass = VARIANT_STYLES[variant];
 
   return (
-    <Component
-      className={`relative inline-block isolate ${variantClass} ${className}`}
-      style={isHero ? { fontFeatureSettings: '"liga" 1, "kern" 1, "salt" 1' } : undefined}
-    >
-      {/* Soft gold aura */}
+    <Component className={`relative inline-block isolate ${variantClass} ${className}`}>
       <span
         aria-hidden
-        className={`absolute inset-0 -z-20 block ${gradientClass} bg-[length:240%_auto] bg-clip-text text-transparent blur-2xl scale-105 ${isHero ? 'opacity-50' : 'opacity-30'}`}
+        className={`absolute inset-0 -z-20 block ${gradientClass} bg-[length:220%_auto] bg-clip-text text-transparent blur-xl scale-105 ${isHero ? 'opacity-20' : 'opacity-25'}`}
         style={{
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
@@ -54,9 +53,8 @@ const GradientText: React.FC<GradientTextProps> = ({
         {text}
       </span>
 
-      {/* Base metallic layer */}
       <span
-        className={`block text-transparent ${gradientClass} bg-[length:240%_auto] bg-clip-text ${isHero ? 'opacity-100 saturate-125' : 'opacity-90'}`}
+        className={`block text-transparent ${gradientClass} bg-[length:220%_auto] bg-clip-text opacity-100`}
         style={{
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
@@ -65,14 +63,13 @@ const GradientText: React.FC<GradientTextProps> = ({
         {text}
       </span>
 
-      {/* Animated shimmer */}
       <motion.span
-        className={`absolute inset-0 z-10 block ${gradientClass} bg-[length:240%_auto] bg-clip-text text-transparent will-change-[background-position] ${isHero ? 'saturate-150 brightness-105' : ''}`}
+        className={`absolute inset-0 z-10 block ${gradientClass} bg-[length:220%_auto] bg-clip-text text-transparent will-change-[background-position]`}
         animate={{
-          backgroundPosition: ['0% center', '240% center'],
+          backgroundPosition: ['0% center', '220% center'],
         }}
         transition={{
-          duration: isHero ? 14 : 10,
+          duration: isHero ? 16 : 12,
           repeat: Infinity,
           ease: 'linear',
         }}
@@ -86,19 +83,6 @@ const GradientText: React.FC<GradientTextProps> = ({
       >
         {text}
       </motion.span>
-
-      {/* Fine highlight edge for hero */}
-      {isHero && (
-        <span
-          aria-hidden
-          className="absolute inset-0 z-20 block text-transparent pointer-events-none"
-          style={{
-            WebkitTextStroke: '0.4px rgba(255, 228, 150, 0.55)',
-          }}
-        >
-          {text}
-        </span>
-      )}
     </Component>
   );
 };

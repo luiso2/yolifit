@@ -3,7 +3,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import GradientText from '@/components/GradientText';
 
 const Hero: React.FC = () => {
   const { scrollYProgress } = useScroll();
@@ -67,22 +66,16 @@ const Hero: React.FC = () => {
             <span>Notary Public Certificada</span>
           </motion.div>
 
-          {/* Main Title with Exquisite Serif pairing */}
+          {/* Main Title */}
           <div className="relative w-full flex flex-col items-center md:items-start">
             <h1 className="text-center md:text-left leading-none">
-              <span className="block font-sans text-[10px] md:text-xs tracking-[0.45em] uppercase text-brand-caramel font-medium mb-4 md:mb-6">
-                Bienvenido a
+              <span className="block text-xs md:text-sm font-mono tracking-[0.45em] uppercase text-brand-caramel mb-3 md:mb-5">
+                Clinical
               </span>
-              <GradientText
-                text="YOLY"
-                variant="hero"
-                className="block text-[18vw] md:text-[6.5rem] lg:text-[7.5rem] text-center md:text-left"
-              />
-              <GradientText
-                text="STUDIO"
-                variant="hero"
-                className="block text-[9vw] md:text-[2.75rem] lg:text-[3.25rem] tracking-[0.42em] text-center md:text-left md:ml-1 mt-1 md:mt-2 opacity-95"
-              />
+              <span className="block text-[14vw] md:text-[5rem] lg:text-[5.75rem] font-sans font-bold leading-[0.95]">
+                <span className="text-brand-bronze">Yoly</span>{' '}
+                <span className="font-light text-gray-500">Studio</span>
+              </span>
             </h1>
 
             {/* Elegant Glow Ring */}
@@ -105,7 +98,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 1 }}
-            className="text-sm md:text-lg font-light max-w-xl mx-auto md:mx-0 text-gray-700 leading-relaxed px-4 md:px-0 italic"
+            className="text-sm md:text-lg font-light max-w-xl mx-auto md:mx-0 text-gray-700 leading-relaxed px-4 md:px-0"
           >
             &quot;Faciales premium, rejuvenecimiento de alta gama y tratamientos corporales personalizados, combinados con servicios oficiales de notaría para tu total comodidad.&quot;
           </motion.p>
