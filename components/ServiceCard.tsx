@@ -26,21 +26,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, onClick }) => {
       data-hover="true"
       onClick={onClick}
     >
-      {/* Image Background with Zoom & Exquisite Soft Filter */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.img
-          src={service.image}
-          alt={service.name}
-          className="h-full w-full object-cover will-change-transform"
-          variants={{
-            rest: { scale: 1, opacity: 0.75, filter: 'saturate(0.85) brightness(1.05)' },
-            hover: { scale: 1.08, opacity: 1, filter: 'saturate(1.1) brightness(1)' }
-          }}
-          referrerPolicy="no-referrer"
-          transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
-        />
-        <div className="absolute inset-0 bg-brand-cream/55 group-hover:bg-brand-sand/25 transition-colors duration-500" />
-      </div>
+      <div className="absolute inset-0 overflow-hidden bg-gradient-to-br from-brand-cream via-brand-sand/50 to-brand-cream transition-colors duration-500 group-hover:via-brand-sand/70" />
 
       {/* Elegant Frame Accents */}
       <div className="absolute inset-4 border border-brand-bronze/10 group-hover:border-brand-bronze/30 transition-colors duration-500 pointer-events-none rounded-2xl" />
