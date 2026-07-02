@@ -212,6 +212,36 @@ export const SPA_SERVICES: SpaService[] = [
     benefits: ['Regeneración avanzada', 'Comunicación celular', 'Antiedad de nueva generación', 'Piel renovada y luminosa'],
     description: 'Tratamiento de vanguardia con exosomas que potencian la regeneración cutánea, mejoran la calidad de la piel y aportan un efecto rejuvenecedor.',
   },
+  {
+    id: '21',
+    name: 'Depilación con Cera',
+    category: 'Depilación',
+    image: BODY_IMAGE,
+    duration: '45 minutos',
+    ...consultPrice,
+    benefits: ['Piel suave y libre de vello', 'Resultados duraderos', 'Aplicación higiénica y precisa', 'Ideal para rostro y cuerpo'],
+    description: 'Depilación profesional con cera tibia de alta calidad para eliminar el vello de forma efectiva, dejando la piel lisa, cuidada y con acabado impecable.',
+  },
+  {
+    id: '22',
+    name: 'Diseño de Cejas',
+    category: 'Cejas y Rostro',
+    image: FACIAL_IMAGE_ALT,
+    duration: '30 minutos',
+    ...consultPrice,
+    benefits: ['Cejas simétricas y armoniosas', 'Rostro más definido', 'Diseño personalizado', 'Acabado natural y elegante'],
+    description: 'Diseño profesional de cejas adaptado a la forma de tu rostro, resaltando tu mirada con técnicas de perfilado, depilación y acabado de precisión.',
+  },
+  {
+    id: '23',
+    name: 'Brow Laminate',
+    category: 'Cejas y Rostro',
+    image: FACIAL_IMAGE_ALT,
+    duration: '45 minutos',
+    ...consultPrice,
+    benefits: ['Cejas más pobladas visualmente', 'Efecto peinado y ordenado', 'Mayor definición', 'Resultado de larga duración'],
+    description: 'Tratamiento de laminado de cejas que alisa, fija y da dirección al vello para lograr un look más lleno, estructurado y pulido durante semanas.',
+  },
 ];
 
 export const FAQ_ITEMS = [
@@ -230,6 +260,10 @@ export const FAQ_ITEMS = [
   {
     question: '¿Qué cuidados debo tener antes y después de un tratamiento facial?',
     answer: 'Antes de tu cita, evita la exposición solar directa prolongada y no uses ácidos o peelings abrasivos en casa. Después del tratamiento, aplica protector solar SPF 50+, mantén la piel hidratada y evita maquillaje pesado durante las primeras 24 horas.',
+  },
+  {
+    question: '¿Ofrecen depilación y servicios de cejas?',
+    answer: 'Sí. Realizamos depilación con cera, diseño de cejas y Brow Laminate con técnicas profesionales adaptadas a cada rostro.',
   },
   {
     question: '¿Cómo funciona el proceso de reserva y cancelación de citas?',

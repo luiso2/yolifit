@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
               className="w-12 h-12 object-contain shrink-0"
             />
             <div className="font-heading text-xl md:text-2xl tracking-tight text-gray-950 flex flex-col leading-none">
-              <span className="font-script text-2xl text-brand-bronze leading-none">Clinical</span>
+              <span className="font-script text-2xl text-brand-bronze leading-none">Clinic</span>
               <div className="flex items-center gap-1.5 mt-1">
                 <span className="font-medium text-brand-bronze">Yoly</span>
                 <span className="font-light text-gray-500">Studio</span>

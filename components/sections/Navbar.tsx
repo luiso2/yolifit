@@ -43,11 +43,11 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, setMobileMenuOpen }) =>
           <img
             src="/media/logo.png"
             alt="Yoly Studio logo"
-            className="w-11 h-11 md:w-12 md:h-12 object-contain shrink-0"
+            className="w-14 h-14 md:w-16 md:h-16 object-contain shrink-0"
           />
           <div className="font-heading text-xl md:text-2xl tracking-tight text-black cursor-default flex flex-col items-start leading-none">
             <span className="font-script text-2xl md:text-[1.75rem] text-brand-bronze leading-none">
-              Clinical
+              Clinic
             </span>
             <div className="flex items-center gap-1.5 mt-1">
               <span className="font-medium text-brand-bronze">Yoly</span>

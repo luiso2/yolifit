@@ -46,7 +46,7 @@ export default function VideoShowcase() {
             <div className="relative rounded-[2.2rem] overflow-hidden border border-white/50 shadow-2xl shadow-brand-bronze/20 bg-white/30 backdrop-blur-sm p-2">
               <div className="relative w-full aspect-[480/816] overflow-hidden rounded-[1.8rem]">
                 <video
-                  className="absolute inset-0 h-full w-full object-cover object-center scale-[1.14]"
+                  className="absolute inset-0 h-full w-full object-cover object-[50%_32%] scale-[1.22]"
                   src="/media/yoly-studio.mp4"
                   poster="/media/yoly-studio-poster.jpg"
                   autoPlay

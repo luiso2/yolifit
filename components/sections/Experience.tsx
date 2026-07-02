@@ -67,13 +67,15 @@ const Experience: React.FC = () => {
 
               <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-10 text-white">
                 <div className="font-script text-2xl md:text-3xl text-brand-sand/95 mb-1 md:mb-2 leading-none">
-                  Clinical
+                  Clinic
                 </div>
                 <div className="text-4xl md:text-6xl font-heading font-light tracking-wide text-white/50">
                   Yoly
                 </div>
-                <div className="text-xs md:text-sm font-mono tracking-widest uppercase mt-2 text-brand-sand">
-                  Cosmetóloga Licenciada & Notary Public
+                <div className="text-[10px] md:text-xs font-mono tracking-[0.16em] uppercase mt-2 text-brand-sand leading-relaxed max-w-[280px] md:max-w-sm">
+                  Especialista en Piel · Medical Clinical Assistant
+                  <br />
+                  Cosmetóloga · Notaría
                 </div>
               </div>
             </div>

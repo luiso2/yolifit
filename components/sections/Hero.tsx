@@ -70,7 +70,7 @@ const Hero: React.FC = () => {
           <div className="relative w-full flex flex-col items-center md:items-start">
             <h1 className="text-center md:text-left leading-none">
               <span className="block font-script text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] text-brand-bronze leading-none mb-2 md:mb-4">
-                Clinical
+                Clinic
               </span>
               <span className="block text-[13vw] md:text-[4.75rem] lg:text-[5.5rem] font-heading font-medium leading-[0.95]">
                 <span className="text-brand-bronze">Yoly</span>{' '}
