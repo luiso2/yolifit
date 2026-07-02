@@ -32,10 +32,10 @@ const Hero: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.4, ease: 'circOut' }}
-        className="hidden md:block absolute inset-y-0 right-0 z-0 w-[58%] pointer-events-none"
+        className="hidden md:block absolute inset-y-0 right-0 z-0 w-[52%] pointer-events-none"
         style={{
-          maskImage: 'linear-gradient(to right, transparent, rgba(0,0,0,0.9) 30%, black 55%)',
-          WebkitMaskImage: 'linear-gradient(to right, transparent, rgba(0,0,0,0.9) 30%, black 55%)'
+          maskImage: 'linear-gradient(to right, transparent, rgba(0,0,0,0.9) 55%, black 75%)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent, rgba(0,0,0,0.9) 55%, black 75%)'
         }}
       >
         <Image
@@ -51,10 +51,10 @@ const Hero: React.FC = () => {
 
       <motion.div
         style={{ y, opacity }}
-        className="z-10 w-full max-w-6xl grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] items-center gap-10 md:gap-16"
+        className="z-10 w-full max-w-6xl"
       >
         {/* Text column */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left md:max-w-sm">
           {/* Studio Identity tag */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -124,36 +124,6 @@ const Hero: React.FC = () => {
             </button>
           </motion.div>
         </div>
-
-        {/* Portrait column */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.92, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 1.1, ease: 'circOut' }}
-          className="relative w-full max-w-xs md:max-w-sm mx-auto"
-        >
-          {/* Decorative gold arch behind the portrait, echoing the brand mark */}
-          <div
-            aria-hidden
-            className="absolute -inset-4 md:-inset-6 rounded-[999px] border border-brand-bronze/30 pointer-events-none"
-          />
-          <div
-            aria-hidden
-            className="absolute -z-10 -inset-8 bg-brand-bronze/20 blur-[60px] rounded-full pointer-events-none"
-          />
-
-          <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl ring-1 ring-white/40">
-            <Image
-              src="/media/yoly-portrait.jpg"
-              alt="Yoly, especialista de Yoly Studio"
-              fill
-              priority
-              sizes="(min-width: 768px) 380px, 320px"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
-          </div>
-        </motion.div>
       </motion.div>
     </header>
   );

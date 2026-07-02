@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 import FluidBackground from '@/components/FluidBackground';
 import CustomCursor from '@/components/CustomCursor';
 import Navbar from '@/components/sections/Navbar';
@@ -92,6 +94,44 @@ const HomePage: React.FC = () => {
       </section>
 
       <Faq openIdx={openFaqIdx} setOpenIdx={setOpenFaqIdx} />
+
+      <section className="relative z-10 py-16 md:py-24 px-4 md:px-6 bg-white overflow-hidden">
+        <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
+          <span className="text-[10px] font-mono text-brand-bronze uppercase tracking-[0.25em] font-bold mb-3">
+            Detrás de Yoly Studio
+          </span>
+          <h2 className="font-heading text-2xl md:text-4xl font-medium text-gray-900 tracking-tight mb-10">
+            Conoce a tu especialista
+          </h2>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 1, ease: 'circOut' }}
+            className="relative w-full max-w-xs md:max-w-sm"
+          >
+            <div
+              aria-hidden
+              className="absolute -inset-4 md:-inset-6 rounded-[999px] border border-brand-bronze/30 pointer-events-none"
+            />
+            <div
+              aria-hidden
+              className="absolute -z-10 -inset-8 bg-brand-bronze/20 blur-[60px] rounded-full pointer-events-none"
+            />
+
+            <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl ring-1 ring-white/40">
+              <Image
+                src="/media/yoly-portrait.jpg"
+                alt="Yoly, especialista de Yoly Studio"
+                fill
+                sizes="(min-width: 768px) 380px, 320px"
+                className="object-cover"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       <Footer />
 
