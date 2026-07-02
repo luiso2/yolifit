@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Sparkles, Heart } from 'lucide-react';
+import Link from 'next/link';
 
 export default function VideoShowcase() {
   return (
@@ -25,13 +26,13 @@ export default function VideoShowcase() {
             Un santuario boutique en Miami donde cada detalle está pensado para tu bienestar.
             Descubre el ambiente, la calidez y el cuidado que nos distinguen.
           </p>
-          <a
-            href="#reservas"
+          <Link
+            href="/reservas"
             className="inline-flex items-center gap-2 px-8 py-4 bg-brand-ink text-brand-cream text-xs font-bold uppercase tracking-widest rounded-full hover:bg-brand-bronze transition-colors"
             data-hover="true"
           >
             <Heart className="w-4 h-4" /> Reserva tu momento
-          </a>
+          </Link>
         </motion.div>
 
         <motion.div

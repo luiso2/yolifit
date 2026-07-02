@@ -199,21 +199,14 @@ export default function Reservas() {
   };
 
   return (
-    <section
-      id="reservas"
-      className="relative z-10 py-20 md:py-32 px-4 md:px-6 bg-brand-cream/55 backdrop-blur-lg border-t border-black/[0.03]"
-    >
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-5xl md:text-8xl font-heading font-normal opacity-5 text-gray-950 tracking-widest select-none uppercase">
-            RESERVAS
-          </h2>
-          <p className="text-brand-bronze font-mono uppercase tracking-[0.25em] -mt-3 md:-mt-8 relative z-10 text-xs md:text-sm">
-            Reserva tu Experiencia de Bienestar en Línea
-          </p>
-        </div>
+    <div className="w-full">
+      <div className="text-center mb-6 md:mb-8">
+        <p className="text-brand-bronze font-mono uppercase tracking-[0.25em] text-xs md:text-sm">
+          Reserva tu Experiencia de Bienestar en Línea
+        </p>
+      </div>
 
-        <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait">
           {calSuccess && calSuccessTicket ? (
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -339,7 +332,7 @@ export default function Reservas() {
           ) : (
             <div key="booking-form-wrapper" className="w-full">
               {/* 3-Step Elegant Indicator */}
-              <div className="flex items-center justify-between max-w-xl mx-auto mb-10 md:mb-14 relative px-4">
+              <div className="flex items-center justify-between max-w-xl mx-auto mb-6 md:mb-8 relative px-4">
                 {/* Horizontal connecting background line */}
                 <div className="absolute top-1/2 left-4 right-4 h-0.5 bg-gray-200/60 -translate-y-1/2 z-0" />
 
@@ -442,7 +435,7 @@ export default function Reservas() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 15 }}
                     transition={{ duration: 0.3 }}
-                    className="bg-white/70 border border-brand-bronze/10 rounded-3xl p-6 md:p-10 shadow-xl backdrop-blur-md w-full"
+                    className="bg-white/70 border border-brand-bronze/10 rounded-3xl p-5 md:p-8 shadow-xl backdrop-blur-md w-full"
                   >
                     <div className="flex items-center gap-3 mb-6 pb-4 border-b border-black/[0.04]">
                       <div className="w-8 h-8 bg-brand-bronze text-white rounded-full flex items-center justify-center font-heading font-bold text-xs">
@@ -461,7 +454,7 @@ export default function Reservas() {
                     <div className="flex flex-col gap-6">
                       {/* Category filter pills */}
                       <div className="flex flex-wrap items-center justify-center gap-2 mb-2">
-                        {['Todos', 'Cuidado Facial', 'Tratamientos Corporales', 'Notaría Oficial Florida'].map((cat) => {
+                        {['Todos', ...Array.from(new Set(SPA_SERVICES.map((s) => s.category)))].map((cat) => {
                           const isSel = selectedCategory === cat;
                           return (
                             <button
@@ -481,30 +474,29 @@ export default function Reservas() {
                         })}
                       </div>
 
-                      {/* Services responsive grid */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                        {SPA_SERVICES.filter(
-                          (s) =>
-                            selectedCategory === 'Todos' ||
-                            s.category === selectedCategory ||
-                            (selectedCategory === 'Cuidado Facial' && s.category === 'Cuidado Facial') ||
-                            (selectedCategory === 'Tratamientos Corporales' && s.category === 'Tratamientos Corporales') ||
-                            (selectedCategory === 'Notaría Oficial Florida' && s.category === 'Notaría Oficial Florida'),
-                        ).map((service) => {
-                          const isSelected = calService.id === service.id;
-                          return (
-                            <div
-                              key={service.id}
-                              onClick={() => setCalService(service)}
-                              className={`group relative bg-brand-cream/80 rounded-2xl border transition-all duration-300 overflow-hidden cursor-pointer flex flex-col justify-between h-full p-4 hover:bg-white
-                                ${
-                                  isSelected
-                                    ? 'border-brand-bronze ring-2 ring-brand-bronze/10 shadow-lg shadow-brand-bronze/5 scale-[1.01]'
-                                    : 'border-black/[0.04] shadow-sm hover:border-gray-300'
-                                }`}
-                            >
-                              <div>
-                                <div className="h-32 rounded-xl overflow-hidden mb-3.5 relative">
+                      {/* Services responsive grid: compact + scrollable so the action bar never scrolls out of view */}
+                      <div className="max-h-[52vh] overflow-y-auto pr-1 -mr-1">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          {SPA_SERVICES.filter(
+                            (s) => selectedCategory === 'Todos' || s.category === selectedCategory,
+                          ).map((service) => {
+                            const isSelected = calService.id === service.id;
+                            return (
+                              <div
+                                key={service.id}
+                                onClick={() => {
+                                  setCalService(service);
+                                  // Auto-avanzar: selección fluida, sin necesidad de buscar el botón continuar
+                                  setTimeout(() => setCalStep(2), 220);
+                                }}
+                                className={`group relative bg-brand-cream/80 rounded-2xl border transition-all duration-300 overflow-hidden cursor-pointer flex gap-3 items-center p-3 hover:bg-white
+                                  ${
+                                    isSelected
+                                      ? 'border-brand-bronze ring-2 ring-brand-bronze/10 shadow-lg shadow-brand-bronze/5 scale-[1.01]'
+                                      : 'border-black/[0.04] shadow-sm hover:border-gray-300'
+                                  }`}
+                              >
+                                <div className="w-20 h-20 shrink-0 rounded-xl overflow-hidden relative">
                                   {/* eslint-disable-next-line @next/next/no-img-element */}
                                   <img
                                     src={service.image}
@@ -512,41 +504,38 @@ export default function Reservas() {
                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                     referrerPolicy="no-referrer"
                                   />
-                                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                                  <div className="absolute bottom-2.5 left-3 right-3 flex justify-between items-center text-white">
-                                    <span className="text-[9px] font-mono tracking-wider bg-brand-bronze/90 px-2 py-0.5 rounded-md backdrop-blur-xs font-medium uppercase">
-                                      {service.category}
-                                    </span>
-                                    <span className="text-[9px] font-mono flex items-center gap-1 bg-black/50 px-2 py-0.5 rounded-md backdrop-blur-xs">
-                                      <Clock className="w-3 h-3 text-white" /> {service.duration}
+                                </div>
+
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center justify-between gap-2">
+                                    <h4 className="font-heading font-bold text-gray-900 text-sm tracking-tight group-hover:text-brand-bronze transition-colors truncate">
+                                      {service.name}
+                                    </h4>
+                                    <div
+                                      className={`w-5 h-5 shrink-0 rounded-full flex items-center justify-center transition-all duration-300
+                                        ${isSelected ? 'bg-brand-bronze text-white scale-110' : 'bg-gray-100 text-transparent group-hover:bg-gray-200'}`}
+                                    >
+                                      <Check className="w-3.5 h-3.5" />
+                                    </div>
+                                  </div>
+                                  <p className="text-gray-500 text-[10px] font-mono uppercase tracking-wider mt-0.5 truncate">
+                                    {service.category}
+                                  </p>
+                                  <div className="flex items-center gap-3 mt-1.5">
+                                    <span className="font-mono text-xs font-bold text-brand-bronze">{service.price}</span>
+                                    <span className="text-[10px] font-mono text-gray-500 flex items-center gap-1">
+                                      <Clock className="w-3 h-3" /> {service.duration}
                                     </span>
                                   </div>
                                 </div>
-
-                                <h4 className="font-heading font-bold text-gray-900 text-sm tracking-tight mb-1 group-hover:text-brand-bronze transition-colors">
-                                  {service.name}
-                                </h4>
-                                <p className="text-gray-600 text-[11px] font-light leading-relaxed mb-3 line-clamp-2 italic">
-                                  &quot;{service.description}&quot;
-                                </p>
                               </div>
-
-                              <div className="flex items-center justify-between mt-2 pt-2 border-t border-black/[0.03]">
-                                <span className="font-mono text-xs font-bold text-brand-bronze">{service.price}</span>
-                                <div
-                                  className={`w-5 h-5 rounded-full flex items-center justify-center transition-all duration-300
-                                    ${isSelected ? 'bg-brand-bronze text-white scale-110' : 'bg-gray-100 text-transparent group-hover:bg-gray-200'}`}
-                                >
-                                  <Check className="w-3.5 h-3.5" />
-                                </div>
-                              </div>
-                            </div>
-                          );
-                        })}
+                            );
+                          })}
+                        </div>
                       </div>
 
-                      {/* Bottom action bar */}
-                      <div className="mt-8 pt-6 border-t border-black/[0.04] flex flex-col sm:flex-row justify-between items-center gap-4 bg-brand-cream/50 p-4 rounded-2xl border border-black/[0.01]">
+                      {/* Bottom action bar: fallback manual control, selection above already auto-advances */}
+                      <div className="pt-4 border-t border-black/[0.04] flex flex-col sm:flex-row justify-between items-center gap-4 bg-brand-cream/50 p-4 rounded-2xl border border-black/[0.01]">
                         <div className="text-xs text-gray-600 font-medium">
                           Seleccionado: <span className="font-heading font-bold text-gray-900">{calService.name}</span> (
                           {calService.price})
@@ -570,7 +559,7 @@ export default function Reservas() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 15 }}
                     transition={{ duration: 0.3 }}
-                    className="bg-white/70 border border-brand-bronze/10 rounded-3xl p-4 sm:p-10 shadow-xl backdrop-blur-md w-full"
+                    className="bg-white/70 border border-brand-bronze/10 rounded-3xl p-4 sm:p-8 shadow-xl backdrop-blur-md w-full"
                   >
                     <div className="flex items-center gap-3 mb-6 pb-4 border-b border-black/[0.04]">
                       <div className="w-8 h-8 bg-brand-bronze text-white rounded-full flex items-center justify-center font-heading font-bold text-xs">
@@ -766,7 +755,7 @@ export default function Reservas() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 15 }}
                     transition={{ duration: 0.3 }}
-                    className="bg-white/70 border border-brand-bronze/10 rounded-3xl p-4 sm:p-10 shadow-xl backdrop-blur-md w-full"
+                    className="bg-white/70 border border-brand-bronze/10 rounded-3xl p-4 sm:p-8 shadow-xl backdrop-blur-md w-full"
                   >
                     <div className="flex items-center gap-3 mb-6 pb-4 border-b border-black/[0.04]">
                       <div className="w-8 h-8 bg-brand-bronze text-white rounded-full flex items-center justify-center font-heading font-bold text-xs">
@@ -965,7 +954,6 @@ export default function Reservas() {
             </div>
           )}
         </AnimatePresence>
-      </div>
-    </section>
+    </div>
   );
 }

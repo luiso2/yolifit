@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>Yoli Studios · Consentimientos Informados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@1.23.0/dist/umd/lucide.min.js" integrity="sha384-ouAVEJVCMsf8Svzn+BwqbaBhxBEA0xgeVBhHnxmWd+Wqyv18yhWCQwGegFD/OHLq" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha384-Yv5O+t3uE3hunW8uyrbpPW3iw6/5/Y7HitWJBLgqfMoA36NogMmy+8wWZMpn3HWc" crossorigin="anonymous"></script>
+<style>
+  :root{
+    --bg:#050505;
+    --bg-soft:#0d0d10;
+    --card:rgba(255,255,255,0.035);
+    --card-hover:rgba(255,255,255,0.06);
+    --border:rgba(212,168,75,0.22);
+    --border-strong:rgba(212,168,75,0.5);
+    --gold:#D4A84B;
+    --gold-light:#EAD08F;
+    --text:#F3F1EA;
+    --muted:#9A958A;
+    --danger:#E5675C;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;color-scheme:dark;}
+  body{
+    background:
+      radial-gradient(circle at 15% 0%, rgba(212,168,75,0.08), transparent 45%),
+      radial-gradient(circle at 85% 100%, rgba(212,168,75,0.05), transparent 45%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Inter', -apple-system, sans-serif;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:32px 20px 80px;}
+  .brand{
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    margin-bottom:6px;opacity:0;animation:fadeUp .6s ease forwards;
+  }
+  .brand-mark{
+    width:42px;height:42px;border-radius:12px;
+    background:linear-gradient(135deg, var(--gold), #8a6a24);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 24px rgba(212,168,75,0.25);
+  }
+  .brand-mark svg{width:22px;height:22px;color:#050505;}
+  .brand-name{font-size:22px;font-weight:800;letter-spacing:0.5px;}
+  .brand-name span{color:var(--gold);}
+  header.hero{text-align:center;margin-bottom:40px;}
+  header.hero h1{
+    font-size:clamp(24px,4vw,34px);font-weight:800;margin:14px 0 8px;
+    opacity:0;animation:fadeUp .6s ease .1s forwards;
+  }
+  header.hero p{
+    color:var(--muted);font-size:15px;max-width:520px;margin:0 auto;
+    opacity:0;animation:fadeUp .6s ease .2s forwards;
+  }
+  @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+    gap:16px;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:22px 20px;cursor:pointer;text-align:left;
+    backdrop-filter:blur(10px);
+    transition:transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
+    opacity:0;animation:fadeUp .5s ease forwards;
+  }
+  .card:hover{
+    transform:translateY(-4px);
+    border-color:var(--border-strong);
+    background:var(--card-hover);
+    box-shadow:0 12px 30px rgba(0,0,0,0.35);
+  }
+  .card-icon{
+    width:42px;height:42px;border-radius:11px;
+    background:rgba(212,168,75,0.12);border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+  }
+  .card-icon svg{width:20px;height:20px;color:var(--gold);}
+  .card h3{margin:0 0 6px;font-size:16px;font-weight:700;}
+  .card p{margin:0;color:var(--muted);font-size:12.5px;line-height:1.5;}
+
+  #formScreen{display:none;}
+  .backbtn{
+    display:inline-flex;align-items:center;gap:6px;
+    background:none;border:1px solid var(--border);color:var(--muted);
+    padding:9px 16px;border-radius:999px;cursor:pointer;font-size:13px;
+    font-family:inherit;margin-bottom:22px;transition:all .2s;
+  }
+  .backbtn:hover{color:var(--text);border-color:var(--border-strong);}
+  .backbtn svg{width:14px;height:14px;}
+
+  .panel{
+    background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+    padding:26px 24px;margin-bottom:18px;backdrop-filter:blur(10px);
+  }
+  .panel h2{
+    font-size:13px;text-transform:uppercase;letter-spacing:1.2px;color:var(--gold);
+    margin:0 0 18px;display:flex;align-items:center;gap:8px;
+  }
+  .panel h2 svg{width:16px;height:16px;}
+  .formtitle{font-size:24px;font-weight:800;margin:0 0 4px;}
+  .formtitle-sub{color:var(--muted);font-size:13.5px;margin:0 0 24px;}
+
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-size:12.5px;color:var(--muted);margin-bottom:7px;font-weight:500;}
+  .field input[type=text], .field input[type=tel], .field input[type=email],
+  .field input[type=date], .field textarea{
+    width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);
+    border-radius:10px;padding:11px 13px;color:var(--text);font-family:inherit;
+    font-size:14px;transition:border-color .2s, background .2s;
+    color-scheme:dark;-webkit-text-fill-color:var(--text);caret-color:var(--text);
+  }
+  .field input:focus, .field textarea:focus{
+    outline:none;border-color:var(--gold);background:rgba(255,255,255,0.06);
+  }
+  .field textarea{resize:vertical;min-height:64px;}
+  .field input[type=date]::-webkit-calendar-picker-indicator{filter:invert(0.8) sepia(1) saturate(3) hue-rotate(0deg);cursor:pointer;}
+  .inline-name-input{
+    background:transparent;border:none;border-bottom:1.5px solid var(--border-strong);
+    color:var(--gold-light);-webkit-text-fill-color:var(--gold-light);font-weight:700;
+    font-family:inherit;font-size:14px;padding:2px 6px;min-width:240px;
+  }
+  .inline-name-input:focus{outline:none;border-bottom-color:var(--gold);}
+  .inline-name-input::placeholder{color:var(--muted);font-weight:400;}
+
+  .check-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;margin-bottom:6px;}
+  .check-item{
+    display:flex;align-items:flex-start;gap:10px;cursor:pointer;
+    padding:9px 10px;border-radius:9px;transition:background .2s;font-size:13.5px;
+    line-height:1.4;
+  }
+  .check-item:hover{background:rgba(255,255,255,0.03);}
+  .check-item input{
+    appearance:none;width:18px;height:18px;min-width:18px;margin-top:1px;
+    border:1.5px solid var(--border-strong);border-radius:5px;cursor:pointer;
+    display:grid;place-content:center;background:rgba(255,255,255,0.02);
+  }
+  .check-item input:checked{background:var(--gold);border-color:var(--gold);}
+  .check-item input:checked::after{
+    content:"";width:5px;height:9px;border:solid #050505;border-width:0 2px 2px 0;
+    transform:rotate(45deg) translate(-1px,-1px);
+  }
+
+  .radio-row{display:flex;gap:22px;margin:8px 0 4px;}
+  .radio-item{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13.5px;}
+  .radio-item input{accent-color:var(--gold);width:16px;height:16px;cursor:pointer;}
+
+  .consent-lead{font-size:14px;line-height:1.7;color:var(--text);margin-bottom:14px;}
+  .consent-lead strong{color:var(--gold-light);}
+  .consent-list{margin:0 0 18px;padding-left:20px;color:var(--text);font-size:13.5px;line-height:1.85;}
+  .consent-list li{margin-bottom:6px;}
+  .side-effects{
+    display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;
+  }
+  .side-tag{
+    background:rgba(212,168,75,0.08);border:1px solid var(--border);
+    color:var(--gold-light);font-size:12px;padding:6px 12px;border-radius:999px;
+  }
+  .note-box{
+    background:rgba(212,168,75,0.06);border:1px dashed var(--border-strong);
+    border-radius:10px;padding:12px 14px;font-size:12.5px;color:var(--muted);
+    line-height:1.6;margin-top:16px;
+  }
+
+  .final-consent{
+    display:flex;align-items:flex-start;gap:12px;cursor:pointer;
+    padding:16px;border-radius:12px;background:rgba(212,168,75,0.05);
+    border:1px solid var(--border-strong);font-size:13.5px;line-height:1.5;
+  }
+  .final-consent input{
+    appearance:none;width:20px;height:20px;min-width:20px;margin-top:1px;
+    border:2px solid var(--gold);border-radius:6px;cursor:pointer;
+    display:grid;place-content:center;background:rgba(255,255,255,0.02);
+  }
+  .final-consent input:checked{background:var(--gold);}
+  .final-consent input:checked::after{
+    content:"";width:6px;height:10px;border:solid #050505;border-width:0 2px 2px 0;
+    transform:rotate(45deg) translate(-1px,-1px);
+  }
+
+  .sig-block{margin-bottom:8px;}
+  .sig-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+  .sig-header .field{margin:0;flex:1;margin-right:16px;}
+  .sig-toggle{display:flex;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:999px;padding:3px;}
+  .sig-toggle button{
+    border:none;background:none;color:var(--muted);font-family:inherit;font-size:12px;
+    padding:6px 14px;border-radius:999px;cursor:pointer;transition:all .2s;
+  }
+  .sig-toggle button.active{background:var(--gold);color:#050505;font-weight:600;}
+  .sig-pad-wrap{
+    position:relative;border:1.5px dashed var(--border-strong);border-radius:12px;
+    background:rgba(255,255,255,0.02);overflow:hidden;
+  }
+  .sig-pad-wrap canvas{display:block;width:100%;height:150px;touch-action:none;cursor:crosshair;}
+  .sig-placeholder{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    color:var(--muted);font-size:12.5px;pointer-events:none;
+  }
+  .sig-clear{
+    position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.5);border:1px solid var(--border);
+    color:var(--muted);font-size:11px;padding:5px 10px;border-radius:8px;cursor:pointer;font-family:inherit;
+  }
+  .sig-type-input{
+    width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);
+    border-radius:12px;padding:20px 16px;color:var(--gold-light);font-family:'Dancing Script',cursive;
+    font-size:34px;text-align:center;
+  }
+  .sig-type-input:focus{outline:none;border-color:var(--gold);}
+
+  .actions{display:flex;justify-content:flex-end;gap:12px;margin-top:26px;}
+  .btn-primary{
+    background:linear-gradient(135deg,var(--gold),#b98f36);color:#050505;border:none;
+    padding:14px 28px;border-radius:999px;font-weight:700;font-size:14.5px;cursor:pointer;
+    display:inline-flex;align-items:center;gap:8px;font-family:inherit;
+    box-shadow:0 8px 24px rgba(212,168,75,0.25);transition:transform .2s, box-shadow .2s;
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(212,168,75,0.35);}
+  .btn-primary:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+  .btn-primary svg{width:17px;height:17px;}
+  .error-msg{
+    color:var(--danger);font-size:12.5px;margin-top:10px;text-align:right;min-height:16px;
+  }
+  .footer-tag{text-align:center;color:var(--muted);font-size:11.5px;margin-top:40px;letter-spacing:.3px;}
+
+  @media(max-width:640px){
+    .field-row{grid-template-columns:1fr;}
+    .check-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brand">
+    <div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.5 6.5L21 11l-6.5 2.5L12 20l-2.5-6.5L3 11l6.5-2.5z"/></svg></div>
+    <div class="brand-name">YOLI <span>STUDIOS</span></div>
+  </div>
+
+  <div id="selectScreen">
+    <header class="hero">
+      <h1>Consentimientos Informados</h1>
+      <p>Selecciona el tratamiento para llenar el formulario de consentimiento correspondiente y descargarlo en PDF.</p>
+    </header>
+    <div class="grid" id="treatmentGrid"></div>
+  </div>
+
+  <div id="formScreen">
+    <button class="backbtn" id="backBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Volver</button>
+
+    <p class="formtitle-sub" id="formEyebrow">Formulario de Consentimiento Informado</p>
+    <h1 class="formtitle" id="formTitle"></h1>
+
+    <form id="consentForm">
+
+      <div class="panel">
+        <h2><svg data-lucide="user"></svg> Datos del Cliente</h2>
+        <div class="field-row">
+          <div class="field"><label>Nombre completo *</label><input type="text" id="fName" required></div>
+          <div class="field"><label>Fecha de nacimiento *</label><input type="date" id="fDob" required></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Teléfono *</label><input type="tel" id="fPhone" required></div>
+          <div class="field"><label>Correo electrónico</label><input type="email" id="fEmail"></div>
+        </div>
+        <div class="field"><label>Fecha de hoy *</label><input type="date" id="fDate" required></div>
+      </div>
+
+      <div class="panel">
+        <h2><svg data-lucide="stethoscope"></svg> Declaración de Salud</h2>
+        <div class="check-grid" id="healthGrid"></div>
+        <div class="field" style="margin-top:8px;">
+          <label>Otra condición médica</label>
+          <input type="text" id="fOtherCondition" placeholder="Especifique si aplica">
+        </div>
+        <div class="field" style="margin-top:6px;">
+          <label id="medicalQuestionLabel" style="font-size:13.5px;color:var(--text);margin-bottom:10px;"></label>
+          <div class="radio-row">
+            <label class="radio-item"><input type="radio" name="fMedical" value="si"> Sí</label>
+            <label class="radio-item"><input type="radio" name="fMedical" value="no" checked> No</label>
+          </div>
+          <textarea id="fMedicalExplain" placeholder="En caso afirmativo, explique..."></textarea>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2><svg data-lucide="file-text"></svg> Consentimiento Informado</h2>
+        <p class="consent-lead" id="consentLeadText"></p>
+        <ul class="consent-list" id="consentItemsList"></ul>
+      </div>
+
+      <div class="panel">
+        <h2><svg data-lucide="triangle-alert"></svg> Posibles Efectos Secundarios</h2>
+        <p style="font-size:13px;color:var(--muted);margin:0 0 10px;">Entiendo que después del tratamiento pueden presentarse de forma temporal:</p>
+        <div class="side-effects" id="sideEffectsList"></div>
+        <div class="note-box">He tenido la oportunidad de hacer preguntas y todas han sido respondidas satisfactoriamente. Declaro que participo en este tratamiento de manera voluntaria y libero a la especialista y al establecimiento de cualquier responsabilidad derivada de información médica omitida por mí o del incumplimiento de las recomendaciones proporcionadas.</div>
+      </div>
+
+      <div class="panel" id="photoPanel" style="display:none;">
+        <h2><svg data-lucide="camera"></svg> Autorización para Fotografías (Opcional)</h2>
+        <div class="radio-row" style="flex-direction:column;gap:10px;">
+          <label class="radio-item"><input type="radio" name="fPhoto" value="autoriza" checked> Autorizo el uso de fotografías antes y después del tratamiento con fines educativos y publicitarios, preservando mi privacidad cuando sea necesario.</label>
+          <label class="radio-item"><input type="radio" name="fPhoto" value="no-autoriza"> No autorizo el uso de fotografías.</label>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2><svg data-lucide="badge-check"></svg> Confirmación</h2>
+        <label class="final-consent">
+          <input type="checkbox" id="fFinalConsent" required>
+          Confirmo que la información proporcionada es verídica y otorgo mi consentimiento informado para recibir este tratamiento en las condiciones descritas.
+        </label>
+      </div>
+
+      <div class="panel">
+        <h2><svg data-lucide="pen-tool"></svg> Firma del Cliente</h2>
+        <div class="sig-block" data-signer="client">
+          <div class="sig-header">
+            <div class="field"><label>Nombre para la firma</label><input type="text" id="fSigClientName" placeholder="Nombre y apellido"></div>
+            <div class="sig-toggle">
+              <button type="button" data-mode="draw" class="active">Dibujar</button>
+              <button type="button" data-mode="type">Escribir</button>
+            </div>
+          </div>
+          <div class="sig-pad-wrap" data-pad="client">
+            <canvas width="700" height="220"></canvas>
+            <div class="sig-placeholder">Firma aquí con el mouse o el dedo</div>
+            <button type="button" class="sig-clear">Borrar</button>
+          </div>
+          <input type="text" class="sig-type-input" data-type-input="client" placeholder="Escriba su nombre" style="display:none;">
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2><svg data-lucide="pen-tool"></svg> Firma de la Especialista</h2>
+        <div class="sig-block" data-signer="specialist">
+          <div class="sig-header">
+            <div class="field"><label>Nombre de la especialista</label><input type="text" id="fSigSpecialistName" placeholder="Nombre y apellido"></div>
+            <div class="sig-toggle">
+              <button type="button" data-mode="draw" class="active">Dibujar</button>
+              <button type="button" data-mode="type">Escribir</button>
+            </div>
+          </div>
+          <div class="sig-pad-wrap" data-pad="specialist">
+            <canvas width="700" height="220"></canvas>
+            <div class="sig-placeholder">Firma aquí con el mouse o el dedo (opcional)</div>
+            <button type="button" class="sig-clear">Borrar</button>
+          </div>
+          <input type="text" class="sig-type-input" data-type-input="specialist" placeholder="Escriba el nombre" style="display:none;">
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn-primary" id="generateBtn">
+          <svg data-lucide="download"></svg> Generar y Descargar PDF
+        </button>
+      </div>
+      <div class="error-msg" id="formError"></div>
+    </form>
+  </div>
+
+  <p class="footer-tag">Yoli Studios · Consentimientos Informados Digitales</p>
+  <p class="footer-tag" style="margin-top:6px;">Powered by <a href="https://merktop.com" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;font-weight:600;">Merktop</a></p>
+</div>
+
+<div id="printRoot" style="position:fixed;left:-10000px;top:0;width:794px;"></div>
+
+<script>
+const TREATMENTS = [
+  {
+    id:'reductivo',
+    title:'Masaje Reductivo',
+    icon:'flame',
+    desc:'Consentimiento para sesiones de masaje reductivo con fines estéticos.',
+    consentLead:'solicito voluntariamente recibir sesiones de masaje reductivo y declaro que:',
+    medicalQuestion:'¿Está bajo tratamiento médico?',
+    hasPhoto:true,
+    health:['Embarazo o sospecha de embarazo','Hipertensión arterial','Diabetes','Enfermedades cardíacas','Várices severas','Trombosis o antecedentes de coágulos','Cáncer o tratamiento oncológico','Cirugía reciente (menos de 6 meses)','Infecciones o fiebre','Enfermedades de la piel','Alergias','Uso de anticoagulantes'],
+    consentItems:[
+      'He informado de manera veraz mi estado de salud y antecedentes médicos.',
+      'Entiendo que el masaje reductivo tiene fines estéticos y de bienestar, y no constituye un tratamiento médico ni reemplaza la atención de un profesional de la salud.',
+      'Comprendo que los resultados varían según cada persona y que no se garantizan resultados específicos.',
+      'Entiendo que para obtener mejores resultados debo seguir las recomendaciones relacionadas con hidratación, alimentación, actividad física y continuidad del tratamiento.',
+      'Autorizo al especialista a suspender o modificar el tratamiento si considera que existe algún riesgo para mi salud.',
+      'Me comprometo a informar cualquier cambio en mi estado de salud antes de cada sesión.'
+    ],
+    sideEffects:['Enrojecimiento','Sensibilidad o molestias leves','Moretones','Inflamación temporal','Sensación de calor','Dolor muscular leve']
+  },
+  {
+    id:'descontracturante',
+    title:'Masaje Descontracturante',
+    icon:'hand',
+    desc:'Consentimiento para masaje enfocado en aliviar tensión muscular.',
+    consentLead:'solicito de manera voluntaria recibir sesiones de masaje descontracturante y declaro que:',
+    medicalQuestion:'¿Está bajo tratamiento médico?',
+    hasPhoto:false,
+    health:['Embarazo o sospecha de embarazo','Hipertensión arterial','Diabetes','Enfermedades cardíacas','Várices severas','Trombosis o antecedentes de coágulos','Cáncer o tratamiento oncológico','Cirugía reciente (menos de 6 meses)','Infecciones o fiebre','Enfermedades musculares o articulares','Lesiones recientes','Uso de anticoagulantes'],
+    consentItems:[
+      'He informado de manera veraz mi estado de salud y antecedentes médicos.',
+      'Entiendo que el masaje descontracturante tiene como objetivo aliviar tensión muscular, contracturas y mejorar el bienestar físico general.',
+      'Comprendo que este tratamiento no sustituye la atención médica ni fisioterapéutica cuando sea necesaria.',
+      'Entiendo que los resultados pueden variar según cada persona y la condición muscular.',
+      'Autorizo a la especialista a ajustar la presión o técnica según mi tolerancia y condición física.',
+      'Me comprometo a informar cualquier cambio en mi estado de salud antes de cada sesión.'
+    ],
+    sideEffects:['Dolor muscular leve posterior al tratamiento','Sensibilidad en zonas trabajadas','Enrojecimiento','Fatiga o sensación de relajación profunda','Leve inflamación muscular']
+  },
+  {
+    id:'relajacion',
+    title:'Masaje de Relajación',
+    icon:'flower-2',
+    desc:'Consentimiento para masaje orientado a disminuir estrés y tensión.',
+    consentLead:'solicito de manera voluntaria recibir sesiones de masaje de relajación y declaro que:',
+    medicalQuestion:'¿Está bajo tratamiento médico?',
+    hasPhoto:false,
+    health:['Embarazo o sospecha de embarazo','Hipertensión arterial','Diabetes','Enfermedades cardíacas','Várices severas','Trombosis o antecedentes de coágulos','Cáncer o tratamiento oncológico','Cirugía reciente (menos de 6 meses)','Infecciones o fiebre','Trastornos del sueño o ansiedad severa','Problemas musculares o dolor crónico','Uso de anticoagulantes'],
+    consentItems:[
+      'He informado de manera veraz mi estado de salud y antecedentes médicos.',
+      'Entiendo que el masaje de relajación tiene como objetivo disminuir el estrés, la tensión física y mental, promoviendo el bienestar general.',
+      'Comprendo que este tratamiento no sustituye atención médica o psicológica profesional.',
+      'Entiendo que los resultados pueden variar según cada persona.',
+      'Autorizo a la especialista a adaptar la presión y técnica según mi comodidad y condición física.',
+      'Me comprometo a informar cualquier cambio en mi estado de salud antes de cada sesión.'
+    ],
+    sideEffects:['Somnolencia o relajación profunda','Leve sensibilidad muscular','Enrojecimiento ligero','Sensación de cansancio o calma intensa','Mareo leve en casos aislados']
+  },
+  {
+    id:'post-operatorio',
+    title:'Masaje Post Operatorio',
+    icon:'heart-pulse',
+    desc:'Consentimiento para masaje de apoyo a la recuperación post quirúrgica.',
+    consentLead:'solicito de manera voluntaria recibir sesiones de masaje post operatorio y declaro que:',
+    medicalQuestion:'¿Cuenta con autorización médica para recibir drenaje o masaje post operatorio?',
+    hasPhoto:false,
+    isPostOp:true,
+    health:['Cirugía reciente (menos de 6 meses)','Cirugía estética (liposucción, abdominoplastia, etc.)','Dolor intenso en zona quirúrgica','Infección o fiebre','Problemas de cicatrización','Hematomas extensos','Trombosis o antecedentes de coágulos','Hipertensión arterial','Diabetes','Uso de anticoagulantes'],
+    consentItems:[
+      'He informado de manera veraz mi estado de salud, tipo de cirugía y antecedentes médicos.',
+      'Entiendo que el masaje post operatorio tiene como objetivo apoyar la recuperación, reducir inflamación, mejorar circulación y favorecer la cicatrización.',
+      'Comprendo que este tratamiento no sustituye el seguimiento médico ni quirúrgico.',
+      'Entiendo que los resultados dependen del tipo de cirugía, tiempo de evolución y respuesta individual del organismo.',
+      'Autorizo a la especialista a adaptar, modificar o suspender el tratamiento si considera que existe algún riesgo.',
+      'Me comprometo a seguir las indicaciones médicas y estéticas recomendadas.',
+      'Me comprometo a informar cualquier cambio en mi estado de salud antes de cada sesión.'
+    ],
+    sideEffects:['Sensibilidad en zona tratada','Enrojecimiento','Inflamación leve o fluctuante','Moretones','Molestia o dolor leve','Sensación de tensión o presión']
+  },
+  {
+    id:'drenaje-manual',
+    title:'Drenaje Linfático Manual',
+    icon:'droplets',
+    desc:'Consentimiento para técnica de estimulación del sistema linfático.',
+    consentLead:'solicito de manera voluntaria recibir sesiones de drenaje linfático manual y declaro que:',
+    medicalQuestion:'¿Está bajo tratamiento médico actualmente?',
+    hasPhoto:false,
+    health:['Embarazo o sospecha de embarazo','Hipertensión arterial','Diabetes','Enfermedades cardíacas','Várices severas','Trombosis o antecedentes de coágulos','Cáncer o tratamiento oncológico','Infecciones o fiebre','Problemas renales o linfáticos','Enfermedades de la piel','Uso de anticoagulantes'],
+    consentItems:[
+      'He informado de manera veraz mi estado de salud y antecedentes médicos.',
+      'Entiendo que el drenaje linfático manual es una técnica suave que estimula el sistema linfático para favorecer la eliminación de líquidos y toxinas.',
+      'Comprendo que este tratamiento no sustituye la atención médica ni tratamientos farmacológicos.',
+      'Entiendo que los resultados pueden variar según cada persona y su condición de salud.',
+      'Autorizo a la especialista a adaptar o suspender el tratamiento si observa algún riesgo o contraindicación.',
+      'Me comprometo a informar cualquier cambio en mi estado de salud antes de cada sesión.'
+    ],
+    sideEffects:['Aumento de la micción','Sensación de cansancio o relajación profunda','Ligero mareo en algunos casos','Sensibilidad leve','Cambios temporales en la circulación']
+  },
+  {
+    id:'maderoterapia',
+    title:'Maderoterapia Corporal',
+    icon:'trees',
+    desc:'Consentimiento para técnica estética con instrumentos de madera.',
+    consentLead:'solicito de manera voluntaria recibir sesiones de Maderoterapia corporal y declaro que:',
+    medicalQuestion:'¿Está bajo tratamiento médico actualmente?',
+    hasPhoto:false,
+    health:['Embarazo o sospecha de embarazo','Hipertensión arterial','Diabetes','Enfermedades cardíacas','Várices severas','Trombosis o antecedentes de coágulos','Cáncer o tratamiento oncológico','Cirugía reciente (menos de 6 meses)','Infecciones o fiebre','Fragilidad capilar o tendencia a hematomas','Enfermedades de la piel','Uso de anticoagulantes'],
+    consentItems:[
+      'He informado de manera veraz mi estado de salud y antecedentes médicos.',
+      'Entiendo que la Maderoterapia es una técnica estética que utiliza instrumentos de madera para estimular la circulación, ayudar al drenaje de líquidos y mejorar la apariencia del tejido.',
+      'Comprendo que este tratamiento no sustituye la atención médica ni garantiza resultados específicos.',
+      'Entiendo que los resultados dependen de la constancia, hábitos de vida y respuesta individual del organismo.',
+      'Autorizo a la especialista a adaptar, modificar o suspender el tratamiento si lo considera necesario por mi seguridad.',
+      'Me comprometo a informar cualquier cambio en mi estado de salud antes de cada sesión.'
+    ],
+    sideEffects:['Enrojecimiento','Sensibilidad en la zona tratada','Moretones o hematomas leves','Inflamación temporal','Sensación de presión o dolor leve']
+  },
+  {
+    id:'drenaje-post-operatorio',
+    title:'Drenaje Linfático Post Operatorio',
+    icon:'droplet',
+    desc:'Consentimiento para drenaje de apoyo a la recuperación post quirúrgica.',
+    consentLead:'solicito de manera voluntaria recibir sesiones de drenaje linfático post operatorio y declaro que:',
+    medicalQuestion:'¿Cuenta con autorización médica para drenaje post operatorio?',
+    hasPhoto:false,
+    isPostOp:true,
+    health:['Cirugía reciente (menos de 6 meses)','Cirugía estética (liposucción, abdominoplastia, aumento/reducción, etc.)','Dolor intenso o inflamación excesiva en la zona tratada','Infección o fiebre','Problemas de cicatrización','Hematomas extensos','Trombosis o antecedentes de coágulos','Hipertensión arterial','Diabetes','Uso de anticoagulantes'],
+    consentItems:[
+      'He informado de manera veraz mi estado de salud, tipo de cirugía y antecedentes médicos.',
+      'Entiendo que el drenaje linfático post operatorio es una técnica suave que ayuda a reducir inflamación, favorecer la circulación y apoyar el proceso de recuperación.',
+      'Comprendo que este tratamiento no sustituye el seguimiento médico ni quirúrgico.',
+      'Entiendo que los resultados dependen del tipo de cirugía, tiempo de evolución y respuesta individual del organismo.',
+      'Autorizo a la especialista a adaptar, modificar o suspender el tratamiento si considera que existe algún riesgo para mi salud.',
+      'Me comprometo a seguir las indicaciones médicas y estéticas recomendadas.',
+      'Me comprometo a informar cualquier cambio en mi estado de salud antes de cada sesión.'
+    ],
+    sideEffects:['Sensibilidad en la zona tratada','Inflamación leve o fluctuante','Enrojecimiento','Moretones','Sensación de presión ligera','Molestia leve durante o después del tratamiento']
+  },
+  {
+    id:'facial',
+    title:'Masaje Facial',
+    icon:'smile',
+    desc:'Consentimiento para masaje facial estético.',
+    consentLead:'solicito de manera voluntaria recibir sesiones de masaje facial y declaro que:',
+    medicalQuestion:'¿Está bajo tratamiento médico o dermatológico actualmente?',
+    hasPhoto:false,
+    health:['Embarazo o sospecha de embarazo','Hipertensión arterial','Diabetes','Enfermedades cardíacas','Acné activo severo o infecciones cutáneas','Heridas o lesiones en el rostro','Rosácea o dermatitis activa','Cirugía facial reciente (menos de 6 meses)','Alergias a cosméticos o productos tópicos','Uso de medicamentos dermatológicos (retinoides, isotretinoína, etc.)','Herpes activo'],
+    consentItems:[
+      'He informado de manera veraz mi estado de salud y antecedentes médicos.',
+      'Entiendo que el masaje facial es un tratamiento estético destinado a mejorar la circulación, tonificar la piel y promover relajación.',
+      'Comprendo que este procedimiento no sustituye tratamientos médicos o dermatológicos.',
+      'Entiendo que los resultados pueden variar según cada tipo de piel y constancia del tratamiento.',
+      'Autorizo a la especialista a adaptar la técnica según la condición de mi piel y tolerancia.',
+      'Me comprometo a informar cualquier cambio en mi estado de salud antes de cada sesión.'
+    ],
+    sideEffects:['Enrojecimiento leve','Sensibilidad en la piel','Ligera inflamación','Brotes temporales en pieles acneicas','Sensación de calor o relajación facial']
+  },
+  {
+    id:'tratamientos-faciales',
+    title:'Tratamientos Faciales Estéticos',
+    icon:'sparkles',
+    desc:'Consentimiento para limpieza, exfoliación, hidratación y aparatología facial.',
+    consentLead:'solicito de manera voluntaria recibir tratamientos faciales estéticos y declaro que:',
+    medicalQuestion:'¿Está bajo tratamiento médico o dermatológico actualmente?',
+    hasPhoto:false,
+    health:['Embarazo o sospecha de embarazo','Hipertensión arterial','Diabetes','Enfermedades cardíacas','Acné activo severo','Rosácea o dermatitis activa','Heridas o lesiones en el rostro','Herpes activo','Piel extremadamente sensible','Alergias a cosméticos o principios activos','Uso de retinoides o tratamientos dermatológicos (ej. isotretinoína)','Cirugía facial reciente (menos de 6 meses)'],
+    consentItems:[
+      'He informado de manera veraz mi estado de salud y antecedentes médicos.',
+      'Entiendo que los tratamientos faciales tienen fines estéticos y de cuidado de la piel.',
+      'Comprendo que pueden incluir limpieza facial, exfoliación, extracción, hidratación, aparatología y/o aplicación de productos cosméticos según evaluación profesional.',
+      'Entiendo que estos procedimientos no sustituyen tratamientos médicos o dermatológicos.',
+      'Comprendo que los resultados pueden variar según el tipo de piel, hábitos y constancia del tratamiento.',
+      'Autorizo a la especialista a adaptar o modificar el protocolo según la condición de mi piel.',
+      'Me comprometo a informar cualquier cambio en mi estado de salud o medicación antes de cada sesión.'
+    ],
+    sideEffects:['Enrojecimiento','Sensibilidad cutánea','Ligera inflamación','Brotes temporales en pieles acneicas','Descamación leve dependiendo del tratamiento','Reacción a productos en pieles sensibles']
+  },
+  {
+    id:'aparatologia',
+    title:'Uso de Aparatología Estética',
+    icon:'zap',
+    desc:'Consentimiento para radiofrecuencia, cavitación, vacuum, ultrasonido y similares.',
+    consentLead:'solicito de manera voluntaria la aplicación de tratamientos con aparatología estética y declaro que:',
+    medicalQuestion:'¿Está bajo tratamiento médico actualmente?',
+    hasPhoto:false,
+    health:['Embarazo o sospecha de embarazo','Hipertensión arterial','Diabetes','Enfermedades cardíacas','Trombosis o problemas circulatorios severos','Marcapasos o dispositivos electrónicos implantados','Cáncer o tratamiento oncológico','Infecciones activas o fiebre','Enfermedades de la piel en la zona a tratar','Cirugías recientes (menos de 6 meses)','Uso de anticoagulantes'],
+    consentItems:[
+      'He informado de manera veraz mi estado de salud y antecedentes médicos.',
+      'Entiendo que la aparatología estética puede incluir equipos como radiofrecuencia, cavitación, vacuum, ultrasonido, entre otros según evaluación profesional.',
+      'Comprendo que estos tratamientos tienen fines estéticos y no sustituyen la atención médica.',
+      'Entiendo que los resultados pueden variar según cada organismo, hábitos y constancia del tratamiento.',
+      'Autorizo a la especialista a ajustar parámetros, técnicas o suspender el tratamiento si lo considera necesario por seguridad.',
+      'Me comprometo a informar cualquier cambio en mi estado de salud antes de cada sesión.'
+    ],
+    sideEffects:['Enrojecimiento','Sensación de calor','Hormigueo leve','Inflamación ligera','Sensibilidad en la zona tratada','Moretones leves en casos específicos']
+  }
+];
+
+let current = null;
+let consentNameTouched = false;
+const signatures = {
+  client:{mode:'draw', canvas:null, ctx:null, signed:false, drawing:false, last:null},
+  specialist:{mode:'draw', canvas:null, ctx:null, signed:false, drawing:false, last:null}
+};
+
+function todayISO(){
+  const d = new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function formatDate(iso){
+  if(!iso) return '____ / ____ / ______';
+  const [y,m,d] = iso.split('-');
+  return `${d} / ${m} / ${y}`;
+}
+
+function renderGrid(){
+  const grid = document.getElementById('treatmentGrid');
+  grid.innerHTML = TREATMENTS.map((t,i)=>`
+    <button type="button" class="card" style="animation-delay:${i*0.04}s" data-id="${t.id}">
+      <div class="card-icon"><svg data-lucide="${t.icon}"></svg></div>
+      <h3>${t.title}</h3>
+      <p>${t.desc}</p>
+    </button>
+  `).join('');
+  grid.querySelectorAll('.card').forEach(card=>{
+    card.addEventListener('click', ()=> openForm(card.dataset.id));
+  });
+  lucide.createIcons();
+}
+
+function openForm(id){
+  current = TREATMENTS.find(t=>t.id===id);
+  document.getElementById('consentForm').reset();
+  document.getElementById('formError').textContent = '';
+
+  document.getElementById('formTitle').textContent = current.title;
+  document.getElementById('fDate').value = todayISO();
+
+  document.getElementById('healthGrid').innerHTML = current.health.map((h,i)=>`
+    <label class="check-item"><input type="checkbox" data-health="${i}"><span>${h}</span></label>
+  `).join('');
+
+  document.getElementById('medicalQuestionLabel').textContent = current.medicalQuestion;
+
+  document.getElementById('consentLeadText').innerHTML =
+    `Yo, <input type="text" id="fConsentName" class="inline-name-input" placeholder="Nombre completo">, ${current.consentLead}`;
+
+  document.getElementById('consentItemsList').innerHTML =
+    current.consentItems.map(item=>`<li>${item}</li>`).join('');
+
+  document.getElementById('sideEffectsList').innerHTML =
+    current.sideEffects.map(s=>`<span class="side-tag">${s}</span>`).join('');
+
+  document.getElementById('photoPanel').style.display = current.hasPhoto ? 'block' : 'none';
+
+  consentNameTouched = false;
+  const consentNameInput = document.getElementById('fConsentName');
+  document.getElementById('fName').addEventListener('input', e=>{
+    if(!consentNameTouched) consentNameInput.value = e.target.value;
+  });
+  consentNameInput.addEventListener('input', ()=>{ consentNameTouched = true; });
+
+  resetSignature('client');
+  resetSignature('specialist');
+
+  document.getElementById('selectScreen').style.display = 'none';
+  document.getElementById('formScreen').style.display = 'block';
+  window.scrollTo({top:0, behavior:'smooth'});
+  lucide.createIcons();
+}
+
+document.getElementById('backBtn').addEventListener('click', ()=>{
+  document.getElementById('formScreen').style.display = 'none';
+  document.getElementById('selectScreen').style.display = 'block';
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+
+// ---------- Signature pads ----------
+function resetSignature(who){
+  const wrap = document.querySelector(`.sig-pad-wrap[data-pad="${who}"]`);
+  const canvas = wrap.querySelector('canvas');
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.lineWidth = 2.4;
+  ctx.lineCap = 'round';
+  ctx.strokeStyle = '#F3F1EA';
+  const s = signatures[who];
+  s.mode = 'draw'; s.canvas = canvas; s.ctx = ctx; s.signed = false; s.drawing = false; s.last = null;
+  wrap.querySelector('.sig-placeholder').style.display = 'block';
+
+  const typeInput = document.querySelector(`[data-type-input="${who}"]`);
+  typeInput.value = '';
+  typeInput.style.display = 'none';
+  wrap.style.display = 'block';
+
+  const block = document.querySelector(`.sig-block[data-signer="${who}"]`);
+  block.querySelectorAll('.sig-toggle button').forEach(b=>b.classList.toggle('active', b.dataset.mode==='draw'));
+}
+
+function posFromEvent(canvas, e){
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+  const point = e.touches ? e.touches[0] : e;
+  return {x:(point.clientX-rect.left)*scaleX, y:(point.clientY-rect.top)*scaleY};
+}
+
+function attachPad(who){
+  const wrap = document.querySelector(`.sig-pad-wrap[data-pad="${who}"]`);
+  const canvas = wrap.querySelector('canvas');
+  const placeholder = wrap.querySelector('.sig-placeholder');
+  const s = signatures[who];
+  s.canvas = canvas;
+  s.ctx = canvas.getContext('2d');
+
+  function start(e){
+    const s = signatures[who];
+    s.drawing = true; s.last = posFromEvent(canvas, e);
+    s.signed = true; placeholder.style.display = 'none';
+    e.preventDefault();
+  }
+  function move(e){
+    const s = signatures[who];
+    if(!s.drawing) return;
+    const p = posFromEvent(canvas, e);
+    s.ctx.beginPath(); s.ctx.moveTo(s.last.x, s.last.y); s.ctx.lineTo(p.x, p.y); s.ctx.stroke();
+    s.last = p; e.preventDefault();
+  }
+  function end(){ signatures[who].drawing = false; }
+
+  canvas.addEventListener('mousedown', start);
+  canvas.addEventListener('mousemove', move);
+  window.addEventListener('mouseup', end);
+  canvas.addEventListener('touchstart', start, {passive:false});
+  canvas.addEventListener('touchmove', move, {passive:false});
+  canvas.addEventListener('touchend', end);
+
+  wrap.querySelector('.sig-clear').addEventListener('click', ()=>{
+    const s = signatures[who];
+    s.ctx.clearRect(0,0,canvas.width,canvas.height);
+    s.signed = false;
+    placeholder.style.display = 'block';
+  });
+}
+attachPad('client');
+attachPad('specialist');
+
+document.querySelectorAll('.sig-toggle').forEach(toggle=>{
+  toggle.querySelectorAll('button').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const block = btn.closest('.sig-block');
+      const who = block.dataset.signer;
+      const mode = btn.dataset.mode;
+      signatures[who].mode = mode;
+      toggle.querySelectorAll('button').forEach(b=>b.classList.toggle('active', b===btn));
+      const wrap = block.querySelector('.sig-pad-wrap');
+      const typeInput = block.querySelector('[data-type-input]');
+      if(mode==='draw'){ wrap.style.display='block'; typeInput.style.display='none'; }
+      else { wrap.style.display='none'; typeInput.style.display='block'; typeInput.focus(); }
+    });
+  });
+});
+
+// ---------- PDF generation ----------
+document.getElementById('generateBtn').addEventListener('click', ()=>{
+  const errorEl = document.getElementById('formError');
+  errorEl.textContent = '';
+
+  const name = document.getElementById('fName').value.trim();
+  const dob = document.getElementById('fDob').value;
+  const phone = document.getElementById('fPhone').value.trim();
+  const date = document.getElementById('fDate').value;
+  const finalConsent = document.getElementById('fFinalConsent').checked;
+
+  const clientSig = signatures.client;
+  const clientSigOk = clientSig.mode==='draw'
+    ? clientSig.signed
+    : document.querySelector('[data-type-input="client"]').value.trim().length>0;
+
+  if(!name || !dob || !phone || !date){
+    errorEl.textContent = 'Completa nombre, fecha de nacimiento, teléfono y fecha.';
+    return;
+  }
+  if(!finalConsent){
+    errorEl.textContent = 'Debes confirmar el consentimiento informado para continuar.';
+    return;
+  }
+  if(!clientSigOk){
+    errorEl.textContent = 'La firma del cliente es obligatoria (dibuja o escribe el nombre).';
+    return;
+  }
+
+  buildAndDownloadPdf();
+});
+
+function checklistHtml(){
+  const boxes = Array.from(document.querySelectorAll('#healthGrid input[type=checkbox]'));
+  return current.health.map((h,i)=>{
+    const checked = boxes[i] && boxes[i].checked;
+    return `<div style="display:flex;gap:8px;margin-bottom:5px;font-size:11.5px;">
+      <span style="display:inline-block;width:14px;height:14px;border:1.3px solid #333;border-radius:3px;flex:none;text-align:center;line-height:12px;font-size:10px;${checked?'background:#111;color:#fff;':''}">${checked?'✓':''}</span>
+      <span>${h}</span>
+    </div>`;
+  }).join('');
+}
+
+function signatureHtml(who, displayName){
+  const s = signatures[who];
+  if(s.mode==='draw' && s.signed){
+    const dataUrl = s.canvas.toDataURL('image/png');
+    return `<img src="${dataUrl}" style="height:60px;">`;
+  }
+  const typed = document.querySelector(`[data-type-input="${who}"]`).value.trim();
+  if(typed){
+    return `<div style="font-family:'Dancing Script',cursive;font-size:30px;color:#111;">${typed}</div>`;
+  }
+  return `<div style="height:60px;border-bottom:1px solid #999;"></div>`;
+}
+
+function buildAndDownloadPdf(){
+  const name = document.getElementById('fName').value.trim();
+  const dob = formatDate(document.getElementById('fDob').value);
+  const phone = document.getElementById('fPhone').value.trim();
+  const email = document.getElementById('fEmail').value.trim() || '—';
+  const date = formatDate(document.getElementById('fDate').value);
+  const otherCondition = document.getElementById('fOtherCondition').value.trim() || '—';
+  const medicalAnswer = document.querySelector('input[name=fMedical]:checked').value === 'si' ? 'Sí' : 'No';
+  const medicalExplain = document.getElementById('fMedicalExplain').value.trim() || '—';
+  const specialistName = document.getElementById('fSigSpecialistName').value.trim() || '—';
+  const consentName = document.getElementById('fConsentName').value.trim() || name;
+
+  let photoBlock = '';
+  if(current.hasPhoto){
+    const photoAnswer = document.querySelector('input[name=fPhoto]:checked').value;
+    photoBlock = `
+      <div class="pp-section">
+        <h3>Autorización para Fotografías</h3>
+        <p>${photoAnswer==='autoriza' ? 'El cliente AUTORIZA el uso de fotografías antes/después con fines educativos y publicitarios.' : 'El cliente NO autoriza el uso de fotografías.'}</p>
+      </div>`;
+  }
+
+  const releaseText = current.isPostOp
+    ? 'Declaro que participo en este tratamiento de manera voluntaria y libero a la especialista y al establecimiento de cualquier responsabilidad derivada de información médica omitida por mí o del incumplimiento de las recomendaciones médicas y estéticas proporcionadas.'
+    : 'Declaro que participo en este tratamiento de manera voluntaria y libero a la especialista y al establecimiento de cualquier responsabilidad derivada de información médica omitida por mí o del incumplimiento de las recomendaciones proporcionadas.';
+
+  const html = `
+  <div style="font-family:'Inter',Arial,sans-serif;color:#161616;padding:36px 40px;font-size:12.5px;line-height:1.5;">
+    <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:2.5px solid #D4A84B;padding-bottom:14px;margin-bottom:22px;">
+      <div style="font-size:19px;font-weight:800;letter-spacing:0.5px;">YOLI <span style="color:#B98F36;">STUDIOS</span></div>
+      <div style="font-size:10.5px;color:#777;">Consentimiento Informado</div>
+    </div>
+
+    <h1 style="font-size:18px;margin:0 0 2px;">${current.title}</h1>
+    <p style="font-size:10.5px;color:#777;margin:0 0 20px;">Formulario de Consentimiento Informado</p>
+
+    <div class="pp-section">
+      <h3>Datos del Cliente</h3>
+      <table style="width:100%;border-collapse:collapse;font-size:11.5px;">
+        <tr><td style="padding:3px 0;color:#666;width:140px;">Nombre:</td><td style="padding:3px 0;font-weight:600;">${name}</td></tr>
+        <tr><td style="padding:3px 0;color:#666;">Fecha de nacimiento:</td><td style="padding:3px 0;">${dob}</td></tr>
+        <tr><td style="padding:3px 0;color:#666;">Teléfono:</td><td style="padding:3px 0;">${phone}</td></tr>
+        <tr><td style="padding:3px 0;color:#666;">Correo:</td><td style="padding:3px 0;">${email}</td></tr>
+        <tr><td style="padding:3px 0;color:#666;">Fecha:</td><td style="padding:3px 0;">${date}</td></tr>
+      </table>
+    </div>
+
+    <div class="pp-section">
+      <h3>Declaración de Salud</h3>
+      <div style="columns:2;column-gap:24px;">${checklistHtml()}</div>
+      <p style="margin-top:8px;"><strong>Otra condición médica:</strong> ${otherCondition}</p>
+      <p style="margin-top:6px;"><strong>${current.medicalQuestion}</strong> ${medicalAnswer}</p>
+      <p><strong>Explicación:</strong> ${medicalExplain}</p>
+    </div>
+
+    <div class="pp-section">
+      <h3>Consentimiento Informado</h3>
+      <p>Yo, <strong>${consentName}</strong>, ${current.consentLead}</p>
+      <ul style="margin:6px 0 0;padding-left:18px;">
+        ${current.consentItems.map(i=>`<li style="margin-bottom:4px;">${i}</li>`).join('')}
+      </ul>
+    </div>
+
+    <div class="pp-section">
+      <h3>Posibles Efectos Secundarios</h3>
+      <p>Entiendo que después del tratamiento pueden presentarse de forma temporal: ${current.sideEffects.join(', ')}.</p>
+    </div>
+
+    <div class="pp-section">
+      <h3>Liberación de Responsabilidad</h3>
+      <p>${releaseText}</p>
+    </div>
+
+    ${photoBlock}
+
+    <div class="pp-section">
+      <h3>Confirmación</h3>
+      <p>El cliente confirmó que la información proporcionada es verídica y otorgó su consentimiento informado.</p>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:30px;gap:30px;">
+      <div style="flex:1;">
+        <div style="min-height:64px;">${signatureHtml('client')}</div>
+        <div style="border-top:1px solid #333;padding-top:5px;font-size:11px;">
+          <strong>${name}</strong><br>Firma del Cliente &middot; ${date}
+        </div>
+      </div>
+      <div style="flex:1;">
+        <div style="min-height:64px;">${signatureHtml('specialist')}</div>
+        <div style="border-top:1px solid #333;padding-top:5px;font-size:11px;">
+          <strong>${specialistName}</strong><br>Firma de la Especialista &middot; ${date}
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:30px;font-size:9.5px;color:#999;text-align:center;">Yoli Studios &middot; Documento generado digitalmente</p>
+    <p style="margin-top:3px;font-size:9px;color:#bbb;text-align:center;">Powered by Merktop</p>
+  </div>
+  <style>
+    .pp-section{margin-bottom:16px;}
+    .pp-section h3{font-size:11px;text-transform:uppercase;letter-spacing:0.8px;color:#B98F36;border-bottom:1px solid #eee;padding-bottom:5px;margin:0 0 8px;}
+  </style>
+  `;
+
+  const printRoot = document.getElementById('printRoot');
+  printRoot.innerHTML = html;
+
+  const safeName = name.replace(/[^a-zA-Z0-9]+/g,'-').replace(/^-+|-+$/g,'').toLowerCase() || 'cliente';
+  const fileName = `consentimiento-${current.id}-${safeName}.pdf`;
+
+  const btn = document.getElementById('generateBtn');
+  const originalHtml = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = 'Generando PDF...';
+
+  html2pdf().set({
+    margin: 0,
+    filename: fileName,
+    image:{type:'jpeg', quality:0.98},
+    html2canvas:{scale:2, backgroundColor:'#ffffff'},
+    jsPDF:{unit:'pt', format:'letter', orientation:'portrait'},
+    pagebreak:{mode:['avoid-all','css','legacy']}
+  }).from(printRoot).save().then(()=>{
+    btn.disabled = false;
+    btn.innerHTML = originalHtml;
+    lucide.createIcons();
+  });
+}
+
+renderGrid();
+</script>
+</body>
+</html>

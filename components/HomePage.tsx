@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import FluidBackground from '@/components/FluidBackground';
 import CustomCursor from '@/components/CustomCursor';
 import Navbar from '@/components/sections/Navbar';
@@ -9,7 +10,6 @@ import Services from '@/components/sections/Services';
 import Experience from '@/components/sections/Experience';
 import VideoShowcase from '@/components/sections/VideoShowcase';
 import InstagramCta from '@/components/sections/InstagramCta';
-import Reservas from '@/components/sections/Reservas';
 import Faq from '@/components/sections/Faq';
 import Footer from '@/components/sections/Footer';
 import AIChat from '@/components/AIChat';
@@ -65,7 +65,31 @@ const HomePage: React.FC = () => {
 
       <InstagramCta />
 
-      <Reservas />
+      {/* Compact reservas CTA: el wizard completo vive en /reservas para que sea estático, sin scroll */}
+      <section
+        id="reservas"
+        className="relative z-10 py-16 md:py-20 px-4 md:px-6 bg-brand-ink text-brand-cream overflow-hidden"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 opacity-40"
+          style={{ background: 'radial-gradient(circle at 50% 0%, rgba(162,112,67,0.35), transparent 60%)' }}
+          aria-hidden
+        />
+        <div className="relative z-10 max-w-3xl mx-auto text-center flex flex-col items-center gap-5">
+          <span className="text-xs font-mono uppercase tracking-[0.3em] text-brand-caramel">Reservas en línea</span>
+          <h2 className="font-heading text-3xl md:text-5xl font-normal leading-tight">Reserva tu experiencia</h2>
+          <p className="text-brand-sand/80 text-sm md:text-base max-w-xl font-light leading-relaxed">
+            Elige tu tratamiento, fecha y hora en un proceso simple y directo, sin vueltas ni scrolls interminables.
+          </p>
+          <Link
+            href="/reservas"
+            className="mt-2 inline-flex items-center gap-2 px-8 py-4 bg-brand-bronze text-white text-xs font-bold uppercase tracking-widest rounded-full hover:bg-brand-caramel transition-colors"
+            data-hover="true"
+          >
+            Reservar ahora
+          </Link>
+        </div>
+      </section>
 
       <Faq openIdx={openFaqIdx} setOpenIdx={setOpenFaqIdx} />
 

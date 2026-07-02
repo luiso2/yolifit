@@ -59,7 +59,7 @@ export async function POST(req: Request) {
       notes: data.notes ?? '',
     },
     success_url: `${origin}/reserva/confirmada?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${origin}/#reservas`,
+    cancel_url: `${origin}/reservas`,
   });
 
   return NextResponse.json({ url: session.url });

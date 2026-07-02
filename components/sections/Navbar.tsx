@@ -3,15 +3,25 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 interface NavbarProps {
   mobileMenuOpen: boolean;
   setMobileMenuOpen: (open: boolean) => void;
 }
 
+const MENU_ITEMS = ['Servicios', 'Experiencia', 'Instagram', 'Reservas'];
+
 const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, setMobileMenuOpen }) => {
+  const pathname = usePathname();
+
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false);
+    if (pathname !== '/') {
+      window.location.href = `/#${id}`;
+      return;
+    }
     const element = document.getElementById(id);
     if (element) {
       const headerOffset = 90;
@@ -29,34 +39,52 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, setMobileMenuOpen }) =>
     <>
       {/* Navigation - Luxurious Minimal Blur */}
       <nav className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 md:px-12 py-5 bg-brand-cream/85 backdrop-blur-md border-b border-black/[0.05]">
-        <div className="font-heading text-xl md:text-2xl font-bold tracking-tight text-black cursor-default z-50 flex flex-col items-start leading-none">
-          <div className="flex items-center gap-1.5">
-            <span className="font-semibold tracking-widest text-brand-bronze">YOLY</span>
-            <span className="font-light text-gray-500">STUDIO</span>
+        <div className="flex items-center gap-3 z-50">
+          <img
+            src="/media/logo.jpg"
+            alt="Yoly Studio logo"
+            className="w-11 h-11 md:w-12 md:h-12 rounded-full object-cover border border-brand-caramel/40 shadow-md shrink-0"
+          />
+          <div className="font-heading text-xl md:text-2xl font-bold tracking-tight text-black cursor-default flex flex-col items-start leading-none">
+            <div className="flex items-center gap-1.5">
+              <span className="font-semibold tracking-widest text-brand-bronze">YOLY</span>
+              <span className="font-light text-gray-500">STUDIO</span>
+            </div>
+            <span className="text-[9px] font-mono tracking-[0.25em] text-brand-caramel mt-1">ESTÉTICA & NOTARÍA</span>
           </div>
-          <span className="text-[9px] font-mono tracking-[0.25em] text-brand-caramel mt-1">ESTÉTICA & NOTARÍA</span>
         </div>
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex gap-10 text-xs font-semibold tracking-[0.2em] uppercase text-gray-700">
-          {['Servicios', 'Experiencia', 'Instagram', 'Reservas'].map((item) => (
-            <button
-              key={item}
-              onClick={() => scrollToSection(item === 'Reservas' ? 'reservas' : item.toLowerCase())}
-              className="hover:text-brand-caramel transition-colors cursor-pointer bg-transparent border-none font-heading text-xs tracking-widest uppercase font-medium"
-              data-hover="true"
-            >
-              {item}
-            </button>
-          ))}
+          {MENU_ITEMS.map((item) =>
+            item === 'Reservas' ? (
+              <Link
+                key={item}
+                href="/reservas"
+                className="hover:text-brand-caramel transition-colors cursor-pointer bg-transparent border-none font-heading text-xs tracking-widest uppercase font-medium"
+                data-hover="true"
+              >
+                {item}
+              </Link>
+            ) : (
+              <button
+                key={item}
+                onClick={() => scrollToSection(item.toLowerCase())}
+                className="hover:text-brand-caramel transition-colors cursor-pointer bg-transparent border-none font-heading text-xs tracking-widest uppercase font-medium"
+                data-hover="true"
+              >
+                {item}
+              </button>
+            ),
+          )}
         </div>
-        <button
-          onClick={() => scrollToSection('reservas')}
+        <Link
+          href="/reservas"
           className="hidden lg:inline-block border border-brand-bronze hover:bg-brand-bronze hover:text-white px-7 py-2.5 text-xs font-semibold tracking-widest uppercase transition-all duration-300 text-brand-bronze cursor-pointer bg-transparent font-heading"
           data-hover="true"
         >
           Reservar Ahora
-        </button>
+        </Link>
 
         {/* Mobile Menu Toggle */}
         <button
@@ -77,34 +105,52 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, setMobileMenuOpen }) =>
             transition={{ type: 'spring', damping: 26, stiffness: 180 }}
             className="fixed inset-y-0 right-0 left-0 z-30 bg-brand-cream/90 backdrop-blur-xl flex flex-col items-center justify-center gap-6 lg:hidden px-6 shadow-2xl"
           >
-            {['Servicios', 'Experiencia', 'Instagram', 'Reservas'].map((item, idx) => (
-              <motion.button
-                key={item}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.15 + idx * 0.08, ease: 'easeOut', duration: 0.4 }}
-                onClick={() => {
-                  scrollToSection(item === 'Reservas' ? 'reservas' : item.toLowerCase());
-                  setMobileMenuOpen(false);
-                }}
-                className="text-3xl font-heading font-medium text-gray-900 hover:text-brand-caramel transition-colors uppercase bg-transparent border-none cursor-pointer"
-              >
-                {item}
-              </motion.button>
-            ))}
+            {MENU_ITEMS.map((item, idx) =>
+              item === 'Reservas' ? (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15 + idx * 0.08, ease: 'easeOut', duration: 0.4 }}
+                >
+                  <Link
+                    href="/reservas"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-3xl font-heading font-medium text-gray-900 hover:text-brand-caramel transition-colors uppercase bg-transparent border-none cursor-pointer"
+                  >
+                    {item}
+                  </Link>
+                </motion.div>
+              ) : (
+                <motion.button
+                  key={item}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15 + idx * 0.08, ease: 'easeOut', duration: 0.4 }}
+                  onClick={() => {
+                    scrollToSection(item.toLowerCase());
+                    setMobileMenuOpen(false);
+                  }}
+                  className="text-3xl font-heading font-medium text-gray-900 hover:text-brand-caramel transition-colors uppercase bg-transparent border-none cursor-pointer"
+                >
+                  {item}
+                </motion.button>
+              ),
+            )}
 
-            <motion.button
+            <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5, ease: 'easeOut', duration: 0.4 }}
-              onClick={() => {
-                scrollToSection('reservas');
-                setMobileMenuOpen(false);
-              }}
-              className="mt-6 border border-brand-bronze px-8 py-3.5 text-xs font-bold tracking-widest uppercase bg-brand-bronze text-white hover:bg-brand-brown rounded-xl transition-all shadow-md shadow-brand-bronze/15 cursor-pointer"
             >
-              Reservar Ahora
-            </motion.button>
+              <Link
+                href="/reservas"
+                onClick={() => setMobileMenuOpen(false)}
+                className="mt-6 inline-block border border-brand-bronze px-8 py-3.5 text-xs font-bold tracking-widest uppercase bg-brand-bronze text-white hover:bg-brand-brown rounded-xl transition-all shadow-md shadow-brand-bronze/15 cursor-pointer"
+              >
+                Reservar Ahora
+              </Link>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0 }}
