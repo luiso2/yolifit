@@ -8,7 +8,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SpaService } from '@/lib/types';
-import { ArrowUpRight, Sparkles, Clock, DollarSign } from 'lucide-react';
+import { ArrowUpRight, Clock } from 'lucide-react';
 
 interface ServiceCardProps {
   service: SpaService;
@@ -48,8 +48,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, onClick }) => {
       {/* Overlay Info */}
       <div className="absolute inset-0 p-8 md:p-10 flex flex-col justify-between pointer-events-none">
         <div className="flex justify-between items-start">
-           <span className="text-xs font-mono font-medium tracking-wider border border-brand-caramel/40 bg-white/80 text-brand-ink px-4 py-2 rounded-full backdrop-blur-md flex items-center gap-1.5">
-             <Sparkles className="w-3.5 h-3.5 text-brand-bronze" />
+           <span className="text-xs font-mono font-medium tracking-wider border border-brand-caramel/40 bg-white/80 text-brand-ink px-4 py-2 rounded-full backdrop-blur-md">
              {service.category}
            </span>
            <motion.div

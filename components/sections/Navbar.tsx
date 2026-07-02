@@ -45,12 +45,12 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, setMobileMenuOpen }) =>
             alt="Yoly Studio logo"
             className="w-11 h-11 md:w-12 md:h-12 object-contain shrink-0"
           />
-          <div className="font-heading text-xl md:text-2xl font-bold tracking-tight text-black cursor-default flex flex-col items-start leading-none">
-            <span className="text-[9px] md:text-[10px] font-mono tracking-[0.35em] uppercase text-brand-caramel">
+          <div className="font-heading text-xl md:text-2xl tracking-tight text-black cursor-default flex flex-col items-start leading-none">
+            <span className="font-script text-2xl md:text-[1.75rem] text-brand-bronze leading-none">
               Clinical
             </span>
             <div className="flex items-center gap-1.5 mt-1">
-              <span className="font-semibold tracking-wide text-brand-bronze">Yoly</span>
+              <span className="font-medium text-brand-bronze">Yoly</span>
               <span className="font-light text-gray-500">Studio</span>
             </div>
           </div>

@@ -69,10 +69,10 @@ const Hero: React.FC = () => {
           {/* Main Title */}
           <div className="relative w-full flex flex-col items-center md:items-start">
             <h1 className="text-center md:text-left leading-none">
-              <span className="block text-xs md:text-sm font-mono tracking-[0.45em] uppercase text-brand-caramel mb-3 md:mb-5">
+              <span className="block font-script text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] text-brand-bronze leading-none mb-2 md:mb-4">
                 Clinical
               </span>
-              <span className="block text-[14vw] md:text-[5rem] lg:text-[5.75rem] font-sans font-bold leading-[0.95]">
+              <span className="block text-[13vw] md:text-[4.75rem] lg:text-[5.5rem] font-heading font-medium leading-[0.95]">
                 <span className="text-brand-bronze">Yoly</span>{' '}
                 <span className="font-light text-gray-500">Studio</span>
               </span>

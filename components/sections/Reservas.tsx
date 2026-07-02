@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   ChevronLeft,
   ChevronRight,
-  Sparkles,
   Clock,
   ShieldCheck,
   Check,
@@ -226,7 +225,7 @@ export default function Reservas() {
 
                 <div className="flex flex-col items-center text-center mb-8 pb-6 border-b border-dashed border-brand-bronze/20">
                   <div className="w-16 h-16 bg-brand-bronze/10 rounded-full flex items-center justify-center text-brand-bronze mb-4">
-                    <Sparkles className="w-8 h-8" />
+                    <Check className="w-8 h-8" />
                   </div>
                   <span className="text-[10px] font-mono tracking-[0.3em] text-brand-caramel uppercase font-bold">
                     PASE DE BIENESTAR CONFIRMADO
@@ -864,9 +863,7 @@ export default function Reservas() {
                               <span className="flex items-center gap-1">
                                 <Clock className="w-3.5 h-3.5 text-brand-bronze" /> {calService.duration}
                               </span>
-                              <span className="flex items-center gap-1">
-                                <Sparkles className="w-3.5 h-3.5 text-brand-bronze" /> {calService.category}
-                              </span>
+                              <span>{calService.category}</span>
                             </div>
                           </div>
 

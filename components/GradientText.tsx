@@ -16,9 +16,9 @@ interface GradientTextProps {
 }
 
 const VARIANT_STYLES = {
-  default: 'font-sans font-bold not-italic tracking-[0.12em] uppercase',
-  hero: 'font-sans font-bold not-italic tracking-[0.06em] uppercase leading-[0.9]',
-  'hero-sub': 'font-sans font-light not-italic tracking-[0.55em] uppercase leading-none',
+  default: 'font-heading font-semibold not-italic tracking-[0.08em] uppercase',
+  hero: 'font-heading font-semibold not-italic tracking-[0.04em] uppercase leading-[0.9]',
+  'hero-sub': 'font-sans font-light not-italic tracking-[0.45em] uppercase leading-none',
 } as const;
 
 const GRADIENT_STYLES = {

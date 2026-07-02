@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Sparkles, Heart } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import Link from 'next/link';
 
 export default function VideoShowcase() {
@@ -15,12 +15,11 @@ export default function VideoShowcase() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="order-2 md:order-1"
         >
-          <div className="flex items-center gap-2 mb-6">
-            <Sparkles className="w-4 h-4 text-brand-caramel" />
-            <span className="text-xs font-bold uppercase tracking-[0.25em] text-brand-brown">Dentro del estudio</span>
-          </div>
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-brand-brown mb-6">
+            Dentro del estudio
+          </p>
           <h2 className="font-heading text-4xl md:text-5xl text-brand-ink mb-6 leading-tight">
-            Vive la experiencia <span className="font-script text-5xl md:text-6xl text-brand-bronze">Yoly Studio</span>
+            Vive la experiencia <span className="font-script text-5xl md:text-6xl text-brand-bronze normal-case">&nbsp;Yoly Studio</span>
           </h2>
           <p className="text-brand-brown leading-relaxed mb-8 max-w-md">
             Un santuario boutique en Miami donde cada detalle está pensado para tu bienestar.

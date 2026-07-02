@@ -2,15 +2,15 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, ShieldCheck, Heart } from 'lucide-react';
 import GradientText from '@/components/GradientText';
 
 const heroImage = '/media/yoly-experience.jpg';
 
-const FEATURES = [
-  { icon: Award, title: 'Cosmetóloga Licenciada & Full Specialist', desc: 'Acreditada legalmente con capacitaciones avanzadas en rejuvenecimiento no invasivo, peelings químicos y aparatología regeneradora.' },
-  { icon: ShieldCheck, title: 'Notary Public Certificada en Florida', desc: 'Con investidura legal oficial del Estado para certificar, redactar actas, escrituras y autenticar firmas legales de manera rápida y en total privacidad.' },
-  { icon: Heart, title: 'Atención 100% Personalizada', desc: 'Cada tipo de piel tiene necesidades únicas. Yoly realiza un diagnóstico inicial exhaustivo antes de realizar cualquier procedimiento estético.' },
+const BIO_PARAGRAPHS = [
+  'Yoly es una profesional venezolana que ha hecho de su pasión por el bienestar y la belleza una misión de vida. Enfermera profesional con experiencia en área quirúrgica, ha combinado sus conocimientos en salud con una sólida formación en estética avanzada para brindar tratamientos seguros, personalizados y con resultados de alta calidad.',
+  'Especialista en Estados Unidos en el cuidado integral del rostro y el cuerpo, su enfoque va más allá de la estética: busca mejorar la confianza, el bienestar y la calidad de vida de cada persona que deposita su confianza en sus manos.',
+  'Su compromiso con la excelencia, la actualización constante y la atención humana la han convertido en una profesional reconocida por su dedicación, ética y amor por lo que hace.',
+  'Para Yoly, cada tratamiento es una oportunidad para resaltar la belleza natural de sus clientes, ofreciendo siempre un servicio basado en el conocimiento, la experiencia y el cuidado.',
 ];
 
 const Experience: React.FC = () => {
@@ -21,7 +21,7 @@ const Experience: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-center">
 
-          {/* Left side: Bio and credentials */}
+          {/* Left side: Bio */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -29,26 +29,21 @@ const Experience: React.FC = () => {
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="lg:col-span-5 order-2 lg:order-1"
           >
-            <p className="text-brand-bronze font-mono tracking-widest uppercase text-xs mb-2">Garantía Profesional</p>
+            <p className="text-brand-bronze font-mono tracking-widest uppercase text-xs mb-2">Perfil profesional</p>
             <h2 className="text-3xl md:text-5xl font-heading font-normal mb-6 leading-tight text-gray-950">
-              Sobre <GradientText text="YOLY" className="text-4xl md:text-6xl inline font-normal" />
+              ¿Quién es <GradientText text="Yoly" className="text-4xl md:text-6xl inline font-normal normal-case" />?
             </h2>
-            <p className="text-sm md:text-base text-gray-700 mb-8 font-light leading-relaxed">
-              Yoly es una profesional licenciada como Cosmetóloga y Full Specialist en el estado de Florida. Con años de experiencia y un compromiso inquebrantable con la salud de la piel, su filosofía se basa en potenciar la belleza natural de cada cliente mediante tratamientos hechos a la medida, combinando aparatología de última generación con sueros biológicos de alta pureza.
-            </p>
 
-            <div className="space-y-6 md:space-y-8">
-              {FEATURES.map((feature, i) => (
-                <div key={i} className="flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-white border border-brand-bronze/15 text-brand-bronze shrink-0 shadow-sm">
-                    <feature.icon className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm md:text-base font-bold mb-1 text-gray-900">{feature.title}</h4>
-                    <p className="text-xs md:text-sm text-gray-600 leading-relaxed font-light">{feature.desc}</p>
-                  </div>
-                </div>
+            <div className="space-y-4 md:space-y-5 text-sm md:text-base text-gray-700 font-light leading-relaxed">
+              {BIO_PARAGRAPHS.map((paragraph) => (
+                <p key={paragraph.slice(0, 24)}>{paragraph}</p>
               ))}
+
+              <blockquote className="pt-2 border-l-2 border-brand-caramel/50 pl-4 md:pl-5">
+                <p className="font-script text-2xl md:text-3xl text-brand-bronze leading-snug normal-case">
+                  &ldquo;La verdadera belleza nace cuando el cuidado, la salud y el bienestar se unen en perfecta armonía.&rdquo;
+                </p>
+              </blockquote>
             </div>
           </motion.div>
 
@@ -71,11 +66,11 @@ const Experience: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/35 via-transparent to-transparent opacity-70" />
 
               <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-10 text-white">
-                <div className="text-[10px] md:text-xs font-mono tracking-[0.45em] uppercase text-brand-sand/90 mb-2 md:mb-3">
+                <div className="font-script text-2xl md:text-3xl text-brand-sand/95 mb-1 md:mb-2 leading-none">
                   Clinical
                 </div>
-                <div className="text-4xl md:text-6xl font-heading font-light tracking-widest text-white/40">
-                  YOLY
+                <div className="text-4xl md:text-6xl font-heading font-light tracking-wide text-white/50">
+                  Yoly
                 </div>
                 <div className="text-xs md:text-sm font-mono tracking-widest uppercase mt-2 text-brand-sand">
                   Cosmetóloga Licenciada & Notary Public

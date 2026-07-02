@@ -6,7 +6,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Sparkles } from 'lucide-react';
+import { MessageCircle, X, Send } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChatMessage } from '@/lib/types';
 
@@ -69,7 +69,6 @@ const AIChat: React.FC = () => {
             {/* Header */}
             <div className="bg-gradient-to-r from-[#2A241C]/50 to-[#B19073]/20 p-4 flex justify-between items-center border-b border-white/10">
               <div className="flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-[#EDE5DA] animate-pulse" />
                 <h3 className="font-heading font-bold text-white tracking-wider text-sm">YOLY AI</h3>
               </div>
               <button onClick={() => setIsOpen(false)} className="text-white/50 hover:text-white" data-hover="true">

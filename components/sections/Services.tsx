@@ -24,10 +24,10 @@ const Services: React.FC<ServicesProps> = ({ onSelect }) => {
           <div>
             <p className="text-brand-caramel font-mono uppercase tracking-[0.25em] text-xs md:text-sm mb-2">Tratamientos Especializados</p>
             <h2 className="leading-[1.05] text-gray-950">
-              <span className="block text-4xl md:text-6xl font-heading font-bold uppercase tracking-tight">
+              <span className="block text-4xl md:text-6xl font-heading font-semibold uppercase tracking-tight">
                 Estética, Cuidado
               </span>
-              <span className="block font-script text-[2.75rem] md:text-[4rem] lg:text-[4.5rem] text-brand-bronze leading-[0.95] normal-case mt-1 md:mt-2">
+              <span className="block font-script text-[2.5rem] md:text-[3.75rem] lg:text-[4.25rem] text-brand-bronze leading-[0.95] normal-case mt-1 md:mt-2">
                 & Bienestar
               </span>
             </h2>

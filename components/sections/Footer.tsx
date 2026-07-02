@@ -14,12 +14,12 @@ const Footer: React.FC = () => {
               alt="Yoly Studio logo"
               className="w-12 h-12 object-contain shrink-0"
             />
-            <div className="font-heading text-xl md:text-2xl font-bold tracking-tight text-gray-950 flex flex-col leading-none">
-              <div className="flex items-center gap-1.5">
-                <span className="font-bold tracking-widest text-brand-bronze">YOLY</span>
-                <span className="font-light text-gray-500">STUDIO</span>
+            <div className="font-heading text-xl md:text-2xl tracking-tight text-gray-950 flex flex-col leading-none">
+              <span className="font-script text-2xl text-brand-bronze leading-none">Clinical</span>
+              <div className="flex items-center gap-1.5 mt-1">
+                <span className="font-medium text-brand-bronze">Yoly</span>
+                <span className="font-light text-gray-500">Studio</span>
               </div>
-              <span className="text-[8px] font-mono tracking-[0.2em] text-brand-caramel mt-1 uppercase">Estética, Bienestar & Notaría</span>
             </div>
           </div>
           <p className="text-gray-500 text-xs md:text-sm max-w-sm mb-4 leading-relaxed font-light">
