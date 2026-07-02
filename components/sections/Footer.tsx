@@ -10,9 +10,9 @@ const Footer: React.FC = () => {
         <div>
           <div className="flex items-center gap-3 mb-3">
             <img
-              src="/media/logo.jpg"
+              src="/media/logo.png"
               alt="Yoly Studio logo"
-              className="w-12 h-12 rounded-full object-cover border border-brand-caramel/40 shadow-md shrink-0"
+              className="w-12 h-12 object-contain shrink-0"
             />
             <div className="font-heading text-xl md:text-2xl font-bold tracking-tight text-gray-950 flex flex-col leading-none">
               <div className="flex items-center gap-1.5">

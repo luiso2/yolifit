@@ -41,9 +41,9 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, setMobileMenuOpen }) =>
       <nav className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 md:px-12 py-5 bg-brand-cream/85 backdrop-blur-md border-b border-black/[0.05]">
         <div className="flex items-center gap-3 z-50">
           <img
-            src="/media/logo.jpg"
+            src="/media/logo.png"
             alt="Yoly Studio logo"
-            className="w-11 h-11 md:w-12 md:h-12 rounded-full object-cover border border-brand-caramel/40 shadow-md shrink-0"
+            className="w-11 h-11 md:w-12 md:h-12 object-contain shrink-0"
           />
           <div className="font-heading text-xl md:text-2xl font-bold tracking-tight text-black cursor-default flex flex-col items-start leading-none">
             <div className="flex items-center gap-1.5">

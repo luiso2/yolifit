@@ -69,11 +69,19 @@ const Hero: React.FC = () => {
 
           {/* Main Title with Exquisite Serif pairing */}
           <div className="relative w-full flex flex-col items-center md:items-start">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-center md:text-left text-gray-950 leading-none">
-              <span className="block font-sans text-xs md:text-sm tracking-[0.4em] uppercase text-brand-caramel font-bold mb-3 md:mb-5">BIENVENIDO A</span>
+            <h1 className="text-center md:text-left leading-none">
+              <span className="block font-sans text-[10px] md:text-xs tracking-[0.45em] uppercase text-brand-caramel font-medium mb-4 md:mb-6">
+                Bienvenido a
+              </span>
               <GradientText
-                text="YOLY STUDIO"
-                className="text-[12vw] md:text-[5.5vw] font-normal tracking-tight text-center md:text-left uppercase"
+                text="YOLY"
+                variant="hero"
+                className="block text-[18vw] md:text-[6.5rem] lg:text-[7.5rem] text-center md:text-left"
+              />
+              <GradientText
+                text="STUDIO"
+                variant="hero"
+                className="block text-[9vw] md:text-[2.75rem] lg:text-[3.25rem] tracking-[0.55em] text-center md:text-left md:ml-1 mt-1 md:mt-2 opacity-95"
               />
             </h1>
 
