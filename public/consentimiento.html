@@ -2,10 +2,10 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="dark">
-<title>Yoli Studios · Consentimientos Informados</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="light">
+<title>Clinic Yolystudio.fit · Consentimientos Informados</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
@@ -13,25 +13,26 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha384-Yv5O+t3uE3hunW8uyrbpPW3iw6/5/Y7HitWJBLgqfMoA36NogMmy+8wWZMpn3HWc" crossorigin="anonymous"></script>
 <style>
   :root{
-    --bg:#050505;
-    --bg-soft:#0d0d10;
-    --card:rgba(255,255,255,0.035);
-    --card-hover:rgba(255,255,255,0.06);
-    --border:rgba(212,168,75,0.22);
-    --border-strong:rgba(212,168,75,0.5);
-    --gold:#D4A84B;
-    --gold-light:#EAD08F;
-    --text:#F3F1EA;
-    --muted:#9A958A;
-    --danger:#E5675C;
+    --bg:#F6F1EA;
+    --bg-soft:#EDE5DA;
+    --card:rgba(162,112,67,0.06);
+    --card-hover:rgba(162,112,67,0.10);
+    --border:rgba(162,112,67,0.25);
+    --border-strong:rgba(162,112,67,0.55);
+    --gold:#A27043;
+    --gold-light:#B19073;
+    --brown:#5B4D3C;
+    --text:#2A241C;
+    --muted:#5B4D3C;
+    --danger:#C0392B;
     --radius:16px;
   }
   *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;color-scheme:dark;}
+  html,body{margin:0;padding:0;color-scheme:light;}
   body{
     background:
-      radial-gradient(circle at 15% 0%, rgba(212,168,75,0.08), transparent 45%),
-      radial-gradient(circle at 85% 100%, rgba(212,168,75,0.05), transparent 45%),
+      radial-gradient(circle at 15% 0%, rgba(162,112,67,0.08), transparent 45%),
+      radial-gradient(circle at 85% 100%, rgba(162,112,67,0.05), transparent 45%),
       var(--bg);
     color:var(--text);
     font-family:'Inter', -apple-system, sans-serif;
@@ -44,12 +45,13 @@
     margin-bottom:6px;opacity:0;animation:fadeUp .6s ease forwards;
   }
   .brand-mark{
-    width:42px;height:42px;border-radius:12px;
-    background:linear-gradient(135deg, var(--gold), #8a6a24);
+    width:44px;height:44px;border-radius:12px;
+    overflow:hidden;
     display:flex;align-items:center;justify-content:center;
-    box-shadow:0 8px 24px rgba(212,168,75,0.25);
+    box-shadow:0 8px 24px rgba(162,112,67,0.25);
+    border:1px solid var(--border-strong);
   }
-  .brand-mark svg{width:22px;height:22px;color:#050505;}
+  .brand-mark img{width:100%;height:100%;object-fit:cover;display:block;}
   .brand-name{font-size:22px;font-weight:800;letter-spacing:0.5px;}
   .brand-name span{color:var(--gold);}
   header.hero{text-align:center;margin-bottom:40px;}
@@ -84,7 +86,7 @@
   }
   .card-icon{
     width:42px;height:42px;border-radius:11px;
-    background:rgba(212,168,75,0.12);border:1px solid var(--border);
+    background:rgba(162,112,67,0.12);border:1px solid var(--border);
     display:flex;align-items:center;justify-content:center;margin-bottom:14px;
   }
   .card-icon svg{width:20px;height:20px;color:var(--gold);}
@@ -118,16 +120,16 @@
   .field label{display:block;font-size:12.5px;color:var(--muted);margin-bottom:7px;font-weight:500;}
   .field input[type=text], .field input[type=tel], .field input[type=email],
   .field input[type=date], .field textarea{
-    width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);
+    width:100%;background:rgba(42,36,28,0.04);border:1px solid var(--border);
     border-radius:10px;padding:11px 13px;color:var(--text);font-family:inherit;
     font-size:14px;transition:border-color .2s, background .2s;
-    color-scheme:dark;-webkit-text-fill-color:var(--text);caret-color:var(--text);
+    color-scheme:light;-webkit-text-fill-color:var(--text);caret-color:var(--text);
   }
   .field input:focus, .field textarea:focus{
-    outline:none;border-color:var(--gold);background:rgba(255,255,255,0.06);
+    outline:none;border-color:var(--gold);background:rgba(42,36,28,0.06);
   }
   .field textarea{resize:vertical;min-height:64px;}
-  .field input[type=date]::-webkit-calendar-picker-indicator{filter:invert(0.8) sepia(1) saturate(3) hue-rotate(0deg);cursor:pointer;}
+  .field input[type=date]::-webkit-calendar-picker-indicator{cursor:pointer;}
   .inline-name-input{
     background:transparent;border:none;border-bottom:1.5px solid var(--border-strong);
     color:var(--gold-light);-webkit-text-fill-color:var(--gold-light);font-weight:700;
@@ -142,15 +144,15 @@
     padding:9px 10px;border-radius:9px;transition:background .2s;font-size:13.5px;
     line-height:1.4;
   }
-  .check-item:hover{background:rgba(255,255,255,0.03);}
+  .check-item:hover{background:rgba(42,36,28,0.03);}
   .check-item input{
     appearance:none;width:18px;height:18px;min-width:18px;margin-top:1px;
     border:1.5px solid var(--border-strong);border-radius:5px;cursor:pointer;
-    display:grid;place-content:center;background:rgba(255,255,255,0.02);
+    display:grid;place-content:center;background:rgba(42,36,28,0.02);
   }
   .check-item input:checked{background:var(--gold);border-color:var(--gold);}
   .check-item input:checked::after{
-    content:"";width:5px;height:9px;border:solid #050505;border-width:0 2px 2px 0;
+    content:"";width:5px;height:9px;border:solid #2A241C;border-width:0 2px 2px 0;
     transform:rotate(45deg) translate(-1px,-1px);
   }
 
@@ -166,43 +168,43 @@
     display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;
   }
   .side-tag{
-    background:rgba(212,168,75,0.08);border:1px solid var(--border);
+    background:rgba(162,112,67,0.08);border:1px solid var(--border);
     color:var(--gold-light);font-size:12px;padding:6px 12px;border-radius:999px;
   }
   .note-box{
-    background:rgba(212,168,75,0.06);border:1px dashed var(--border-strong);
+    background:rgba(162,112,67,0.06);border:1px dashed var(--border-strong);
     border-radius:10px;padding:12px 14px;font-size:12.5px;color:var(--muted);
     line-height:1.6;margin-top:16px;
   }
 
   .final-consent{
     display:flex;align-items:flex-start;gap:12px;cursor:pointer;
-    padding:16px;border-radius:12px;background:rgba(212,168,75,0.05);
+    padding:16px;border-radius:12px;background:rgba(162,112,67,0.05);
     border:1px solid var(--border-strong);font-size:13.5px;line-height:1.5;
   }
   .final-consent input{
     appearance:none;width:20px;height:20px;min-width:20px;margin-top:1px;
     border:2px solid var(--gold);border-radius:6px;cursor:pointer;
-    display:grid;place-content:center;background:rgba(255,255,255,0.02);
+    display:grid;place-content:center;background:rgba(42,36,28,0.02);
   }
   .final-consent input:checked{background:var(--gold);}
   .final-consent input:checked::after{
-    content:"";width:6px;height:10px;border:solid #050505;border-width:0 2px 2px 0;
+    content:"";width:6px;height:10px;border:solid #2A241C;border-width:0 2px 2px 0;
     transform:rotate(45deg) translate(-1px,-1px);
   }
 
   .sig-block{margin-bottom:8px;}
   .sig-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
   .sig-header .field{margin:0;flex:1;margin-right:16px;}
-  .sig-toggle{display:flex;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:999px;padding:3px;}
+  .sig-toggle{display:flex;background:rgba(42,36,28,0.04);border:1px solid var(--border);border-radius:999px;padding:3px;}
   .sig-toggle button{
     border:none;background:none;color:var(--muted);font-family:inherit;font-size:12px;
     padding:6px 14px;border-radius:999px;cursor:pointer;transition:all .2s;
   }
-  .sig-toggle button.active{background:var(--gold);color:#050505;font-weight:600;}
+  .sig-toggle button.active{background:var(--gold);color:#2A241C;font-weight:600;}
   .sig-pad-wrap{
     position:relative;border:1.5px dashed var(--border-strong);border-radius:12px;
-    background:rgba(255,255,255,0.02);overflow:hidden;
+    background:rgba(42,36,28,0.02);overflow:hidden;
   }
   .sig-pad-wrap canvas{display:block;width:100%;height:150px;touch-action:none;cursor:crosshair;}
   .sig-placeholder{
@@ -214,7 +216,7 @@
     color:var(--muted);font-size:11px;padding:5px 10px;border-radius:8px;cursor:pointer;font-family:inherit;
   }
   .sig-type-input{
-    width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);
+    width:100%;background:rgba(42,36,28,0.04);border:1px solid var(--border);
     border-radius:12px;padding:20px 16px;color:var(--gold-light);font-family:'Dancing Script',cursive;
     font-size:34px;text-align:center;
   }
@@ -222,12 +224,12 @@
 
   .actions{display:flex;justify-content:flex-end;gap:12px;margin-top:26px;}
   .btn-primary{
-    background:linear-gradient(135deg,var(--gold),#b98f36);color:#050505;border:none;
+    background:linear-gradient(135deg,var(--gold),var(--brown));color:#2A241C;border:none;
     padding:14px 28px;border-radius:999px;font-weight:700;font-size:14.5px;cursor:pointer;
     display:inline-flex;align-items:center;gap:8px;font-family:inherit;
-    box-shadow:0 8px 24px rgba(212,168,75,0.25);transition:transform .2s, box-shadow .2s;
+    box-shadow:0 8px 24px rgba(162,112,67,0.25);transition:transform .2s, box-shadow .2s;
   }
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(212,168,75,0.35);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(162,112,67,0.35);}
   .btn-primary:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
   .btn-primary svg{width:17px;height:17px;}
   .error-msg{
@@ -245,8 +247,8 @@
 <div class="wrap">
 
   <div class="brand">
-    <div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.5 6.5L21 11l-6.5 2.5L12 20l-2.5-6.5L3 11l6.5-2.5z"/></svg></div>
-    <div class="brand-name">YOLI <span>STUDIOS</span></div>
+    <div class="brand-mark"><img id="brandLogo" alt="Clinic Yolystudio.fit"></div>
+    <div class="brand-name">CLINIC <span>YOLYSTUDIO.FIT</span></div>
   </div>
 
   <div id="selectScreen">
@@ -371,13 +373,15 @@
     </form>
   </div>
 
-  <p class="footer-tag">Yoli Studios · Consentimientos Informados Digitales</p>
+  <p class="footer-tag">Clinic Yolystudio.fit · Consentimientos Informados Digitales</p>
   <p class="footer-tag" style="margin-top:6px;">Powered by <a href="https://merktop.com" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;font-weight:600;">Merktop</a></p>
 </div>
 
 <div id="printRoot" style="position:fixed;left:-10000px;top:0;width:794px;"></div>
 
 <script>
+const LOGO_DATA_URI = 'data:image/png;base64,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';
+
 const TREATMENTS = [
   {
     id:'reductivo',
@@ -573,8 +577,237 @@ const TREATMENTS = [
       'Me comprometo a informar cualquier cambio en mi estado de salud antes de cada sesión.'
     ],
     sideEffects:['Enrojecimiento','Sensación de calor','Hormigueo leve','Inflamación ligera','Sensibilidad en la zona tratada','Moretones leves en casos específicos']
+  },
+  {
+    id:'intradermoterapia',
+    title:'Intradermoterapia / Mesoterapia',
+    icon:'syringe',
+    desc:'Consentimiento para microinyecciones biocompatibles (mesoterapia) en grasa localizada, celulitis, flacidez o estrías.',
+    consentLead:'solicito voluntariamente recibir sesiones de intradermoterapia (mesoterapia) y declaro que:',
+    medicalQuestion:'¿Está bajo tratamiento médico o toma anticoagulantes?',
+    hasPhoto:true,
+    health:['Embarazo o lactancia','Problemas cardíacos','Hipertensión arterial no controlada','Insuficiencia renal crónica','Diabetes no controlada','Patologías hepáticas','Enfermedades autoinmunes (lupus u otras)','Enfermedad de la piel en la zona a tratar','Sensibilidad a medicamentos','Uso de anticoagulantes (ej. ácido acetilsalicílico)'],
+    consentItems:[
+      'He informado de manera veraz mi estado de salud y antecedentes médicos.',
+      'Entiendo que la intradermoterapia consiste en microinyecciones de sustancias biocompatibles y absorbibles en el tejido subcutáneo o dérmico, con fines estéticos (grasa localizada, celulitis, flacidez o estrías).',
+      'Comprendo que el riesgo de alergia a los productos es bajo, pero pueden aparecer hematomas, enrojecimiento, hinchazón, picor y dolor en el lugar de la inyección.',
+      'Me comprometo a suspender el uso de sustancias anticoagulantes los días previos indicados por la especialista.',
+      'Usaré ropa ligera y suave que no roce la zona tratada durante y después del procedimiento.',
+      'Autorizo a la especialista a suspender o modificar el tratamiento si considera que existe algún riesgo para mi salud.'
+    ],
+    sideEffects:['Hematomas','Enrojecimiento','Hinchazón leve','Picor','Dolor en el punto de inyección']
+  },
+  {
+    id:'microvasos-peim',
+    title:'Microvasos (PEIM)',
+    icon:'activity',
+    desc:'Consentimiento para escleroterapia estética inyectable de microvasos y telangiectasias.',
+    consentLead:'solicito voluntariamente el procedimiento estético inyectable para microvasos (PEIM) y declaro que:',
+    medicalQuestion:'¿Tiene antecedentes de problemas de circulación sanguínea?',
+    hasPhoto:true,
+    health:['Embarazo o lactancia','Trastornos de la coagulación','Alergias a soluciones esclerosantes','Problemas de circulación (retorno venoso)','Trombosis o antecedentes de coágulos','Infecciones activas en la zona a tratar','Uso de anticoagulantes'],
+    consentItems:[
+      'He informado de manera veraz mi estado de salud y antecedentes médicos.',
+      'Entiendo que el procedimiento consiste en inyectar una sustancia esclerosante en microvasos o telangiectasias, y que puedo sentir molestia por la punción y quemazón de la sustancia.',
+      'Comprendo que el tratamiento trata los vasos donde se aplica la solución, pero no garantiza que no aparezcan nuevos microvasos en otras zonas.',
+      'Entiendo que si aparecen nuevos microvasos por problemas de retorno venoso, debo consultar a un angiólogo especialista en circulación.',
+      'Me comprometo a evitar entrenamiento intenso de piernas durante 24 horas, no afeitarme ni usar cremas en la zona por 24 horas, y aplicar el ungüento antibiótico indicado.',
+      'Me comprometo a no exponerme al sol mientras existan marcas de punción o heridas, y a contactar de inmediato ante dolor intenso o hinchazón.'
+    ],
+    sideEffects:['Edema (hinchazón)','Hematomas o manchas oscuras','Hiperpigmentación','Urticaria localizada','Ampollas o vesículas leves','Sensibilidad cutánea']
+  },
+  {
+    id:'plasma-lifting',
+    title:'Plasma Lifting (Plasma Jet)',
+    icon:'wind',
+    desc:'Consentimiento para tratamiento facial/corporal con plasma ionizado.',
+    consentLead:'solicito voluntariamente el tratamiento de Plasma Lifting (Plasma Jet) y declaro que:',
+    medicalQuestion:'¿Tiene implantes metálicos o marcapasos?',
+    hasPhoto:true,
+    health:['Heridas activas en la zona a tratar','Implantes metálicos','Marcapasos','Alergias o urticaria','Herpes zóster (activo o inactivo)','Anomalías dérmicas en la zona','Embarazo'],
+    consentItems:[
+      'He informado de manera veraz mi estado de salud y antecedentes médicos, sin omitir información relevante.',
+      'Entiendo que el Plasma Jet estimula la producción de colágeno y fibras elásticas, mejorando arrugas, cicatrices de acné y pigmentación, mediante gas ionizado.',
+      'Comprendo que los resultados no son definitivos y se mantienen con el uso continuo de los cosméticos prescritos.',
+      'Me comprometo a preparar la piel de 10 a 20 días antes del tratamiento según indicaciones, y a evitar exposición solar antes y durante las sesiones.',
+      'Me comprometo a no usar productos, cosméticos o medicamentos sin autorización previa de la especialista, ni lavar la zona con agua caliente ni exfoliantes.',
+      'Entiendo que la exposición solar solo estará permitida 30 días después del tratamiento y que el uso de protector solar es obligatorio de forma permanente.'
+    ],
+    sideEffects:['Hiperpigmentación o hipopigmentación','Dolor y enrojecimiento','Hipertricosis paradójica (crecimiento de vello)','Irritación y picor','Pequeñas costras similares a una quemadura leve']
+  },
+  {
+    id:'hilos-pdo',
+    title:'Hilos Tensores PDO',
+    icon:'link',
+    desc:'Consentimiento para colocación de hilos tensores PDO (bioestimulación y efecto lifting).',
+    consentLead:'solicito voluntariamente la colocación de hilos tensores PDO y declaro que:',
+    medicalQuestion:'¿Tiene alergia a la anestesia local?',
+    hasPhoto:true,
+    health:['Embarazo o lactancia','Trastornos de la coagulación','Infecciones activas en la zona','Alergia a anestésicos locales','Enfermedades autoinmunes','Uso de anticoagulantes','Cicatrización deficiente'],
+    consentItems:[
+      'He informado de manera veraz mi estado de salud y antecedentes médicos.',
+      'Entiendo que los hilos son de polímeros 100% absorbibles (ácido poliláctico o polidioxanona) que se colocan bajo anestesia local de forma ambulatoria.',
+      'Comprendo que el efecto combina una elevación suave inmediata y un efecto regenerativo progresivo por estimulación de colágeno, con resultados hasta por 2 años.',
+      'Me comprometo a mantener la cabeza elevada el primer día, no beber alcohol ni usar sauna, aplicar hielo 3 veces al día las primeras 48 horas y dormir con la cabecera elevada durante 3 días.',
+      'Me comprometo a no exponerme a calor excesivo durante 4 semanas ni tomar antiinflamatorios durante las dos primeras semanas.',
+      'Entiendo que el regreso a actividades habituales (gimnasio) toma aproximadamente 72 horas.'
+    ],
+    sideEffects:['Hinchazón e inflamación local','Moretones','Molestia o tirantez en la zona','Sensación de bulto bajo la piel (transitoria)']
+  },
+  {
+    id:'acne',
+    title:'Tratamiento de Acné',
+    icon:'shield-alert',
+    desc:'Consentimiento para protocolo de tratamiento estético del acné.',
+    consentLead:'solicito voluntariamente recibir tratamiento estético para el acné y declaro que:',
+    medicalQuestion:'¿Usa medicamentos dermatológicos (retinoides, isotretinoína)?',
+    hasPhoto:true,
+    health:['Embarazo o lactancia','Acné activo severo o infeccioso','Uso de isotretinoína u otros retinoides orales','Alergias a productos cosméticos','Heridas o infecciones activas en el rostro','Piel extremadamente sensible'],
+    consentItems:[
+      'He sido informado(a) claramente sobre beneficios, riesgos, indicaciones, contraindicaciones, efectos secundarios y advertencias generales del tratamiento del acné.',
+      'Me comprometo a seguir todas las directrices y utilizar los productos de mi prescripción casera respetando los tiempos indicados.',
+      'Entiendo que los resultados dependen en gran parte de mi disciplina y seguimiento del protocolo tras cada sesión.',
+      'Autorizo el registro de fotografías antes y después del tratamiento con fines de seguimiento clínico.',
+      'Comprendo que puedo suspender el tratamiento en cualquier momento sin ningún tipo de inconveniente.',
+      'Doy mi consentimiento voluntario e informado para la realización de los procedimientos propuestos.'
+    ],
+    sideEffects:['Enrojecimiento','Descamación o sequedad','Brotes temporales','Sensibilidad cutánea','Sensación de calor u hormigueo']
+  },
+  {
+    id:'post-endolaser',
+    title:'Endolifting / Endoláser Facial',
+    icon:'thermometer',
+    desc:'Consentimiento y cuidados post-procedimiento para Endolifting (Endoláser facial con fibra óptica).',
+    consentLead:'solicito voluntariamente el procedimiento de Endolifting (Endoláser facial con fibra óptica) y declaro que:',
+    medicalQuestion:'¿Tiene alguna condición que pueda alterar su proceso de cicatrización?',
+    hasPhoto:true,
+    isPostOp:true,
+    health:['Infecciones activas en la zona','Trastornos de cicatrización','Uso de anticoagulantes','Embarazo','Enfermedades que afecten la curación de la piel'],
+    consentItems:[
+      'He informado de manera veraz mi estado de salud y antecedentes médicos.',
+      'Entiendo que tras el procedimiento debo tomar los medicamentos prescritos a la hora indicada y aplicar compresas frías 15 minutos, 3 veces al día, hasta el tercer día.',
+      'Me comprometo a usar la compresión indicada (tira o microporo) durante 4 a 7 días, 24 horas al día, y luego solo de noche durante 4 días más.',
+      'Entiendo que del tercer día en adelante debo cambiar a compresas calientes hasta que desaparezca la hinchazón, e iniciar drenaje linfático 1 a 2 veces por semana durante 30 días.',
+      'Me comprometo a evitar actividad física intensa durante los primeros 7 días.',
+      'Comprendo que es normal presentar más hinchazón la primera semana, que la regresión es casi total al mes, y que la sensibilidad de la zona puede tardar de 3 a 4 meses en normalizarse por completo.',
+      'Me comprometo a informar a la especialista de cualquier evento no descrito aquí y a asistir a las citas de revisión programadas.'
+    ],
+    sideEffects:['Hinchazón progresiva la primera semana','Moretones que van desapareciendo con el tiempo','Sensibilidad y cambios de sensación temporal en la zona']
+  },
+  {
+    id:'estrias',
+    title:'Tratamiento de Estrías',
+    icon:'ruler',
+    desc:'Consentimiento para protocolo estético de reducción de estrías.',
+    consentLead:'solicito voluntariamente recibir tratamiento estético para las estrías y declaro que:',
+    medicalQuestion:'¿Tiene alguna condición de la piel activa en la zona a tratar?',
+    hasPhoto:true,
+    health:['Embarazo o lactancia','Heridas o infecciones activas en la zona','Alergias a productos cosméticos','Piel extremadamente sensible'],
+    consentItems:[
+      'He sido informado(a) claramente sobre beneficios, riesgos, indicaciones, contraindicaciones, efectos secundarios y advertencias generales del tratamiento de estrías.',
+      'Me comprometo a seguir todas las directrices y utilizar los productos de mi receta casera respetando los tiempos de uso indicados.',
+      'Entiendo que los resultados dependen en gran parte de mi disciplina y constancia tras cada sesión.',
+      'Autorizo el registro de fotografías antes y después del tratamiento con fines de seguimiento clínico.',
+      'Comprendo que puedo suspender el tratamiento en cualquier momento sin ningún tipo de inconveniente.',
+      'Doy mi consentimiento voluntario e informado para la realización de los procedimientos propuestos.'
+    ],
+    sideEffects:['Enrojecimiento','Sensibilidad en la zona','Ligera inflamación','Descamación leve']
+  },
+  {
+    id:'criolipolisis',
+    title:'Criolipólisis',
+    icon:'snowflake',
+    desc:'Consentimiento para procedimiento no invasivo de reducción de grasa localizada por frío.',
+    consentLead:'solicito voluntariamente el tratamiento de criolipólisis y declaro que:',
+    medicalQuestion:'¿Tiene marcapasos, desfibrilador o prótesis metálicas en la zona?',
+    hasPhoto:true,
+    health:['Enfermedad cardíaca','Marcapasos o desfibrilador interno','Embarazo','Tumores','Patología renal grave','Patología vascular','Prótesis metálicas en la zona a tratar','Crioglobulinemia','Hemoglobinuria paroxística al frío','Urticaria por frío','Enfermedades isquémicas','Cicatriz queloide o infección en la zona','Uso de anticoagulantes sistémicos','Trombosis venosa profunda actual','Cáncer activo','Uso de fármacos fotosensibilizantes','Enfermedad de Raynaud','Anemia falciforme','Intolerancia a la crioterapia'],
+    consentItems:[
+      'He informado de manera veraz mi estado de salud, enfermedades previas, cicatrices hipertróficas, embarazo, lactancia, cirugías previas, uso de medicamentos, implantes o prótesis, y alergias.',
+      'Entiendo que la criolipólisis es un procedimiento no invasivo, aprobado por la FDA, que elimina gradualmente células grasas por apoptosis, con resultados progresivos.',
+      'Comprendo que la sensación será fría, con leve molestia solo en el momento de la succión del equipo.',
+      'Me comprometo a seguir el plan de tratamiento (hidratación, ejercicio regular y alimentación saludable) para obtener mejores resultados.',
+      'Entiendo que los resultados varían de un paciente a otro y no pueden garantizarse.',
+      'Autorizo el registro de medidas corporales y fotografías antes y después del procedimiento con fines de seguimiento.'
+    ],
+    sideEffects:['Enrojecimiento','Hinchazón','Sensibilidad al tacto','Hormigueo','Entumecimiento temporal']
+  },
+  {
+    id:'depilacion-laser',
+    title:'Depilación Láser',
+    icon:'sun',
+    desc:'Consentimiento y evaluación para sesiones de depilación láser.',
+    consentLead:'solicito voluntariamente recibir sesiones de depilación láser y declaro que:',
+    medicalQuestion:'¿Ha recibido tratamientos previos con láser?',
+    hasPhoto:true,
+    health:['Piel bronceada recientemente','Tendencia a queloides','Alergias','Enfermedades activas de la piel','Uso de medicamentos fotosensibilizantes','Embarazo'],
+    consentItems:[
+      'He sido informado(a) de que la depilación láser reduce significativamente la cantidad de vello (aproximadamente 70% al final del tratamiento), mediante la absorción del láser por los folículos.',
+      'Entiendo que el tratamiento requiere entre 5 y 10 sesiones, con intervalos de 30 a 60 días entre ellas, y que pueden aparecer nuevos vellos debido a la capacidad regenerativa del cuerpo.',
+      'Me comprometo a evitar la exposición solar 60 días antes de cada sesión y al menos 30 días después, usando protector solar de forma obligatoria.',
+      'Declaro que no estoy embarazada y me comprometo a informar de inmediato cualquier complicación (costras, ampollas, manchas) a la especialista.',
+      'Autorizo que me tomen fotografías para comparar el antes y después del tratamiento.',
+      'Soy consciente de la importancia de seguir estrictamente las indicaciones de la especialista.'
+    ],
+    sideEffects:['Costras o pequeñas ampollas','Manchas claras u oscuras temporales','Enrojecimiento','Sensación de calor en la zona tratada']
+  },
+  {
+    id:'limpieza-piel',
+    title:'Limpieza Facial Profunda',
+    icon:'sparkles',
+    desc:'Consentimiento y ficha de anamnesis para limpieza facial profunda.',
+    consentLead:'solicito voluntariamente recibir limpieza facial profunda y declaro que:',
+    medicalQuestion:'¿Está recibiendo tratamiento médico o dermatológico actualmente?',
+    hasPhoto:false,
+    health:['Embarazo','Herpes labial activo','Algún tipo de cáncer','Marcapasos','Prótesis facial','Alergias a cosméticos','Problemas de salud no controlados','Uso reciente de ácidos o botox en la piel'],
+    consentItems:[
+      'He informado de manera veraz mi historial estético (tratamientos previos, uso de ácidos, botox, anticonceptivos, cremas) y mi estado de salud actual.',
+      'Entiendo que la limpieza facial profunda incluye evaluación de la piel, extracción y aplicación de productos según mi tipo de piel.',
+      'Comprendo que este procedimiento no sustituye tratamientos médicos o dermatológicos.',
+      'Me comprometo a informar cualquier cambio en mi estado de salud o medicación antes de cada sesión.',
+      'Autorizo a la especialista a adaptar el protocolo según la condición de mi piel.'
+    ],
+    sideEffects:['Enrojecimiento','Sensibilidad cutánea','Brotes temporales en pieles acneicas','Ligera inflamación tras la extracción']
+  },
+  {
+    id:'evaluacion-capilar',
+    title:'Evaluación Capilar',
+    icon:'scissors',
+    desc:'Ficha de anamnesis y consentimiento para evaluación tricológica del cabello y cuero cabelludo.',
+    consentLead:'solicito voluntariamente una evaluación capilar y declaro que:',
+    medicalQuestion:'¿Tiene antecedentes familiares de caída de cabello o alopecia?',
+    hasPhoto:false,
+    health:['Enfermedades autoinmunes','Deficiencia de hierro o zinc','Estados prolongados de estrés','Uso de medicamentos asociados a caída de cabello (anticonceptivos, anticoagulantes, isotretinoína, litio, entre otros)','Cambios hormonales recientes (parto, menopausia)','Enfermedades sistémicas activas'],
+    consentItems:[
+      'He informado de manera veraz mi historial personal y familiar relacionado con la salud capilar.',
+      'Entiendo que la evaluación capilar incluye examen del cuero cabelludo, pruebas de tracción y análisis del tallo capilar con fines diagnósticos y de seguimiento.',
+      'Comprendo que esta evaluación no sustituye el diagnóstico ni tratamiento médico dermatológico o tricológico cuando sea necesario.',
+      'Me comprometo a informar cualquier cambio relevante en mi salud, medicación o hábitos antes de cada sesión de seguimiento.',
+      'Autorizo el registro de mis datos y resultados con fines de seguimiento del tratamiento capilar.'
+    ],
+    sideEffects:['Procedimiento no invasivo, sin efectos relevantes esperados','Leve molestia durante la prueba de tracción capilar']
+  },
+  {
+    id:'ozono',
+    title:'Terapia con Ozono',
+    icon:'flask-conical',
+    desc:'Consentimiento para terapia estética con ozono (facial, capilar o corporal).',
+    consentLead:'solicito voluntariamente recibir terapia con ozono y declaro que:',
+    medicalQuestion:'¿Tiene deficiencia de la enzima G6PD (favismo) o alguna enfermedad autoinmune?',
+    hasPhoto:false,
+    health:['Embarazo o lactancia','Antecedentes oncológicos','Enfermedades autoinmunes (VIH, lupus, artritis reumatoide, dermatitis autoinmune)','Deficiencia de G6PD (favismo)','Tendencia a desarrollar queloides','Uso de medicación anticoagulante','Problemas de salud no controlados (diabetes, hipertensión, hipotiroidismo/hipertiroidismo)'],
+    consentItems:[
+      'He informado de manera veraz mi estado de salud, antecedentes quirúrgicos, alérgicos y oncológicos.',
+      'Entiendo que la terapia con ozono puede aplicarse a nivel facial, capilar o corporal según evaluación de la especialista.',
+      'Comprendo que puedo sentir dolor o ardor breve durante la aplicación, así como sensación de gas en la piel durante algunos minutos.',
+      'Me comprometo a informar cualquier reacción no descrita aquí, náuseas o dolor persistente a la especialista de inmediato.',
+      'Confirmo la exactitud de la información proporcionada en este documento.'
+    ],
+    sideEffects:['Dolor o ardor breve durante la aplicación','Hiperemia (enrojecimiento)','Hematomas leves','Sensación de gas bajo la piel']
   }
 ];
+
+document.getElementById('brandLogo').src = LOGO_DATA_URI;
 
 let current = null;
 let consentNameTouched = false;
@@ -825,8 +1058,11 @@ function buildAndDownloadPdf(){
 
   const html = `
   <div style="font-family:'Inter',Arial,sans-serif;color:#161616;padding:36px 40px;font-size:12.5px;line-height:1.5;">
-    <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:2.5px solid #D4A84B;padding-bottom:14px;margin-bottom:22px;">
-      <div style="font-size:19px;font-weight:800;letter-spacing:0.5px;">YOLI <span style="color:#B98F36;">STUDIOS</span></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:2.5px solid #A27043;padding-bottom:14px;margin-bottom:22px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <img src="${LOGO_DATA_URI}" style="width:38px;height:38px;border-radius:9px;object-fit:cover;">
+        <div style="font-size:19px;font-weight:800;letter-spacing:0.5px;">CLINIC <span style="color:#A27043;">YOLYSTUDIO.FIT</span></div>
+      </div>
       <div style="font-size:10.5px;color:#777;">Consentimiento Informado</div>
     </div>
 
@@ -892,12 +1128,12 @@ function buildAndDownloadPdf(){
       </div>
     </div>
 
-    <p style="margin-top:30px;font-size:9.5px;color:#999;text-align:center;">Yoli Studios &middot; Documento generado digitalmente</p>
+    <p style="margin-top:30px;font-size:9.5px;color:#999;text-align:center;">Clinic Yolystudio.fit &middot; Documento generado digitalmente</p>
     <p style="margin-top:3px;font-size:9px;color:#bbb;text-align:center;">Powered by Merktop</p>
   </div>
   <style>
     .pp-section{margin-bottom:16px;}
-    .pp-section h3{font-size:11px;text-transform:uppercase;letter-spacing:0.8px;color:#B98F36;border-bottom:1px solid #eee;padding-bottom:5px;margin:0 0 8px;}
+    .pp-section h3{font-size:11px;text-transform:uppercase;letter-spacing:0.8px;color:#A27043;border-bottom:1px solid #eee;padding-bottom:5px;margin:0 0 8px;}
   </style>
   `;
 
@@ -912,14 +1148,25 @@ function buildAndDownloadPdf(){
   btn.disabled = true;
   btn.innerHTML = 'Generando PDF...';
 
-  html2pdf().set({
+  // Espera a que las imagenes insertadas dinamicamente terminen de decodificar;
+  // si html2canvas captura antes de eso, produce un canvas en blanco.
+  const pendingImages = Array.from(printRoot.querySelectorAll('img')).map(img => {
+    if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+    if (img.decode) return img.decode().catch(()=>{});
+    return new Promise(resolve => {
+      img.addEventListener('load', resolve, {once:true});
+      img.addEventListener('error', resolve, {once:true});
+    });
+  });
+
+  Promise.all(pendingImages).then(()=> html2pdf().set({
     margin: 0,
     filename: fileName,
     image:{type:'jpeg', quality:0.98},
     html2canvas:{scale:2, backgroundColor:'#ffffff'},
     jsPDF:{unit:'pt', format:'letter', orientation:'portrait'},
     pagebreak:{mode:['avoid-all','css','legacy']}
-  }).from(printRoot).save().then(()=>{
+  }).from(printRoot).save()).then(()=>{
     btn.disabled = false;
     btn.innerHTML = originalHtml;
     lucide.createIcons();
