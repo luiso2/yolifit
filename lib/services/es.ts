@@ -11,7 +11,10 @@ const DEPILACION_CERA_IMAGE = '/media/depilacion-cera.jpg';
 const DRENAJE_LINFATICO_IMAGE = MASSAGE_DECONTRACTURANTE_IMAGE;
 const FACIAL_IMAGE = '/media/limpieza-facial.jpg';
 const LIMPIEZA_FACIAL_BASICS_IMAGE = '/media/limpieza-facial-basics.jpg';
+const LIMPIEZA_FACIAL_PROFUNDA_IMAGE = '/media/limpieza-facial-profunda.jpg';
 const LIMPIEZA_FACIAL_ACNEICA_IMAGE = '/media/limpieza-facial-acneica.jpg';
+const LIMPIEZA_FACIAL_OXIGENANTE_IMAGE = '/media/limpieza-facial-oxigenante.jpg';
+const LIMPIEZA_FACIAL_ANTIEDAD_IMAGE = '/media/limpieza-facial-antiedad.jpg';
 const MASAJE_YOGA_FACIAL_IMAGE = '/media/masaje-yoga-facial.jpg';
 const LIMPIEZA_FACIAL_HIDRATANTE_IMAGE = '/media/limpieza-facial-hidratante.jpg';
 const LIMPIEZA_FACIAL_DESPIGMENTACION_IMAGE = '/media/limpieza-facial-despigmentacion.jpg';
@@ -122,7 +125,7 @@ export const SPA_SERVICES: SpaService[] = [
     id: '10',
     name: 'Limpieza Facial Profunda',
     category: 'Limpieza Facial',
-    image: FACIAL_IMAGE,
+    image: LIMPIEZA_FACIAL_PROFUNDA_IMAGE,
     duration: '75 minutos',
     ...consultPrice,
     benefits: ['Extracción de impurezas', 'Poros depurados', 'Renovación celular', 'Piel más lisa y uniforme'],
@@ -162,7 +165,7 @@ export const SPA_SERVICES: SpaService[] = [
     id: '14',
     name: 'Limpieza Facial Antiedad',
     category: 'Limpieza Facial',
-    image: FACIAL_IMAGE,
+    image: LIMPIEZA_FACIAL_ANTIEDAD_IMAGE,
     duration: '75 minutos',
     ...consultPrice,
     benefits: ['Estímulo de colágeno', 'Mejora de firmeza', 'Suavizado de líneas finas', 'Rostro más juvenil'],
@@ -182,7 +185,7 @@ export const SPA_SERVICES: SpaService[] = [
     id: '16',
     name: 'Limpieza Facial Oxigenante',
     category: 'Limpieza Facial',
-    image: FACIAL_IMAGE,
+    image: LIMPIEZA_FACIAL_OXIGENANTE_IMAGE,
     duration: '60 minutos',
     ...consultPrice,
     benefits: ['Oxigenación celular', 'Piel revitalizada', 'Aspecto descansado', 'Mayor vitalidad cutánea'],
