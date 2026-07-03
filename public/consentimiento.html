@@ -272,12 +272,19 @@
   }
 
   @media print{
+    html, body{background:#ffffff !important;margin:0 !important;padding:0 !important;}
     body > *:not(#printRoot){display:none !important;}
     #printRoot{
       position:static !important;left:auto !important;top:auto !important;
       width:auto !important;opacity:1 !important;
+      background:#ffffff !important;color:#161616 !important;
     }
-    @page{margin:0.4in;}
+    #printRoot, #printRoot *{
+      -webkit-print-color-adjust:exact !important;
+      print-color-adjust:exact !important;
+      color-adjust:exact !important;
+    }
+    @page{margin:0.4in;background:#ffffff;}
   }
 </style>
 </head>
@@ -1173,8 +1180,9 @@ function buildAndDownloadPdf(){
     <p style="margin-top:3px;font-size:9px;color:#bbb;text-align:center;">Powered by Merktop</p>
   </div>
   <style>
-    .pp-section{margin-bottom:16px;}
+    .pp-section{margin-bottom:16px;page-break-inside:avoid;break-inside:avoid;}
     .pp-section h3{font-size:11px;text-transform:uppercase;letter-spacing:0.8px;color:#A27043;border-bottom:1px solid #eee;padding-bottom:5px;margin:0 0 8px;}
+    table{page-break-inside:avoid;break-inside:avoid;}
   </style>
   `;
 
@@ -1216,7 +1224,9 @@ function buildAndDownloadPdf(){
     // Usa la funcion nativa de impresion del navegador (Guardar como PDF):
     // genera el documento real con el DOM ya renderizado, sin depender de
     // librerias de captura por canvas que fallaban al producir PDFs en blanco.
-    window.print();
+    // Dos frames de margen para que el navegador termine de pintar el logo
+    // y el contenido recien insertado antes de entrar a modo impresion.
+    requestAnimationFrame(()=> requestAnimationFrame(()=> window.print()));
 
     // Respaldo por si el navegador no dispara 'afterprint' (algunos moviles).
     setTimeout(restore, 1500);
