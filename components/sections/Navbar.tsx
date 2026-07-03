@@ -46,8 +46,9 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, setMobileMenuOpen }) =>
           <img src="/media/logo.png" alt="Clinic YolyStudio logo" className="w-20 h-20 md:w-24 md:h-24 object-contain shrink-0" />
           <div className="font-heading text-xl md:text-2xl tracking-tight text-black cursor-default flex flex-col items-start leading-none">
             <span className="font-script text-2xl md:text-[1.75rem] text-brand-bronze leading-none">Clinic</span>
-            <span className="font-medium text-brand-bronze mt-1 leading-none">
-              Yoly<span className="font-light text-brand-caramel">Studio</span>
+            <span className="mt-1 leading-none">
+              <span className="font-medium text-brand-bronze">Yoly</span>
+              <span className="font-light text-brand-caramel">Studio</span>
             </span>
           </div>
         </div>
@@ -88,7 +89,6 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, setMobileMenuOpen }) =>
         </div>
 
         <div className="lg:hidden flex items-center gap-3 z-50 ml-auto shrink-0">
-          <LanguageSwitcher />
           <button
             className="text-gray-800 relative w-10 h-10 flex items-center justify-center"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -140,12 +140,6 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, setMobileMenuOpen }) =>
               >
                 {t('bookNow')}
               </Link>
-            </motion.div>
-
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className="absolute bottom-10 flex gap-6">
-              <a href="https://www.instagram.com/yolystudio.fit" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-brand-caramel transition-colors font-mono text-xs tracking-wider">
-                @yolystudio.fit
-              </a>
             </motion.div>
           </motion.div>
         )}

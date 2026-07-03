@@ -15,8 +15,9 @@ const Footer: React.FC = () => {
             <img src="/media/logo.png" alt="Clinic YolyStudio logo" className="w-12 h-12 object-contain shrink-0" />
             <div className="font-heading text-xl md:text-2xl tracking-tight text-gray-950 flex flex-col leading-none">
               <span className="font-script text-2xl text-brand-bronze leading-none">Clinic</span>
-              <span className="font-medium text-brand-bronze mt-1 leading-none">
-                Yoly<span className="font-light text-brand-caramel">Studio</span>
+              <span className="mt-1 leading-none">
+                <span className="font-medium text-brand-bronze">Yoly</span>
+                <span className="font-light text-brand-caramel">Studio</span>
               </span>
             </div>
           </div>

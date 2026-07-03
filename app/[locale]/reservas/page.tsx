@@ -42,8 +42,9 @@ export default async function ReservasPage({
           <img src="/media/logo.png" alt="Clinic YolyStudio logo" className="w-12 h-12 md:w-14 md:h-14 object-contain shrink-0" />
           <div className="flex flex-col items-start leading-none">
             <span className="font-script text-2xl md:text-[1.75rem] text-brand-bronze leading-none">Clinic</span>
-            <span className="font-medium text-brand-bronze mt-1 leading-none">
-              Yoly<span className="font-light text-brand-caramel">Studio</span>
+            <span className="mt-1 leading-none">
+              <span className="font-medium text-brand-bronze">Yoly</span>
+              <span className="font-light text-brand-caramel">Studio</span>
             </span>
           </div>
         </Link>

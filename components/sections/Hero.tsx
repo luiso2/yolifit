@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.1 }}
-            className="flex items-center gap-2 md:gap-4 text-[10px] md:text-xs font-mono text-brand-bronze tracking-[0.25em] uppercase mb-5 bg-white/60 px-5 py-2.5 rounded-full border border-brand-bronze/15 shadow-sm backdrop-blur-md"
+            className="hidden md:flex items-center gap-2 md:gap-4 text-[10px] md:text-xs font-mono text-brand-bronze tracking-[0.25em] uppercase mb-5 bg-white/60 px-5 py-2.5 rounded-full border border-brand-bronze/15 shadow-sm backdrop-blur-md"
           >
             <span>{t('tag1')}</span>
             <span className="w-1.5 h-1.5 bg-brand-caramel rounded-full animate-pulse" />
@@ -61,8 +61,9 @@ const Hero: React.FC = () => {
           <div className="relative w-full flex flex-col items-start">
             <h1 className="text-left leading-none">
               <span className="block font-script text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] text-brand-bronze leading-none mb-2 md:mb-4">Clinic</span>
-              <span className="block text-[13vw] md:text-[4.75rem] lg:text-[5.5rem] font-heading font-medium leading-[0.95] text-brand-bronze">
-                Yoly<span className="font-light text-brand-caramel">Studio</span>
+              <span className="block text-[13vw] md:text-[4.75rem] lg:text-[5.5rem] font-heading font-medium leading-[0.95]">
+                <span className="text-brand-bronze">Yoly</span>
+                <span className="font-light text-brand-caramel">Studio</span>
               </span>
             </h1>
             <motion.div
