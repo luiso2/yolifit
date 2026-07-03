@@ -1192,7 +1192,13 @@ function buildAndDownloadPdf(){
     margin: 0,
     filename: fileName,
     image:{type:'jpeg', quality:0.98},
-    html2canvas:{scale:2, backgroundColor:'#ffffff'},
+    html2canvas:{
+      scale:2, backgroundColor:'#ffffff',
+      windowWidth: printRoot.scrollWidth,
+      windowHeight: printRoot.scrollHeight,
+      width: printRoot.scrollWidth,
+      height: printRoot.scrollHeight
+    },
     jsPDF:{unit:'pt', format:'letter', orientation:'portrait'},
     pagebreak:{mode:['avoid-all','css','legacy']}
   }).from(printRoot).save()).then(()=>{
