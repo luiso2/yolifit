@@ -76,7 +76,8 @@
   },
   "serviceCard": {
     "fromPrice": "Desde {price}",
-    "viewDetails": "Ver detalles & reservar"
+    "viewDetails": "Ver detalles & reservar",
+    "watchTreatment": "Ver tratamiento"
   },
   "serviceModal": {
     "close": "Cerrar modal",

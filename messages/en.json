@@ -76,7 +76,8 @@
   },
   "serviceCard": {
     "fromPrice": "From {price}",
-    "viewDetails": "View details & book"
+    "viewDetails": "View details & book",
+    "watchTreatment": "Watch treatment"
   },
   "serviceModal": {
     "close": "Close modal",

@@ -64,3 +64,22 @@ h1, h2, h3, h4, h5, h6, .font-heading, .font-display {
     0 0 18px rgba(177, 144, 115, 0.55),
     0 1px 4px rgba(0, 0, 0, 0.9);
 }
+
+.service-media-overlay-image {
+  background: linear-gradient(
+    to top,
+    rgb(246 241 234 / 0.98) 0%,
+    rgb(246 241 234 / 0.85) 38%,
+    rgb(246 241 234 / 0.25) 72%,
+    transparent 100%
+  );
+}
+
+.service-media-overlay-video {
+  background: linear-gradient(
+    to top,
+    rgb(246 241 234 / 0.96) 0%,
+    rgb(246 241 234 / 0.55) 28%,
+    transparent 58%
+  );
+}

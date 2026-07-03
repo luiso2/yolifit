@@ -3,15 +3,15 @@ import { SpaService } from '@/lib/types';
 const MASSAGE_IMAGE = '/media/masaje-relajacion.jpg';
 const MASSAGE_DECONTRACTURANTE_IMAGE = '/media/masaje-descontracturante.jpg';
 const MASSAGE_REDUCTIVO_IMAGE = '/media/masaje-reductivo.jpg';
-const MASSAGE_RELAJACION_IMAGE = '/media/masaje-relajacion.jpg';
+const MASSAGE_RELAJACION_IMAGE = '/media/masaje-relajacion-sesion.jpg';
 const MADEROTERAPIA_IMAGE = '/media/maderoterapia.jpg';
 const DEPILACION_CEJAS_IMAGE = '/media/depilacion-cejas.jpg';
 const LAMINADO_CEJAS_IMAGE = '/media/laminado-cejas.jpg';
 const DEPILACION_CERA_IMAGE = '/media/depilacion-cera.jpg';
 const DRENAJE_LINFATICO_IMAGE = MASSAGE_DECONTRACTURANTE_IMAGE;
-const DRENAJE_POST_OPERATORIO_VIDEO = '/media/drenaje-linfatico-post-operatorio.mp4';
-const TRATAMIENTO_FACIAL_LUZ_LED_VIDEO = '/media/tratamiento-facial-luz-led.mp4';
 const FACIAL_IMAGE = '/media/limpieza-facial.jpg';
+const LIMPIEZA_FACIAL_BASICS_IMAGE = '/media/limpieza-facial-basics.jpg';
+const LIMPIEZA_FACIAL_ACNEICA_IMAGE = '/media/limpieza-facial-acneica.jpg';
 const MASAJE_YOGA_FACIAL_IMAGE = '/media/masaje-yoga-facial.jpg';
 const LIMPIEZA_FACIAL_HIDRATANTE_IMAGE = '/media/limpieza-facial-hidratante.jpg';
 const LIMPIEZA_FACIAL_DESPIGMENTACION_IMAGE = '/media/limpieza-facial-despigmentacion.jpg';
@@ -93,7 +93,6 @@ export const SPA_SERVICES: SpaService[] = [
     name: 'Drenaje Linfático Post Operatorio',
     category: 'Masajes',
     image: DRENAJE_LINFATICO_IMAGE,
-    video: DRENAJE_POST_OPERATORIO_VIDEO,
     duration: '60 minutos',
     ...consultPrice,
     benefits: ['Reducción de edemas', 'Recuperación postquirúrgica', 'Mejora de la cicatrización', 'Alivio de inflamación'],
@@ -113,7 +112,7 @@ export const SPA_SERVICES: SpaService[] = [
     id: '9',
     name: 'Limpieza Facial Básics',
     category: 'Limpieza Facial',
-    image: FACIAL_IMAGE,
+    image: LIMPIEZA_FACIAL_BASICS_IMAGE,
     duration: '45 minutos',
     ...consultPrice,
     benefits: ['Limpieza superficial', 'Piel fresca y equilibrada', 'Eliminación de impurezas', 'Preparación para el día a día'],
@@ -143,7 +142,7 @@ export const SPA_SERVICES: SpaService[] = [
     id: '12',
     name: 'Limpieza Facial Piel Acnéica',
     category: 'Limpieza Facial',
-    image: FACIAL_IMAGE,
+    image: LIMPIEZA_FACIAL_ACNEICA_IMAGE,
     duration: '75 minutos',
     ...consultPrice,
     benefits: ['Control de sebo', 'Acción antibacteriana', 'Poros desobstruidos', 'Mejora de brotes activos'],
@@ -264,7 +263,6 @@ export const SPA_SERVICES: SpaService[] = [
     name: 'Tratamiento Facial Luz LED',
     category: 'Tratamientos Avanzados',
     image: TRATAMIENTO_FACIAL_LUZ_LED_IMAGE,
-    video: TRATAMIENTO_FACIAL_LUZ_LED_VIDEO,
     duration: '45 minutos',
     ...consultPrice,
     benefits: ['Estimulación celular', 'Mejora de luminosidad', 'Acción antiinflamatoria', 'Piel más uniforme y saludable'],

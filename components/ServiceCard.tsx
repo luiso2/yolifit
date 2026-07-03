@@ -43,16 +43,27 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, onClick }) => {
             referrerPolicy="no-referrer"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-cream via-brand-cream/85 to-brand-cream/25 transition-opacity duration-500 group-hover:via-brand-cream/75 group-hover:to-brand-cream/10" />
+        <div
+          className={`absolute inset-0 transition-opacity duration-500 ${
+            service.video ? 'service-media-overlay-video' : 'service-media-overlay-image'
+          }`}
+        />
       </div>
 
       <div className="absolute inset-4 border border-brand-bronze/10 group-hover:border-brand-bronze/30 transition-colors duration-500 pointer-events-none rounded-2xl" />
 
       <div className="absolute inset-0 p-8 md:p-10 flex flex-col justify-between pointer-events-none">
         <div className="flex justify-between items-start">
-          <span className="text-xs font-mono font-medium tracking-wider border border-brand-caramel/40 bg-white/80 text-brand-ink px-4 py-2 rounded-full backdrop-blur-md">
-            {service.category}
-          </span>
+          <div className="flex flex-wrap gap-2 max-w-[70%]">
+            <span className="text-xs font-mono font-medium tracking-wider border border-brand-caramel/40 bg-white/80 text-brand-ink px-4 py-2 rounded-full backdrop-blur-md">
+              {service.category}
+            </span>
+            {service.video ? (
+              <span className="text-[10px] font-mono font-semibold tracking-[0.14em] uppercase border border-brand-bronze/30 bg-brand-bronze/90 text-white px-3 py-1.5 rounded-full backdrop-blur-md self-center">
+                {t('watchTreatment')}
+              </span>
+            ) : null}
+          </div>
           <motion.div
             variants={{ rest: { opacity: 0, x: 20, y: -20 }, hover: { opacity: 1, x: 0, y: 0 } }}
             className="bg-brand-bronze text-white rounded-full p-3 will-change-transform shadow-lg"
