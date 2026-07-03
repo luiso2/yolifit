@@ -84,8 +84,11 @@
     "title": "Preguntas Frecuentes"
   },
   "footer": {
-    "description": "Santuario boutique de cosmetología licenciada y servicios notariales en Miami, Florida. Diseñado para embellecer tu piel, relajar tu cuerpo y facilitar tus documentos legales oficiales en un solo lugar.",
+    "description": "Santuario del cuidado de la piel certificada y servicios notariales en Doral, Florida. Diseñado para embellecer tu piel, relajar tu cuerpo y facilitar tus documentos legales oficiales en un solo lugar.",
     "copyright": "© {year} Clinic YolyStudio. Todos los derechos reservados. Lic. Florida Cosmetology.",
+    "contact": "Contacto",
+    "email": "info@clinicyolystudiofit.com",
+    "phone": "+1 (305) 219-9262",
     "instagram": "Instagram"
   },
   "serviceCard": {
@@ -121,15 +124,15 @@
   "reservas": {
     "headline": "Reserva tu Experiencia de Bienestar en Línea",
     "ticketConfirmed": "PASE DE BIENESTAR CONFIRMADO",
-    "studioName": "YolyStudio Boutique",
-    "studioTagline": "Miami, Florida · Estética & Notaría Pública",
+    "studioName": "Clinic YolyStudio.fit",
+    "studioTagline": "Doral, Florida · Estética Clínica",
     "client": "CLIENTE",
     "treatment": "TRATAMIENTO",
     "selectedDate": "FECHA SELECCIONADA",
     "reservedTime": "HORA RESERVADA",
     "notesForYoly": "NOTAS PARA YOLY",
     "confirmationTicket": "TICKET DE CONFIRMACIÓN",
-    "ticketMessage": "¡Tu espacio está asegurado! Yoly te contactará personalmente si requiere detalles previos. Recuerda llegar 10 minutos antes de tu hora reservada.",
+    "ticketMessage": "¡Tu espacio está asegurado! Yoly te contactará personalmente si requiere detalles previos. Recuerda llegar 30 minutos antes de tu hora reservada.",
     "printTicket": "Imprimir Ticket",
     "newBooking": "Nueva Reserva",
     "stepService": "Servicio",

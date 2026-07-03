@@ -285,6 +285,6 @@ export const FAQ_ITEMS = [
   },
   {
     question: 'How does the booking and cancellation process work?',
-    answer: 'You can pre-book your appointment online by selecting the service, date, and time. Yoly will confirm your appointment personally by phone or WhatsApp. If you need to reschedule or cancel, please notify us at least 24 hours in advance.',
+    answer: 'Book your appointment online by selecting the service, date, and time of your preference. Your appointment will be confirmed via WhatsApp. For changes or cancellations, we appreciate at least 24 hours notice.',
   },
 ];

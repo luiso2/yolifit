@@ -1,8 +1,11 @@
 'use client';
 
 import React from 'react';
-import { Instagram } from 'lucide-react';
+import { Instagram, Mail, Phone } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+
+const CONTACT_EMAIL = 'info@clinicyolystudiofit.com';
+const CONTACT_PHONE_HREF = 'tel:+13052199262';
 
 const Footer: React.FC = () => {
   const t = useTranslations('footer');
@@ -22,6 +25,27 @@ const Footer: React.FC = () => {
             </div>
           </div>
           <p className="text-gray-500 text-xs md:text-sm max-w-sm mb-4 leading-relaxed font-light">{t('description')}</p>
+
+          <div className="mb-5 flex flex-col gap-2">
+            <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-brand-bronze font-semibold">{t('contact')}</p>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="inline-flex items-center gap-2 text-sm text-gray-700 hover:text-brand-bronze transition-colors font-light"
+              data-hover="true"
+            >
+              <Mail className="w-4 h-4 shrink-0 text-brand-caramel" aria-hidden />
+              {t('email')}
+            </a>
+            <a
+              href={CONTACT_PHONE_HREF}
+              className="inline-flex items-center gap-2 text-sm text-gray-700 hover:text-brand-bronze transition-colors font-light"
+              data-hover="true"
+            >
+              <Phone className="w-4 h-4 shrink-0 text-brand-caramel" aria-hidden />
+              {t('phone')}
+            </a>
+          </div>
+
           <div className="text-[10px] font-mono text-gray-400 flex flex-col gap-1">
             <span>{t('copyright', { year: new Date().getFullYear() })}</span>
             <a href="https://merktop.com" target="_blank" rel="noopener noreferrer" className="text-brand-brown/60 hover:text-brand-caramel text-xs tracking-widest uppercase transition-colors">

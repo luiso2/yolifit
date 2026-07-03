@@ -285,6 +285,6 @@ export const FAQ_ITEMS = [
   },
   {
     question: '¿Cómo funciona el proceso de reserva y cancelación de citas?',
-    answer: 'Puedes pre-reservar tu espacio en línea seleccionando el servicio, la fecha y el horario. Yoly confirmará tu cita personalmente vía telefónica o WhatsApp. Si necesitas reprogramar o cancelar, avísanos con al menos 24 horas de anticipación.',
+    answer: 'Reserva tu cita en línea seleccionando el servicio, la fecha y el horario de tu preferencia. Tu cita será confirmada vía WhatsApp. Para cambios o cancelaciones, agradecemos un aviso con al menos 24 horas de anticipación.',
   },
 ];

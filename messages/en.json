@@ -84,8 +84,11 @@
     "title": "Frequently Asked Questions"
   },
   "footer": {
-    "description": "A boutique sanctuary for licensed cosmetology and notary services in Miami, Florida. Designed to beautify your skin, relax your body, and handle your official legal documents in one place.",
+    "description": "A sanctuary for certified skin care and notary services in Doral, Florida. Designed to beautify your skin, relax your body, and handle your official legal documents in one place.",
     "copyright": "© {year} Clinic YolyStudio. All rights reserved. Florida Cosmetology License.",
+    "contact": "Contact",
+    "email": "info@clinicyolystudiofit.com",
+    "phone": "+1 (305) 219-9262",
     "instagram": "Instagram"
   },
   "serviceCard": {
@@ -121,15 +124,15 @@
   "reservas": {
     "headline": "Book Your Wellness Experience Online",
     "ticketConfirmed": "WELLNESS PASS CONFIRMED",
-    "studioName": "YolyStudio Boutique",
-    "studioTagline": "Miami, Florida · Aesthetics & Notary Public",
+    "studioName": "Clinic YolyStudio.fit",
+    "studioTagline": "Doral, Florida · Clinical Aesthetics",
     "client": "CLIENT",
     "treatment": "TREATMENT",
     "selectedDate": "SELECTED DATE",
     "reservedTime": "BOOKED TIME",
     "notesForYoly": "NOTES FOR YOLY",
     "confirmationTicket": "CONFIRMATION TICKET",
-    "ticketMessage": "Your spot is secured! Yoly will contact you personally if any details are needed beforehand. Please arrive 10 minutes before your scheduled time.",
+    "ticketMessage": "Your spot is secured! Yoly will contact you personally if any details are needed beforehand. Please arrive 30 minutes before your scheduled time.",
     "printTicket": "Print Ticket",
     "newBooking": "New Booking",
     "stepService": "Service",

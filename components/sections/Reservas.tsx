@@ -241,7 +241,7 @@ export default function Reservas() {
                     <span className="block text-[10px] font-mono text-brand-caramel uppercase tracking-wider mb-0.5">{t('treatment')}</span>
                     <span className="font-heading font-medium text-brand-bronze text-base">{calSuccessTicket.service.name}</span>
                     <p className="text-xs text-gray-500 font-mono mt-0.5">
-                      {calSuccessTicket.service.duration} • {calSuccessTicket.service.price}
+                      {calSuccessTicket.service.duration}
                     </p>
                   </div>
 
