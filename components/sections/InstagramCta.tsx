@@ -24,9 +24,9 @@ const InstagramCta: React.FC = () => {
     <section id="instagram" className="relative z-10 py-20 md:py-32 bg-white/30 border-t border-b border-black/[0.04]">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="text-center mb-12 md:mb-16">
-          <a href="https://www.instagram.com/yolystudio.fit" target="_blank" rel="noopener noreferrer" className="flex justify-center items-center gap-2 text-brand-bronze font-mono tracking-widest uppercase text-xs mb-3 hover:text-brand-caramel transition-colors">
-            <Instagram className="w-4 h-4" />
-            <span>@yolystudio.fit</span>
+          <a href="https://www.instagram.com/yolystudio.fit" target="_blank" rel="noopener noreferrer" className="flex justify-center items-center gap-2 text-brand-bronze font-mono tracking-widest text-xs mb-3 hover:text-brand-caramel transition-colors">
+            <Instagram className="w-4 h-4 shrink-0" />
+            <span className="normal-case">@yolystudio.fit</span>
           </a>
           <h2 className="text-3xl md:text-5xl font-heading font-normal text-gray-950 uppercase leading-tight max-w-2xl mx-auto">
             {t('title')} <GradientText text={t('titleHighlight')} className="text-4xl md:text-6xl inline font-normal" />

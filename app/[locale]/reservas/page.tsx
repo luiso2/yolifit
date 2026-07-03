@@ -43,7 +43,7 @@ export default async function ReservasPage({
           <div className="flex flex-col items-start leading-none">
             <span className="font-script text-2xl md:text-[1.75rem] text-brand-bronze leading-none">Clinic</span>
             <span className="font-medium text-brand-bronze mt-1 leading-none">
-              Yoly<span className="font-light text-gray-500">Studio</span>
+              Yoly<span className="font-light text-brand-caramel">Studio</span>
             </span>
           </div>
         </Link>

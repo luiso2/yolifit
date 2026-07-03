@@ -43,11 +43,11 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, setMobileMenuOpen }) =>
     <>
       <nav className="fixed top-0 left-0 right-0 z-40 flex items-center gap-4 px-6 md:px-12 py-5 bg-brand-cream/85 backdrop-blur-md border-b border-black/[0.05]">
         <div className="flex items-center gap-3 z-50 shrink-0">
-          <img src="/media/logo.png" alt="Clinic YolyStudio logo" className="w-16 h-16 md:w-20 md:h-20 object-contain shrink-0" />
+          <img src="/media/logo.png" alt="Clinic YolyStudio logo" className="w-20 h-20 md:w-24 md:h-24 object-contain shrink-0" />
           <div className="font-heading text-xl md:text-2xl tracking-tight text-black cursor-default flex flex-col items-start leading-none">
             <span className="font-script text-2xl md:text-[1.75rem] text-brand-bronze leading-none">Clinic</span>
             <span className="font-medium text-brand-bronze mt-1 leading-none">
-              Yoly<span className="font-light text-gray-500">Studio</span>
+              Yoly<span className="font-light text-brand-caramel">Studio</span>
             </span>
           </div>
         </div>

@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
             <div className="font-heading text-xl md:text-2xl tracking-tight text-gray-950 flex flex-col leading-none">
               <span className="font-script text-2xl text-brand-bronze leading-none">Clinic</span>
               <span className="font-medium text-brand-bronze mt-1 leading-none">
-                Yoly<span className="font-light text-gray-500">Studio</span>
+                Yoly<span className="font-light text-brand-caramel">Studio</span>
               </span>
             </div>
           </div>
