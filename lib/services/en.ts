@@ -20,6 +20,7 @@ const PLASMA_RPP_IMAGE = '/media/plasma-ric-plaquetas.jpg';
 const PDRN_SALMON_IMAGE = '/media/pdrn-salmon.jpg';
 const EXOSOMAS_IMAGE = '/media/exosomas.jpg';
 const TRATAMIENTO_FACIAL_LUZ_LED_IMAGE = '/media/tratamiento-facial-luz-led.jpg';
+const LIMPIEZA_FACIAL_PREMIUM_IMAGE = '/media/limpieza-facial-premium.jpg';
 
 const askForPrice = {
   price: 'Ask for price',
@@ -192,7 +193,7 @@ export const SPA_SERVICES: SpaService[] = [
     id: '17',
     name: 'Premium Facial Cleansing',
     category: 'Facial Cleansing',
-    image: FACIAL_IMAGE,
+    image: LIMPIEZA_FACIAL_PREMIUM_IMAGE,
     duration: '90 minutes',
     ...askForPrice,
     benefits: ['Luxury experience', 'Personalized protocol', 'Visible results', 'Maximum comfort and care'],
