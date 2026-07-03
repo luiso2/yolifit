@@ -14,7 +14,9 @@ import {
   Mail,
   CheckCircle2,
 } from 'lucide-react';
-import { SPA_SERVICES } from '@/lib/services';
+import { useTranslations, useLocale } from 'next-intl';
+import { getSpaServices, ALL_CATEGORY } from '@/lib/services';
+import { dateLocale } from '@/lib/i18n-utils';
 import { SpaService } from '@/lib/types';
 
 interface SuccessTicket {
@@ -28,27 +30,17 @@ interface SuccessTicket {
   notes: string;
 }
 
-const MONTH_NAMES = [
-  'Enero',
-  'Febrero',
-  'Marzo',
-  'Abril',
-  'Mayo',
-  'Junio',
-  'Julio',
-  'Agosto',
-  'Septiembre',
-  'Octubre',
-  'Noviembre',
-  'Diciembre',
-];
-const DAYS_SHORT = ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá', 'Do'];
-
 export default function Reservas() {
+  const t = useTranslations('reservas');
+  const locale = useLocale();
+  const spaServices = getSpaServices(locale);
+  const MONTH_NAMES = t.raw('months') as string[];
+  const DAYS_SHORT = t.raw('daysShort') as string[];
+
   // Calendar-based Reservation Center States
   const [calStep, setCalStep] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState('Todos');
-  const [calService, setCalService] = useState<SpaService>(SPA_SERVICES[0]);
+  const [selectedCategory, setSelectedCategory] = useState(ALL_CATEGORY);
+  const [calService, setCalService] = useState<SpaService>(spaServices[0]);
   const initialToday = new Date();
   const initialTodayDateObj = new Date(initialToday.getFullYear(), initialToday.getMonth(), initialToday.getDate());
   const [calDate, setCalDate] = useState<Date | null>(initialTodayDateObj); // Default pre-select today
@@ -167,6 +159,7 @@ export default function Reservas() {
           email: calEmail,
           phone: calPhone,
           notes: calNotes || undefined,
+          locale,
         }),
       });
       const data = await res.json();
@@ -189,9 +182,9 @@ export default function Reservas() {
         });
         return;
       }
-      setCalError(data.error ?? 'No pudimos procesar tu reserva. Intenta de nuevo.');
+      setCalError(data.error ?? t('errors.processFailed'));
     } catch {
-      setCalError('Error de conexión. Por favor intenta de nuevo.');
+      setCalError(t('errors.connection'));
     } finally {
       setCalSubmitting(false);
     }
@@ -201,7 +194,7 @@ export default function Reservas() {
     <div className="w-full">
       <div className="text-center mb-6 md:mb-8">
         <p className="text-brand-bronze font-mono uppercase tracking-[0.25em] text-xs md:text-sm">
-          Reserva tu Experiencia de Bienestar en Línea
+          {t('headline')}
         </p>
       </div>
 
@@ -228,16 +221,16 @@ export default function Reservas() {
                     <Check className="w-8 h-8" />
                   </div>
                   <span className="text-[10px] font-mono tracking-[0.3em] text-brand-caramel uppercase font-bold">
-                    PASE DE BIENESTAR CONFIRMADO
+                    {t('ticketConfirmed')}
                   </span>
-                  <h3 className="text-2xl md:text-3xl font-heading font-bold text-gray-900 mt-1">Yoly Studio Boutique</h3>
-                  <p className="text-xs text-gray-500 mt-1">Miami, Florida • Estética & Notaría Pública</p>
+                  <h3 className="text-2xl md:text-3xl font-heading font-bold text-gray-900 mt-1">{t('studioName')}</h3>
+                  <p className="text-xs text-gray-500 mt-1">{t('studioTagline')}</p>
                 </div>
 
                 {/* Ticket Details Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8 text-sm mb-8">
                   <div>
-                    <span className="block text-[10px] font-mono text-brand-caramel uppercase tracking-wider mb-0.5">CLIENTE</span>
+                    <span className="block text-[10px] font-mono text-brand-caramel uppercase tracking-wider mb-0.5">{t('client')}</span>
                     <span className="font-heading font-medium text-gray-900 text-base">{calSuccessTicket.name}</span>
                     <p className="text-xs text-gray-500 font-mono mt-0.5">
                       {calSuccessTicket.email} • {calSuccessTicket.phone}
@@ -245,7 +238,7 @@ export default function Reservas() {
                   </div>
 
                   <div>
-                    <span className="block text-[10px] font-mono text-brand-caramel uppercase tracking-wider mb-0.5">TRATAMIENTO</span>
+                    <span className="block text-[10px] font-mono text-brand-caramel uppercase tracking-wider mb-0.5">{t('treatment')}</span>
                     <span className="font-heading font-medium text-brand-bronze text-base">{calSuccessTicket.service.name}</span>
                     <p className="text-xs text-gray-500 font-mono mt-0.5">
                       {calSuccessTicket.service.duration} • {calSuccessTicket.service.price}
@@ -253,9 +246,9 @@ export default function Reservas() {
                   </div>
 
                   <div className="pt-4 md:pt-0 border-t md:border-t-0 border-black/[0.03]">
-                    <span className="block text-[10px] font-mono text-brand-caramel uppercase tracking-wider mb-0.5">FECHA SELECCIONADA</span>
+                    <span className="block text-[10px] font-mono text-brand-caramel uppercase tracking-wider mb-0.5">{t('selectedDate')}</span>
                     <span className="font-heading font-medium text-gray-900 text-base">
-                      {calSuccessTicket.date.toLocaleDateString('es-ES', {
+                      {calSuccessTicket.date.toLocaleDateString(dateLocale(locale), {
                         weekday: 'long',
                         year: 'numeric',
                         month: 'long',
@@ -265,7 +258,7 @@ export default function Reservas() {
                   </div>
 
                   <div className="pt-4 md:pt-0 border-t md:border-t-0 border-black/[0.03]">
-                    <span className="block text-[10px] font-mono text-brand-caramel uppercase tracking-wider mb-0.5">HORA RESERVADA</span>
+                    <span className="block text-[10px] font-mono text-brand-caramel uppercase tracking-wider mb-0.5">{t('reservedTime')}</span>
                     <span className="font-heading font-medium text-gray-900 text-base flex items-center gap-1.5">
                       <Clock className="w-4 h-4 text-brand-bronze" />
                       {calSuccessTicket.time}
@@ -275,7 +268,7 @@ export default function Reservas() {
 
                 {calSuccessTicket.notes && (
                   <div className="mb-8 p-4 bg-gray-50 rounded-2xl border border-black/[0.03] text-xs">
-                    <span className="block text-[9px] font-mono text-gray-400 uppercase tracking-widest mb-1">NOTAS PARA YOLY</span>
+                    <span className="block text-[9px] font-mono text-gray-400 uppercase tracking-widest mb-1">{t('notesForYoly')}</span>
                     <p className="text-gray-600 italic font-light">&quot;{calSuccessTicket.notes}&quot;</p>
                   </div>
                 )}
@@ -283,7 +276,7 @@ export default function Reservas() {
                 {/* Decorative Barcode & Code */}
                 <div className="flex flex-col items-center pt-6 border-t border-dashed border-brand-bronze/20">
                   <span className="text-[10px] font-mono text-brand-bronze tracking-[0.2em] uppercase font-bold mb-3">
-                    TICKET DE CONFIRMACIÓN
+                    {t('confirmationTicket')}
                   </span>
 
                   {/* Simulated vector barcode lines */}
@@ -296,10 +289,7 @@ export default function Reservas() {
                 </div>
 
                 <div className="text-center mt-8 text-xs text-gray-500 leading-relaxed max-w-md mx-auto">
-                  <p className="font-light">
-                    ¡Tu espacio está asegurado! Yoly te contactará personalmente si requiere detalles previos. Recuerda
-                    llegar 10 minutos antes de tu hora reservada.
-                  </p>
+                  <p className="font-light">{t('ticketMessage')}</p>
                 </div>
 
                 {/* Print and Done Actions */}
@@ -308,7 +298,7 @@ export default function Reservas() {
                     onClick={() => window.print()}
                     className="px-6 py-3 border border-brand-bronze/30 text-brand-bronze hover:bg-gray-50 transition-all font-heading text-xs tracking-widest uppercase rounded-lg flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <FileText className="w-4 h-4" /> Imprimir Ticket
+                    <FileText className="w-4 h-4" /> {t('printTicket')}
                   </button>
                   <button
                     onClick={() => {
@@ -319,11 +309,11 @@ export default function Reservas() {
                       setCalPhone('');
                       setCalNotes('');
                       setCalStep(1);
-                      setSelectedCategory('Todos');
+                      setSelectedCategory(ALL_CATEGORY);
                     }}
                     className="px-8 py-3.5 bg-brand-bronze text-white hover:bg-brand-brown transition-all font-heading text-xs tracking-widest uppercase rounded-lg shadow-md cursor-pointer"
                   >
-                    Nueva Reserva
+                    {t('newBooking')}
                   </button>
                 </div>
               </div>
@@ -365,7 +355,7 @@ export default function Reservas() {
                     className={`text-[10px] sm:text-xs font-mono font-bold tracking-wider uppercase transition-colors duration-300
                       ${calStep === 1 ? 'text-brand-bronze' : 'text-gray-400 group-hover:text-gray-600'}`}
                   >
-                    Servicio
+                    {t('stepService')}
                   </span>
                 </button>
 
@@ -393,7 +383,7 @@ export default function Reservas() {
                     className={`text-[10px] sm:text-xs font-mono font-bold tracking-wider uppercase transition-colors duration-300
                       ${calStep === 2 ? 'text-brand-bronze' : 'text-gray-400'}`}
                   >
-                    Fecha & Hora
+                    {t('stepDateTime')}
                   </span>
                 </button>
 
@@ -421,7 +411,7 @@ export default function Reservas() {
                     className={`text-[10px] sm:text-xs font-mono font-bold tracking-wider uppercase transition-colors duration-300
                       ${calStep === 3 ? 'text-brand-bronze' : 'text-gray-400'}`}
                   >
-                    Tus Datos
+                    {t('stepYourData')}
                   </span>
                 </button>
               </div>
@@ -442,10 +432,10 @@ export default function Reservas() {
                       </div>
                       <div>
                         <h3 className="text-lg md:text-xl font-heading font-medium text-gray-900 tracking-tight">
-                          Elige tu Servicio o Tratamiento
+                          {t('chooseService')}
                         </h3>
                         <p className="text-xs text-gray-500 font-mono tracking-wider uppercase mt-0.5">
-                          Paso 1 de 3 • Selecciona una opción para continuar
+                          {t('step1of3')}
                         </p>
                       </div>
                     </div>
@@ -453,7 +443,7 @@ export default function Reservas() {
                     <div className="flex flex-col gap-6">
                       {/* Category filter pills */}
                       <div className="flex flex-wrap items-center justify-center gap-2 mb-2">
-                        {['Todos', ...Array.from(new Set(SPA_SERVICES.map((s) => s.category)))].map((cat) => {
+                        {[ALL_CATEGORY, ...Array.from(new Set(spaServices.map((s) => s.category)))].map((cat) => {
                           const isSel = selectedCategory === cat;
                           return (
                             <button
@@ -467,7 +457,7 @@ export default function Reservas() {
                                     : 'bg-white/80 border-black/[0.05] text-gray-600 hover:bg-brand-cream'
                                 }`}
                             >
-                              {cat === 'Todos' ? 'Todos los Servicios' : cat}
+                              {cat === ALL_CATEGORY ? t('allServices') : cat}
                             </button>
                           );
                         })}
@@ -476,9 +466,9 @@ export default function Reservas() {
                       {/* Services responsive grid: compact + scrollable so the action bar never scrolls out of view */}
                       <div className="max-h-[52vh] overflow-y-auto pr-1 -mr-1">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          {SPA_SERVICES.filter(
-                            (s) => selectedCategory === 'Todos' || s.category === selectedCategory,
-                          ).map((service) => {
+                          {spaServices
+                            .filter((s) => selectedCategory === ALL_CATEGORY || s.category === selectedCategory)
+                            .map((service) => {
                             const isSelected = calService.id === service.id;
                             return (
                               <div
@@ -536,15 +526,14 @@ export default function Reservas() {
                       {/* Bottom action bar: fallback manual control, selection above already auto-advances */}
                       <div className="pt-4 border-t border-black/[0.04] flex flex-col sm:flex-row justify-between items-center gap-4 bg-brand-cream/50 p-4 rounded-2xl border border-black/[0.01]">
                         <div className="text-xs text-gray-600 font-medium">
-                          Seleccionado: <span className="font-heading font-bold text-gray-900">{calService.name}</span> (
-                          {calService.price})
+                          {t('selected', { name: calService.name, price: calService.price })}
                         </div>
                         <button
                           type="button"
                           onClick={() => setCalStep(2)}
                           className="w-full sm:w-auto px-8 py-3.5 bg-brand-bronze hover:bg-brand-brown text-white text-xs font-bold uppercase tracking-widest rounded-xl shadow-md cursor-pointer flex items-center justify-center gap-2 hover:shadow-lg transition-all"
                         >
-                          Continuar a Fecha & Hora <ChevronRight className="w-4 h-4" />
+                          {t('continueToDateTime')} <ChevronRight className="w-4 h-4" />
                         </button>
                       </div>
                     </div>
@@ -566,10 +555,10 @@ export default function Reservas() {
                       </div>
                       <div>
                         <h3 className="text-lg md:text-xl font-heading font-medium text-gray-900 tracking-tight">
-                          Selecciona Fecha & Hora
+                          {t('selectDateTime')}
                         </h3>
                         <p className="text-xs text-gray-500 font-mono tracking-wider uppercase mt-0.5">
-                          Paso 2 de 3 • Elige cuándo quieres tu sesión
+                          {t('step2of3')}
                         </p>
                       </div>
                     </div>
@@ -652,7 +641,7 @@ export default function Reservas() {
                                   )}
                                   {cell.isSunday && cell.isCurrentMonth && (
                                     <span className="text-[8px] font-mono text-red-300 absolute bottom-0.5 hidden sm:block">
-                                      cerrado
+                                      {t('closed')}
                                     </span>
                                   )}
                                 </button>
@@ -666,13 +655,12 @@ export default function Reservas() {
                       <div className="lg:col-span-5 w-full bg-brand-cream/30 p-4 sm:p-5 rounded-2xl border border-black/[0.02] self-stretch flex flex-col justify-between">
                         <div>
                           <h4 className="text-xs font-mono text-brand-bronze uppercase tracking-widest mb-4 font-bold">
-                            Horarios Disponibles:
+                            {t('availableSchedules')}
                           </h4>
                           {calDate ? (
                             calDate.getDay() === 0 ? (
                               <div className="p-4 bg-red-50/30 border border-red-100 rounded-xl text-center text-xs text-red-500 font-light">
-                                Yoly Studio se encuentra cerrado los domingos por descanso general. Por favor,
-                                selecciona otro día en el calendario.
+                                {t('closedSunday')}
                               </div>
                             ) : activeSlots.length > 0 ? (
                               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-2">
@@ -698,22 +686,22 @@ export default function Reservas() {
                               </div>
                             ) : (
                               <p className="text-xs text-gray-500 font-light italic text-center py-6">
-                                No hay horarios disponibles.
+                                {t('noSlots')}
                               </p>
                             )
                           ) : (
                             <div className="p-4 bg-amber-50/20 border border-amber-100/40 rounded-xl text-center text-xs text-amber-600 font-light italic">
-                              Selecciona un día en el calendario para ver los horarios disponibles.
+                              {t('selectDayPrompt')}
                             </div>
                           )}
                         </div>
 
                         <div className="mt-8 bg-white border border-black/[0.04] p-4 rounded-xl text-[11px] text-gray-600 flex flex-col gap-1 shadow-xs">
-                          <div className="font-heading font-medium text-gray-800">Resumen del Servicio:</div>
+                          <div className="font-heading font-medium text-gray-800">{t('serviceSummary')}</div>
                           <div className="text-xs font-bold text-gray-900 mt-0.5">{calService.name}</div>
                           <div className="flex justify-between items-center mt-2 pt-2 border-t border-black/[0.03]">
                             <span className="font-mono text-[10px] text-gray-500">
-                              {calService.duration} • {calService.priceCents !== null ? 'Pago seguro online' : 'Pago en estudio'}
+                              {calService.duration} • {calService.priceCents !== null ? t('secureOnline') : t('payInStudio')}
                             </span>
                             <span className="font-mono text-xs text-brand-bronze font-bold">{calService.price}</span>
                           </div>
@@ -728,7 +716,7 @@ export default function Reservas() {
                         onClick={() => setCalStep(1)}
                         className="px-6 py-3 border border-brand-bronze/30 text-brand-bronze hover:bg-gray-50 text-xs font-bold uppercase tracking-widest rounded-xl transition-all cursor-pointer flex items-center gap-2 bg-transparent"
                       >
-                        <ChevronLeft className="w-4 h-4" /> Volver
+                        <ChevronLeft className="w-4 h-4" /> {t('back')}
                       </button>
                       <button
                         type="button"
@@ -741,7 +729,7 @@ export default function Reservas() {
                               : 'bg-brand-bronze hover:bg-brand-brown text-white cursor-pointer hover:shadow-lg hover:scale-[1.01]'
                           }`}
                       >
-                        Continuar a tus datos <ChevronRight className="w-4 h-4" />
+                        {t('continueToDetails')} <ChevronRight className="w-4 h-4" />
                       </button>
                     </div>
                   </motion.div>
@@ -762,10 +750,10 @@ export default function Reservas() {
                       </div>
                       <div>
                         <h3 className="text-lg md:text-xl font-heading font-medium text-gray-900 tracking-tight">
-                          Completa tus Detalles & Confirma
+                          {t('completeDetails')}
                         </h3>
                         <p className="text-xs text-gray-500 font-mono tracking-wider uppercase mt-0.5">
-                          Paso 3 de 3 • Revisa tu información antes de agendar
+                          {t('step3of3')}
                         </p>
                       </div>
                     </div>
@@ -775,7 +763,7 @@ export default function Reservas() {
                       <div className="lg:col-span-7 w-full space-y-4">
                         <div>
                           <label className="block text-[10px] font-mono text-gray-500 uppercase tracking-wider mb-1.5 font-semibold">
-                            Nombre Completo
+                            {t('fullName')}
                           </label>
                           <div className="relative">
                             <span className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-bronze opacity-70">
@@ -784,7 +772,7 @@ export default function Reservas() {
                             <input
                               type="text"
                               required
-                              placeholder="Tu nombre y apellido"
+                              placeholder={t('namePlaceholder')}
                               value={calName}
                               onChange={(e) => setCalName(e.target.value)}
                               className="w-full bg-brand-cream border border-black/[0.08] rounded-xl pl-11 pr-4 py-3.5 text-xs focus:outline-none focus:border-brand-bronze transition-all"
@@ -794,7 +782,7 @@ export default function Reservas() {
 
                         <div>
                           <label className="block text-[10px] font-mono text-gray-500 uppercase tracking-wider mb-1.5 font-semibold">
-                            Correo Electrónico
+                            {t('email')}
                           </label>
                           <div className="relative">
                             <span className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-bronze opacity-70">
@@ -803,7 +791,7 @@ export default function Reservas() {
                             <input
                               type="email"
                               required
-                              placeholder="ejemplo@correo.com"
+                              placeholder={t('emailPlaceholder')}
                               value={calEmail}
                               onChange={(e) => setCalEmail(e.target.value)}
                               className="w-full bg-brand-cream border border-black/[0.08] rounded-xl pl-11 pr-4 py-3.5 text-xs focus:outline-none focus:border-brand-bronze transition-all"
@@ -813,7 +801,7 @@ export default function Reservas() {
 
                         <div>
                           <label className="block text-[10px] font-mono text-gray-500 uppercase tracking-wider mb-1.5 font-semibold">
-                            Número de Teléfono
+                            {t('phone')}
                           </label>
                           <div className="relative">
                             <span className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-bronze opacity-70">
@@ -822,7 +810,7 @@ export default function Reservas() {
                             <input
                               type="tel"
                               required
-                              placeholder="+1 (305) 000-0000"
+                              placeholder={t('phonePlaceholder')}
                               value={calPhone}
                               onChange={(e) => setCalPhone(e.target.value)}
                               className="w-full bg-brand-cream border border-black/[0.08] rounded-xl pl-11 pr-4 py-3.5 text-xs focus:outline-none focus:border-brand-bronze transition-all"
@@ -832,14 +820,14 @@ export default function Reservas() {
 
                         <div>
                           <label className="block text-[10px] font-mono text-gray-500 uppercase tracking-wider mb-1.5 font-semibold">
-                            Notas Adicionales (Opcional)
+                            {t('notesOptional')}
                           </label>
                           <div className="relative">
                             <span className="absolute left-4 top-4.5 text-brand-bronze opacity-70">
                               <FileText className="w-4 h-4" />
                             </span>
                             <textarea
-                              placeholder="Condiciones de la piel, alergias, o detalles para el servicio de notaría"
+                              placeholder={t('notesPlaceholder')}
                               rows={3}
                               value={calNotes}
                               onChange={(e) => setCalNotes(e.target.value)}
@@ -853,7 +841,7 @@ export default function Reservas() {
                       <div className="lg:col-span-5 w-full bg-brand-cream border border-brand-bronze/15 rounded-3xl p-6 shadow-sm flex flex-col justify-between self-stretch">
                         <div>
                           <span className="block text-[10px] font-mono text-brand-caramel uppercase tracking-wider mb-3 font-bold">
-                            Resumen de Pre-Reserva
+                            {t('summaryTitle')}
                           </span>
 
                           {/* Service Details */}
@@ -870,19 +858,19 @@ export default function Reservas() {
                           {/* Date and Time Details */}
                           <div className="space-y-3 pb-4 mb-4 border-b border-black/[0.04]">
                             <div className="flex justify-between items-center text-xs">
-                              <span className="text-gray-500">Fecha elegida:</span>
+                              <span className="text-gray-500">{t('chosenDate')}</span>
                               <span className="font-heading font-bold text-gray-800">
-                                {calDate?.toLocaleDateString('es-ES', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })}
+                                {calDate?.toLocaleDateString(dateLocale(locale), { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })}
                               </span>
                             </div>
                             <div className="flex justify-between items-center text-xs">
-                              <span className="text-gray-500">Horario de cita:</span>
+                              <span className="text-gray-500">{t('appointmentTime')}</span>
                               <span className="font-heading font-bold text-brand-bronze flex items-center gap-1">
                                 <Clock className="w-3.5 h-3.5 text-brand-bronze" /> {calTime}
                               </span>
                             </div>
                             <div className="flex justify-between items-center text-xs">
-                              <span className="text-gray-500">Precio total:</span>
+                              <span className="text-gray-500">{t('totalPrice')}</span>
                               <span className="font-mono font-bold text-brand-bronze text-sm">{calService.price}</span>
                             </div>
                           </div>
@@ -891,11 +879,11 @@ export default function Reservas() {
                           <div className="space-y-2 text-[10px] text-gray-500 leading-relaxed font-light">
                             <div className="flex items-start gap-2">
                               <CheckCircle2 className="w-3.5 h-3.5 text-brand-bronze shrink-0 mt-0.5" />
-                              <span>Confirmación personalizada de tu cita.</span>
+                              <span>{t('personalizedConfirmation')}</span>
                             </div>
                             <div className="flex items-start gap-2">
                               <CheckCircle2 className="w-3.5 h-3.5 text-brand-bronze shrink-0 mt-0.5" />
-                              <span>Cancelación sin costo hasta 24 horas antes.</span>
+                              <span>{t('freeCancellation')}</span>
                             </div>
                           </div>
                         </div>
@@ -915,10 +903,10 @@ export default function Reservas() {
                               }`}
                           >
                             {calSubmitting
-                              ? 'Verificando Disponibilidad...'
+                              ? t('verifying')
                               : calService.priceCents !== null
-                                ? `Pagar ${calService.price} y reservar`
-                                : `RESERVAR AHORA • ${calService.price}`}
+                                ? t('payAndBook', { price: calService.price })
+                                : t('bookNowPrice', { price: calService.price })}
                           </button>
 
                           {calError && (
@@ -929,7 +917,9 @@ export default function Reservas() {
 
                           <div className="flex items-center justify-center gap-1.5 text-[9px] font-mono text-gray-400 uppercase tracking-wider text-center">
                             <ShieldCheck className="w-4 h-4 text-brand-bronze" />
-                            <span>{calService.priceCents !== null ? 'Pago seguro online' : 'Pago en estudio'} • Conexión Cifrada</span>
+                            <span>
+                              {calService.priceCents !== null ? t('secureOnline') : t('payInStudio')} • {t('encryptedConnection')}
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -941,7 +931,7 @@ export default function Reservas() {
                           onClick={() => setCalStep(2)}
                           className="px-6 py-3 border border-brand-bronze/30 text-brand-bronze hover:bg-gray-50 text-xs font-bold uppercase tracking-widest rounded-xl transition-all cursor-pointer flex items-center gap-2 bg-transparent"
                         >
-                          <ChevronLeft className="w-4 h-4" /> Volver a Fecha & Hora
+                          <ChevronLeft className="w-4 h-4" /> {t('backToDateTime')}
                         </button>
                       </div>
                     </form>

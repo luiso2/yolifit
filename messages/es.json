@@ -1,0 +1,206 @@
+{
+  "metadata": {
+    "homeTitle": "Yoly Studio | Estética, Bienestar & Notaría en Miami",
+    "homeDescription": "Santuario boutique de cosmetología y estética de alta gama con servicios notariales oficiales en Miami, Florida.",
+    "reservasTitle": "Reservas | Yoly Studio",
+    "reservasDescription": "Reserva tu experiencia de bienestar o servicio de notaría en Yoly Studio, Miami. Elige tu servicio, fecha y hora en un solo lugar."
+  },
+  "nav": {
+    "services": "Servicios",
+    "experience": "Experiencia",
+    "instagram": "Instagram",
+    "reservas": "Reservas",
+    "bookNow": "Reservar Ahora"
+  },
+  "hero": {
+    "tag1": "Cosmetóloga & Full Specialist",
+    "tag2": "Notary Public Certificada",
+    "quote": "Faciales premium, rejuvenecimiento de alta gama y tratamientos corporales personalizados, combinados con servicios oficiales de notaría para tu total comodidad.",
+    "ctaTreatments": "Ver Tratamientos",
+    "ctaAbout": "Conocer a Yoly"
+  },
+  "servicesSection": {
+    "eyebrow": "Tratamientos Especializados",
+    "titleLine1": "Estética, Cuidado",
+    "titleScript": "& Bienestar",
+    "description": "Diseños de cabina de vanguardia y tratamientos personalizados de cosmetología, masajes reductores y rejuvenecimiento celular. Todos aplicados bajo estricto rigor clínico."
+  },
+  "experience": {
+    "eyebrow": "Perfil profesional",
+    "title": "¿Quién es Yoly?",
+    "bio": [
+      "Yoly es una profesional venezolana que ha hecho de su pasión por el bienestar y la belleza una misión de vida. Enfermera profesional con experiencia en área quirúrgica, ha combinado sus conocimientos en salud con una sólida formación en estética avanzada para brindar tratamientos seguros, personalizados y con resultados de alta calidad.",
+      "Especialista en Estados Unidos en el cuidado integral del rostro y el cuerpo, su enfoque va más allá de la estética: busca mejorar la confianza, el bienestar y la calidad de vida de cada persona que deposita su confianza en sus manos.",
+      "Su compromiso con la excelencia, la actualización constante y la atención humana la han convertido en una profesional reconocida por su dedicación, ética y amor por lo que hace.",
+      "Para Yoly, cada tratamiento es una oportunidad para resaltar la belleza natural de sus clientes, ofreciendo siempre un servicio basado en el conocimiento, la experiencia y el cuidado."
+    ],
+    "quote": "La verdadera belleza nace cuando el cuidado, la salud y el bienestar se unen en perfecta armonía.",
+    "portraitAlt": "Yoly, cosmetóloga y notaria en Yoly Studio",
+    "credentialsLine1": "Especialista en Piel · Medical Clinical Assistant",
+    "credentialsLine2": "Cosmetóloga · Notaría"
+  },
+  "video": {
+    "eyebrow": "Dentro del estudio",
+    "title": "Vive la experiencia",
+    "titleScript": "Yoly Studio",
+    "description": "Un santuario boutique en Miami donde cada detalle está pensado para tu bienestar. Descubre el ambiente, la calidez y el cuidado que nos distinguen.",
+    "cta": "Reserva tu momento"
+  },
+  "instagram": {
+    "title": "El Ritual del",
+    "titleHighlight": "AUTOCUIDADO",
+    "description": "Únete a nuestra comunidad donde compartimos consejos de skincare profesional, mitos de la cosmetología y hábitos de bienestar diario.",
+    "featured": "Publicación Destacada",
+    "quote": "Un facial no es un lujo, es una disciplina de salud. Tu piel es el reflejo de tu bienestar interno y del cuidado diario que le otorgas.",
+    "postBody": "En esta publicación celebramos nuestro ritual de Rejuvenecimiento Premium. El uso de micro-agujas de titanio estimula suavemente las defensas regeneradoras de tu dermis, permitiendo que el ácido hialurónico penetre hasta un 90% más profundo. La textura y suavidad resultante son inigualables.",
+    "likes": "{count} Me gusta",
+    "comments": "{count} Comentarios",
+    "cta": "Reservar Tratamiento",
+    "imageOverlay": "Ritual Facial Premium Rejuvenecedor"
+  },
+  "bookingCta": {
+    "eyebrow": "Reservas en línea",
+    "title": "Reserva tu experiencia",
+    "description": "Elige tu tratamiento, fecha y hora en un proceso simple y directo, sin vueltas ni scrolls interminables.",
+    "cta": "Reservar ahora"
+  },
+  "faq": {
+    "eyebrow": "Respuestas Claras",
+    "title": "Preguntas Frecuentes"
+  },
+  "footer": {
+    "description": "Santuario boutique de cosmetología licenciada y servicios notariales en Miami, Florida. Diseñado para embellecer tu piel, relajar tu cuerpo y facilitar tus documentos legales oficiales en un solo lugar.",
+    "copyright": "© {year} Yoly Studio. Todos los derechos reservados. Lic. Florida Cosmetology.",
+    "instagram": "Instagram"
+  },
+  "serviceCard": {
+    "fromPrice": "Desde {price}",
+    "viewDetails": "Ver detalles & reservar"
+  },
+  "serviceModal": {
+    "close": "Cerrar modal",
+    "prev": "Servicio anterior",
+    "next": "Siguiente servicio",
+    "value": "Valor:",
+    "expectedResults": "Resultados esperados:",
+    "bookTitle": "Agendar Cita en Línea",
+    "namePlaceholder": "Tu nombre",
+    "emailPlaceholder": "Tu correo",
+    "phonePlaceholder": "Tu teléfono",
+    "selectTime": "Selecciona horario",
+    "timeMorning9": "Mañana - 09:00 AM",
+    "timeMorning11": "Mañana - 11:00 AM",
+    "timeAfternoon2": "Tarde - 02:00 PM",
+    "timeAfternoon4": "Tarde - 04:00 PM",
+    "timeAfternoon6": "Tarde - 06:00 PM",
+    "registering": "Registrando...",
+    "reserve": "Reservar",
+    "successTitle": "¡Cita Solicitada!",
+    "successMessage": "Gracias {name}, hemos recibido tu solicitud de cita previa para {service} el día {date} a las {time}. Yoly se pondrá en contacto contigo al {phone} para confirmar la cita."
+  },
+  "aiChat": {
+    "initialMessage": "¡Hola! Soy Yoly AI, tu asistente personal de belleza, estética y trámites notariales. ✨ ¿Tienes dudas sobre nuestros faciales rejuvenecedores, masajes o servicios de notaría? Cuéntame, ¡estoy aquí para consentirte! 🌸🖋️",
+    "placeholder": "Preguntar sobre faciales, corporales, precios, notaría...",
+    "connectionError": "Se perdió la señal. Por favor intenta de nuevo."
+  },
+  "reservasPage": {
+    "tagline": "ESTÉTICA & NOTARÍA",
+    "backToStudio": "Volver al estudio"
+  },
+  "reservas": {
+    "headline": "Reserva tu Experiencia de Bienestar en Línea",
+    "ticketConfirmed": "PASE DE BIENESTAR CONFIRMADO",
+    "studioName": "Yoly Studio Boutique",
+    "studioTagline": "Miami, Florida · Estética & Notaría Pública",
+    "client": "CLIENTE",
+    "treatment": "TRATAMIENTO",
+    "selectedDate": "FECHA SELECCIONADA",
+    "reservedTime": "HORA RESERVADA",
+    "notesForYoly": "NOTAS PARA YOLY",
+    "confirmationTicket": "TICKET DE CONFIRMACIÓN",
+    "ticketMessage": "¡Tu espacio está asegurado! Yoly te contactará personalmente si requiere detalles previos. Recuerda llegar 10 minutos antes de tu hora reservada.",
+    "printTicket": "Imprimir Ticket",
+    "newBooking": "Nueva Reserva",
+    "stepService": "Servicio",
+    "stepDateTime": "Fecha & Hora",
+    "stepYourData": "Tus Datos",
+    "chooseService": "Elige tu Servicio o Tratamiento",
+    "step1of3": "Paso 1 de 3 · Selecciona una opción para continuar",
+    "allServices": "Todos los Servicios",
+    "selected": "Seleccionado: {name} ({price})",
+    "continueToDateTime": "Continuar a Fecha & Hora",
+    "selectDateTime": "Selecciona Fecha & Hora",
+    "step2of3": "Paso 2 de 3 · Elige cuándo quieres tu sesión",
+    "noSlots": "No hay horarios disponibles.",
+    "selectDayPrompt": "Selecciona un día en el calendario para ver los horarios disponibles.",
+    "serviceSummary": "Resumen del Servicio:",
+    "secureOnline": "Pago seguro online",
+    "payInStudio": "Pago en estudio",
+    "back": "Volver",
+    "continueToDetails": "Continuar a tus datos",
+    "completeDetails": "Completa tus Detalles & Confirma",
+    "step3of3": "Paso 3 de 3 · Revisa tu información antes de agendar",
+    "fullName": "Nombre Completo",
+    "email": "Correo Electrónico",
+    "phone": "Número de Teléfono",
+    "notesOptional": "Notas Adicionales (Opcional)",
+    "notesPlaceholder": "Condiciones de la piel, alergias, o detalles para el servicio de notaría",
+    "summaryTitle": "Resumen de Pre-Reserva",
+    "chosenDate": "Fecha elegida:",
+    "appointmentTime": "Horario de cita:",
+    "totalPrice": "Precio total:",
+    "personalizedConfirmation": "Confirmación personalizada de tu cita.",
+    "freeCancellation": "Cancelación sin costo hasta 24 horas antes.",
+    "verifying": "Verificando Disponibilidad...",
+    "payAndBook": "Pagar {price} y reservar",
+    "bookNowPrice": "RESERVAR AHORA • {price}",
+    "backToDateTime": "Volver a Fecha & Hora",
+    "availableSchedules": "Horarios Disponibles:",
+    "closed": "cerrado",
+    "closedSunday": "Yoly Studio se encuentra cerrado los domingos por descanso general. Por favor, selecciona otro día en el calendario.",
+    "namePlaceholder": "Tu nombre y apellido",
+    "emailPlaceholder": "ejemplo@correo.com",
+    "phonePlaceholder": "+1 (305) 000-0000",
+    "encryptedConnection": "Conexión Cifrada",
+    "months": [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre"
+    ],
+    "daysShort": ["Lu", "Ma", "Mi", "Ju", "Vi", "Sá", "Do"],
+    "errors": {
+      "processFailed": "No pudimos procesar tu reserva. Intenta de nuevo.",
+      "connection": "Error de conexión. Por favor intenta de nuevo."
+    }
+  },
+  "confirmacion": {
+    "backToStudio": "Volver al estudio",
+    "paymentNotVerified": "No pudimos verificar tu pago",
+    "paymentNotVerifiedBody": "Falta la referencia de pago o el sistema no está disponible. Si el cargo se realizó, contáctanos y lo resolvemos de inmediato.",
+    "referenceNotFound": "Referencia no encontrada",
+    "referenceNotFoundBody": "No encontramos esta sesión de pago. Verifica el enlace o intenta reservar de nuevo.",
+    "paymentPending": "Pago pendiente",
+    "paymentPendingBody": "Tu pago aún no se ha completado. Puedes intentarlo de nuevo desde el centro de reservas.",
+    "confirmed": "¡Reserva confirmada!",
+    "thankYou": "Gracias {name}. Tu pago fue recibido y tu espacio está reservado.",
+    "ticket": "Ticket:",
+    "service": "Servicio:",
+    "date": "Fecha:",
+    "contact": "Contacto:",
+    "notes": "Notas:",
+    "followUp": "Yoly confirmará tu cita personalmente. Recibirás el recibo de Stripe en tu email."
+  },
+  "common": {
+    "from": "Desde",
+    "poweredBy": "Powered by Merktop"
+  }
+}

@@ -1,22 +1,27 @@
 import { NextResponse } from 'next/server';
 import { bookingSchema } from '@/lib/booking-schema';
-import { SPA_SERVICES } from '@/lib/services';
+import { getSpaServices } from '@/lib/services';
 import { getStripe } from '@/lib/stripe';
 import { generateTicketCode } from '@/lib/tickets';
 
 export async function POST(req: Request) {
   const body = await req.json().catch(() => null);
+  const locale = typeof body?.locale === 'string' && body.locale === 'en' ? 'en' : 'es';
   const parsed = bookingSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
-      { error: 'Datos de reserva inválidos', issues: parsed.error.flatten().fieldErrors },
+      { error: locale === 'en' ? 'Invalid booking data' : 'Datos de reserva inválidos', issues: parsed.error.flatten().fieldErrors },
       { status: 400 },
     );
   }
   const data = parsed.data;
-  const service = SPA_SERVICES.find((s) => s.id === data.serviceId);
+  const services = getSpaServices(locale);
+  const service = services.find((s) => s.id === data.serviceId);
   if (!service) {
-    return NextResponse.json({ error: 'Servicio no encontrado' }, { status: 400 });
+    return NextResponse.json(
+      { error: locale === 'en' ? 'Service not found' : 'Servicio no encontrado' },
+      { status: 400 },
+    );
   }
 
   if (service.priceCents === null) {
@@ -26,7 +31,12 @@ export async function POST(req: Request) {
   const stripe = getStripe();
   if (!stripe) {
     return NextResponse.json(
-      { error: 'Los pagos en línea no están disponibles en este momento. Por favor intenta más tarde.' },
+      {
+        error:
+          locale === 'en'
+            ? 'Online payments are not available right now. Please try again later.'
+            : 'Los pagos en línea no están disponibles en este momento. Por favor intenta más tarde.',
+      },
       { status: 503 },
     );
   }
@@ -58,8 +68,8 @@ export async function POST(req: Request) {
       phone: data.phone,
       notes: data.notes ?? '',
     },
-    success_url: `${origin}/reserva/confirmada?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${origin}/reservas`,
+    success_url: `${origin}/${locale}/reserva/confirmada?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${origin}/${locale}/reservas`,
   });
 
   return NextResponse.json({ url: session.url });

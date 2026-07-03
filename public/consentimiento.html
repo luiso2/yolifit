@@ -8,7 +8,7 @@
 <title>Clinic Yolystudio.fit · Consentimientos Informados</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Alex+Brush&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@1.23.0/dist/umd/lucide.min.js" integrity="sha384-ouAVEJVCMsf8Svzn+BwqbaBhxBEA0xgeVBhHnxmWd+Wqyv18yhWCQwGegFD/OHLq" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha384-Yv5O+t3uE3hunW8uyrbpPW3iw6/5/Y7HitWJBLgqfMoA36NogMmy+8wWZMpn3HWc" crossorigin="anonymous"></script>
 <style>
@@ -54,12 +54,12 @@
     border:1px solid var(--border-strong);
   }
   .brand-mark img{width:100%;height:100%;object-fit:cover;display:block;}
-  .brand-name{font-family:'Dancing Script',cursive;font-size:clamp(20px,5.5vw,28px);font-weight:700;letter-spacing:0.3px;}
+  .brand-name{font-family:'Alex Brush',cursive;font-size:clamp(24px,6.5vw,34px);font-weight:400;letter-spacing:0.3px;}
   .brand-name span{color:var(--gold);}
   header.hero{text-align:center;margin-bottom:40px;}
   header.hero h1{
-    font-family:'Dancing Script',cursive;
-    font-size:clamp(30px,5.5vw,46px);font-weight:700;margin:14px 0 8px;
+    font-family:'Alex Brush',cursive;
+    font-size:clamp(38px,8vw,58px);font-weight:400;margin:14px 0 8px;
     opacity:0;animation:fadeUp .6s ease .1s forwards;
   }
   header.hero p{
@@ -93,7 +93,7 @@
     display:flex;align-items:center;justify-content:center;margin-bottom:14px;
   }
   .card-icon svg{width:20px;height:20px;color:var(--gold);}
-  .card h3{margin:0 0 6px;font-family:'Dancing Script',cursive;font-size:22px;font-weight:700;}
+  .card h3{margin:0 0 6px;font-family:'Alex Brush',cursive;font-size:28px;font-weight:400;}
   .card p{margin:0;color:var(--muted);font-size:12.5px;line-height:1.5;}
 
   #formScreen{display:none;}
@@ -115,7 +115,7 @@
     margin:0 0 18px;display:flex;align-items:center;gap:8px;
   }
   .panel h2 svg{width:16px;height:16px;}
-  .formtitle{font-family:'Dancing Script',cursive;font-size:32px;font-weight:700;margin:0 0 4px;}
+  .formtitle{font-family:'Alex Brush',cursive;font-size:40px;font-weight:400;margin:0 0 4px;}
   .formtitle-sub{color:var(--muted);font-size:13.5px;margin:0 0 24px;}
 
   .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
@@ -221,7 +221,7 @@
   }
   .sig-type-input{
     width:100%;background:rgba(42,36,28,0.04);border:1px solid var(--border);
-    border-radius:12px;padding:20px 16px;color:var(--gold-light);font-family:'Dancing Script',cursive;
+    border-radius:12px;padding:20px 16px;color:var(--gold-light);font-family:'Alex Brush',cursive;
     font-size:34px;text-align:center;
   }
   .sig-type-input:focus{outline:none;border-color:var(--gold);}
@@ -251,7 +251,7 @@
     .sig-header{flex-direction:column;align-items:stretch;}
     .sig-header .field{margin-right:0;min-width:0;}
     .sig-toggle{align-self:flex-start;}
-    .formtitle{font-size:26px;}
+    .formtitle{font-size:32px;}
     header.hero{margin-bottom:28px;}
   }
 
@@ -268,7 +268,7 @@
 
   @media(max-width:360px){
     header.hero p{font-size:13.5px;}
-    .formtitle{font-size:24px;}
+    .formtitle{font-size:28px;}
   }
 </style>
 </head>
@@ -1054,7 +1054,7 @@ function signatureHtml(who, displayName){
   }
   const typed = document.querySelector(`[data-type-input="${who}"]`).value.trim();
   if(typed){
-    return `<div style="font-family:'Dancing Script',cursive;font-size:30px;color:#111;">${typed}</div>`;
+    return `<div style="font-family:'Alex Brush',cursive;font-size:30px;color:#111;">${typed}</div>`;
   }
   return `<div style="height:60px;border-bottom:1px solid #999;"></div>`;
 }
