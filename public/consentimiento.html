@@ -8,9 +8,8 @@
 <title>Clinic Yolystudio.fit · Consentimientos Informados</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Pinyon+Script&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@1.23.0/dist/umd/lucide.min.js" integrity="sha384-ouAVEJVCMsf8Svzn+BwqbaBhxBEA0xgeVBhHnxmWd+Wqyv18yhWCQwGegFD/OHLq" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha384-Yv5O+t3uE3hunW8uyrbpPW3iw6/5/Y7HitWJBLgqfMoA36NogMmy+8wWZMpn3HWc" crossorigin="anonymous"></script>
 <style>
   :root{
     --bg:#F6F1EA;
@@ -54,8 +53,9 @@
     border:1px solid var(--border-strong);
   }
   .brand-mark img{width:100%;height:100%;object-fit:cover;display:block;}
-  .brand-name{font-family:'Pinyon Script',cursive;font-size:clamp(28px,7.5vw,38px);font-weight:400;letter-spacing:0.3px;}
-  .brand-name span{color:var(--gold);}
+  .brand-name{display:flex;align-items:baseline;gap:8px;}
+  .brand-name .brand-clinic{font-family:'Pinyon Script',cursive;font-size:clamp(24px,6vw,30px);font-weight:400;color:var(--gold);}
+  .brand-name .brand-yoly{font-family:'Cormorant Garamond',serif;font-size:clamp(19px,5vw,25px);font-weight:600;letter-spacing:0.2px;color:var(--text);}
   header.hero{text-align:center;margin-bottom:40px;}
   header.hero h1{
     font-family:'Pinyon Script',cursive;
@@ -270,6 +270,15 @@
     header.hero p{font-size:13.5px;}
     .formtitle{font-size:32px;}
   }
+
+  @media print{
+    body > *:not(#printRoot){display:none !important;}
+    #printRoot{
+      position:static !important;left:auto !important;top:auto !important;
+      width:auto !important;opacity:1 !important;
+    }
+    @page{margin:0.4in;}
+  }
 </style>
 </head>
 <body>
@@ -277,7 +286,7 @@
 
   <div class="brand">
     <div class="brand-mark"><img id="brandLogo" alt="Clinic Yolystudio.fit"></div>
-    <div class="brand-name">CLINIC <span>YOLYSTUDIO.FIT</span></div>
+    <div class="brand-name"><span class="brand-clinic">Clinic</span><span class="brand-yoly">Yolystudio.fit</span></div>
   </div>
 
   <div id="selectScreen">
@@ -1090,7 +1099,10 @@ function buildAndDownloadPdf(){
     <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:2.5px solid #A27043;padding-bottom:14px;margin-bottom:22px;">
       <div style="display:flex;align-items:center;gap:10px;">
         <img src="${LOGO_DATA_URI}" style="width:38px;height:38px;border-radius:9px;object-fit:cover;">
-        <div style="font-size:19px;font-weight:800;letter-spacing:0.5px;">CLINIC <span style="color:#A27043;">YOLYSTUDIO.FIT</span></div>
+        <div style="display:flex;align-items:baseline;gap:6px;">
+          <span style="font-family:'Pinyon Script',cursive;font-size:22px;color:#A27043;">Clinic</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:#161616;">Yolystudio.fit</span>
+        </div>
       </div>
       <div style="font-size:10.5px;color:#777;">Consentimiento Informado</div>
     </div>
@@ -1170,15 +1182,15 @@ function buildAndDownloadPdf(){
   printRoot.innerHTML = html;
 
   const safeName = name.replace(/[^a-zA-Z0-9]+/g,'-').replace(/^-+|-+$/g,'').toLowerCase() || 'cliente';
-  const fileName = `consentimiento-${current.id}-${safeName}.pdf`;
+  const fileName = `consentimiento-${current.id}-${safeName}`;
 
   const btn = document.getElementById('generateBtn');
   const originalHtml = btn.innerHTML;
   btn.disabled = true;
-  btn.innerHTML = 'Generando PDF...';
+  btn.innerHTML = 'Preparando PDF...';
 
-  // Espera a que las imagenes insertadas dinamicamente terminen de decodificar;
-  // si html2canvas captura antes de eso, produce un canvas en blanco.
+  // Espera a que las imagenes insertadas dinamicamente terminen de decodificar
+  // antes de imprimir, para que la firma/logo salgan en el PDF.
   const pendingImages = Array.from(printRoot.querySelectorAll('img')).map(img => {
     if (img.complete && img.naturalWidth > 0) return Promise.resolve();
     if (img.decode) return img.decode().catch(()=>{});
@@ -1188,23 +1200,26 @@ function buildAndDownloadPdf(){
     });
   });
 
-  Promise.all(pendingImages).then(()=> html2pdf().set({
-    margin: 0,
-    filename: fileName,
-    image:{type:'jpeg', quality:0.98},
-    html2canvas:{
-      scale:2, backgroundColor:'#ffffff',
-      windowWidth: printRoot.scrollWidth,
-      windowHeight: printRoot.scrollHeight,
-      width: printRoot.scrollWidth,
-      height: printRoot.scrollHeight
-    },
-    jsPDF:{unit:'pt', format:'letter', orientation:'portrait'},
-    pagebreak:{mode:['avoid-all','css','legacy']}
-  }).from(printRoot).save()).then(()=>{
-    btn.disabled = false;
-    btn.innerHTML = originalHtml;
-    lucide.createIcons();
+  Promise.all(pendingImages).then(()=>{
+    const originalTitle = document.title;
+    document.title = fileName;
+
+    const restore = () => {
+      document.title = originalTitle;
+      btn.disabled = false;
+      btn.innerHTML = originalHtml;
+      lucide.createIcons();
+      window.removeEventListener('afterprint', restore);
+    };
+    window.addEventListener('afterprint', restore);
+
+    // Usa la funcion nativa de impresion del navegador (Guardar como PDF):
+    // genera el documento real con el DOM ya renderizado, sin depender de
+    // librerias de captura por canvas que fallaban al producir PDFs en blanco.
+    window.print();
+
+    // Respaldo por si el navegador no dispara 'afterprint' (algunos moviles).
+    setTimeout(restore, 1500);
   });
 }
 
