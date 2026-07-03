@@ -73,7 +73,7 @@ export const SPA_SERVICES: SpaService[] = [
   },
   {
     id: '5',
-    name: 'Masaje Drenaje Linfático',
+    name: 'Masaje Drenaje Linfático Detox',
     category: 'Masajes',
     image: DRENAJE_LINFATICO_IMAGE,
     duration: '90 minutos',
@@ -96,7 +96,7 @@ export const SPA_SERVICES: SpaService[] = [
     name: 'Drenaje Linfático Post Operatorio',
     category: 'Masajes',
     image: DRENAJE_LINFATICO_IMAGE,
-    duration: '60 minutos',
+    duration: '90 minutos',
     ...consultPrice,
     benefits: ['Reducción de edemas', 'Recuperación postquirúrgica', 'Mejora de la cicatrización', 'Alivio de inflamación'],
     description: 'Protocolo especializado de drenaje linfático manual para apoyar la recuperación después de procedimientos quirúrgicos, con técnica segura y personalizada.',

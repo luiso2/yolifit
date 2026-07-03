@@ -8,6 +8,7 @@
   "nav": {
     "services": "Servicios",
     "experience": "Experiencia",
+    "reviews": "Reseñas",
     "instagram": "Instagram",
     "reservas": "Reservas",
     "bookNow": "Reservar Ahora"
@@ -58,6 +59,19 @@
     "comments": "{count} Comentarios",
     "cta": "Reservar Tratamiento",
     "imageOverlay": "Ritual Facial Premium Rejuvenecedor"
+  },
+  "reviews": {
+    "eyebrow": "Confianza real",
+    "title": "Reseñas de",
+    "titleHighlight": "Google",
+    "description": "Lee lo que dicen nuestras clientas en Google y comparte tu experiencia en Clinic YolyStudio. Tu reseña ayuda a más personas a encontrar cuidado profesional y resultados reales.",
+    "writeReview": "Escribir reseña",
+    "viewOnGoogle": "Ver en Google",
+    "googleReviews": "Reseñas de Google",
+    "verified": "Clienta",
+    "mapTitle": "Ubicación de Clinic YolyStudio en Google Maps",
+    "locationEyebrow": "Encuéntranos",
+    "leaveReviewCta": "Deja tu reseña en Google"
   },
   "bookingCta": {
     "eyebrow": "Reservas en línea",

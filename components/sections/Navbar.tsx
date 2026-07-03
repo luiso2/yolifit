@@ -20,6 +20,7 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, setMobileMenuOpen }) =>
   const menuItems = [
     { key: 'services', id: 'servicios', label: t('services') },
     { key: 'experience', id: 'experiencia', label: t('experience') },
+    { key: 'reviews', id: 'resenas', label: t('reviews') },
     { key: 'instagram', id: 'instagram', label: t('instagram') },
     { key: 'reservas', id: 'reservas', href: '/reservas', label: t('reservas') },
   ] as const;

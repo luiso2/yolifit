@@ -3,6 +3,7 @@
  * Al recibir un .mp4 nuevo: guardarlo en public/media/videos/ y añadir el id aquí.
  */
 export const SERVICE_VIDEO_PATHS: Partial<Record<string, string>> = {
+  '5': '/media/videos/masaje-drenaje-linfatico.mp4',
   '7': '/media/drenaje-linfatico-post-operatorio.mp4',
   '24': '/media/tratamiento-facial-luz-led.mp4',
 };

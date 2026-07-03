@@ -8,6 +8,7 @@
   "nav": {
     "services": "Services",
     "experience": "Experience",
+    "reviews": "Reviews",
     "instagram": "Instagram",
     "reservas": "Bookings",
     "bookNow": "Book Now"
@@ -58,6 +59,19 @@
     "comments": "{count} Comments",
     "cta": "Book Treatment",
     "imageOverlay": "Premium Rejuvenating Facial Ritual"
+  },
+  "reviews": {
+    "eyebrow": "Real trust",
+    "title": "Reviews on",
+    "titleHighlight": "Google",
+    "description": "Read what our clients say on Google and share your experience at Clinic YolyStudio. Your review helps more people find professional care and real results.",
+    "writeReview": "Write a review",
+    "viewOnGoogle": "View on Google",
+    "googleReviews": "Google reviews",
+    "verified": "Client",
+    "mapTitle": "Clinic YolyStudio location on Google Maps",
+    "locationEyebrow": "Find us",
+    "leaveReviewCta": "Leave your review on Google"
   },
   "bookingCta": {
     "eyebrow": "Online bookings",

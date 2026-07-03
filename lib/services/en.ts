@@ -73,7 +73,7 @@ export const SPA_SERVICES: SpaService[] = [
   },
   {
     id: '5',
-    name: 'Lymphatic Drainage Massage',
+    name: 'Lymphatic Drainage Massage Detox',
     category: 'Massages',
     image: DRENAJE_LINFATICO_IMAGE,
     duration: '90 minutes',
@@ -96,7 +96,7 @@ export const SPA_SERVICES: SpaService[] = [
     name: 'Post-Operative Lymphatic Drainage',
     category: 'Massages',
     image: DRENAJE_LINFATICO_IMAGE,
-    duration: '60 minutes',
+    duration: '90 minutes',
     ...askForPrice,
     benefits: ['Reduced swelling', 'Post-surgical recovery support', 'Improved healing', 'Relief from inflammation'],
     description: 'Specialized manual lymphatic drainage protocol to support recovery after surgical procedures, with safe, personalized technique.',
