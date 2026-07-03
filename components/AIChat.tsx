@@ -22,7 +22,7 @@ const AIChat: React.FC = () => {
 
   useEffect(() => {
     setMessages([{ role: 'model', text: t('initialMessage') }]);
-  }, [locale, t]);
+  }, [locale]);
 
   const scrollToBottom = () => {
     if (chatContainerRef.current) {

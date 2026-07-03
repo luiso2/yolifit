@@ -41,8 +41,8 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, setMobileMenuOpen }) =>
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 md:px-12 py-5 bg-brand-cream/85 backdrop-blur-md border-b border-black/[0.05]">
-        <div className="flex items-center gap-3 z-50">
+      <nav className="fixed top-0 left-0 right-0 z-40 flex items-center gap-4 px-6 md:px-12 py-5 bg-brand-cream/85 backdrop-blur-md border-b border-black/[0.05]">
+        <div className="flex items-center gap-3 z-50 shrink-0">
           <img src="/media/logo.png" alt="Yoly Studio logo" className="w-14 h-14 md:w-16 md:h-16 object-contain shrink-0" />
           <div className="font-heading text-xl md:text-2xl tracking-tight text-black cursor-default flex flex-col items-start leading-none">
             <span className="font-script text-2xl md:text-[1.75rem] text-brand-bronze leading-none">Clinic</span>
@@ -53,13 +53,13 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, setMobileMenuOpen }) =>
           </div>
         </div>
 
-        <div className="hidden lg:flex gap-10 text-xs font-semibold tracking-[0.2em] uppercase text-gray-700 items-center">
+        <div className="hidden lg:flex flex-1 justify-center gap-8 xl:gap-10 text-xs font-semibold tracking-[0.2em] uppercase text-gray-700 items-center min-w-0">
           {menuItems.map((item) =>
             'href' in item ? (
               <Link
                 key={item.key}
                 href={item.href}
-                className="hover:text-brand-caramel transition-colors cursor-pointer bg-transparent border-none font-heading text-xs tracking-widest uppercase font-medium"
+                className="hover:text-brand-caramel transition-colors cursor-pointer bg-transparent border-none font-heading text-xs tracking-widest uppercase font-medium whitespace-nowrap"
                 data-hover="true"
               >
                 {item.label}
@@ -68,27 +68,27 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, setMobileMenuOpen }) =>
               <button
                 key={item.key}
                 onClick={() => scrollToSection(item.id)}
-                className="hover:text-brand-caramel transition-colors cursor-pointer bg-transparent border-none font-heading text-xs tracking-widest uppercase font-medium"
+                className="hover:text-brand-caramel transition-colors cursor-pointer bg-transparent border-none font-heading text-xs tracking-widest uppercase font-medium whitespace-nowrap"
                 data-hover="true"
               >
                 {item.label}
               </button>
             ),
           )}
-          <LanguageSwitcher />
         </div>
 
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-3 shrink-0 ml-auto">
+          <LanguageSwitcher />
           <Link
             href="/reservas"
-            className="border border-brand-bronze hover:bg-brand-bronze hover:text-white px-7 py-2.5 text-xs font-semibold tracking-widest uppercase transition-all duration-300 text-brand-bronze cursor-pointer bg-transparent font-heading"
+            className="border border-brand-bronze hover:bg-brand-bronze hover:text-white px-7 py-2.5 text-xs font-semibold tracking-widest uppercase transition-all duration-300 text-brand-bronze cursor-pointer bg-transparent font-heading whitespace-nowrap"
             data-hover="true"
           >
             {t('bookNow')}
           </Link>
         </div>
 
-        <div className="lg:hidden flex items-center gap-3 z-50">
+        <div className="lg:hidden flex items-center gap-3 z-50 ml-auto shrink-0">
           <LanguageSwitcher />
           <button
             className="text-gray-800 relative w-10 h-10 flex items-center justify-center"
