@@ -941,7 +941,7 @@ function resetSignature(who){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   ctx.lineWidth = 2.4;
   ctx.lineCap = 'round';
-  ctx.strokeStyle = '#F3F1EA';
+  ctx.strokeStyle = '#2A241C';
   const s = signatures[who];
   s.mode = 'draw'; s.canvas = canvas; s.ctx = ctx; s.signed = false; s.drawing = false; s.last = null;
   wrap.querySelector('.sig-placeholder').style.display = 'block';
