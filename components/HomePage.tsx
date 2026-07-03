@@ -13,7 +13,6 @@ import VideoShowcase from '@/components/sections/VideoShowcase';
 import InstagramCta from '@/components/sections/InstagramCta';
 import Faq from '@/components/sections/Faq';
 import Footer from '@/components/sections/Footer';
-import AIChat from '@/components/AIChat';
 import ServiceModal from '@/components/ServiceModal';
 import { getSpaServices } from '@/lib/services';
 import { SpaService } from '@/lib/types';
@@ -72,7 +71,6 @@ const HomePage: React.FC = () => {
 
       <Faq openIdx={openFaqIdx} setOpenIdx={setOpenFaqIdx} />
       <Footer />
-      <AIChat />
       <ServiceModal service={selectedService} onClose={closeModal} onNavigate={navigateService} />
     </div>
   );

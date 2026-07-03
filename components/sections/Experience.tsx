@@ -51,10 +51,11 @@ const Experience: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-brand-bronze to-brand-bronze rounded-3xl rotate-1 opacity-20 blur-lg" />
             <div className="relative h-full w-full rounded-3xl overflow-hidden border border-black/[0.05] group shadow-xl bg-brand-cream">
               <img src={heroImage} alt={t('portraitAlt')} className="h-full w-full object-cover object-center transition-transform duration-[2s] group-hover:scale-105 will-change-transform" referrerPolicy="no-referrer" />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/35 via-transparent to-transparent opacity-70" />
-              <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-10 text-white">
-                <div className="text-4xl md:text-6xl font-heading font-light tracking-wide text-white/50">Yoly</div>
-                <div className="text-[10px] md:text-xs font-mono tracking-[0.16em] uppercase mt-2 text-brand-sand leading-relaxed max-w-[280px] md:max-w-sm">
+              <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-10">
+                <div className="text-3xl md:text-5xl font-heading font-light tracking-wide text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]">
+                  {t('portraitName')}
+                </div>
+                <div className="text-[10px] md:text-xs font-mono tracking-[0.16em] uppercase mt-2 text-brand-caramel drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)] leading-relaxed max-w-[280px] md:max-w-sm">
                   {t('credentialsLine1')}
                   <br />
                   {t('credentialsLine2')}

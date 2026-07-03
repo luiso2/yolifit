@@ -93,19 +93,35 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose, onNavigat
             className="relative w-full max-w-4xl bg-white border border-black/[0.08] rounded-3xl overflow-hidden flex flex-col md:flex-row shadow-2xl max-h-[90vh] md:max-h-[85vh] overflow-y-auto text-brand-ink my-8"
           >
             {/* Image Side */}
-            <div className="w-full md:w-1/2 h-48 md:h-auto relative overflow-hidden shrink-0">
+            <div className="w-full md:w-1/2 h-48 md:h-auto min-h-[12rem] md:min-h-0 relative overflow-hidden shrink-0">
               <AnimatePresence mode="wait">
-                <motion.img
-                  key={service.id}
-                  src={service.image}
-                  alt={service.name}
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
+                {service.video ? (
+                  <motion.video
+                    key={service.id}
+                    src={service.video}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4 }}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                ) : (
+                  <motion.img
+                    key={service.id}
+                    src={service.image}
+                    alt={service.name}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4 }}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                )}
               </AnimatePresence>
               <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent md:bg-gradient-to-r md:from-transparent" />
             </div>

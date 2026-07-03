@@ -486,13 +486,24 @@ export default function Reservas() {
                                   }`}
                               >
                                 <div className="w-20 h-20 shrink-0 rounded-xl overflow-hidden relative">
-                                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                                  <img
-                                    src={service.image}
-                                    alt={service.name}
-                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                    referrerPolicy="no-referrer"
-                                  />
+                                  {service.video ? (
+                                    <video
+                                      src={service.video}
+                                      autoPlay
+                                      muted
+                                      loop
+                                      playsInline
+                                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    />
+                                  ) : (
+                                    /* eslint-disable-next-line @next/next/no-img-element */
+                                    <img
+                                      src={service.image}
+                                      alt={service.name}
+                                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                      referrerPolicy="no-referrer"
+                                    />
+                                  )}
                                 </div>
 
                                 <div className="flex-1 min-w-0">

@@ -1,10 +1,25 @@
 import { SpaService } from '@/lib/types';
 
-const MASSAGE_IMAGE = 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000&auto=format&fit=crop';
-const BODY_IMAGE = 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=1000&auto=format&fit=crop';
-const FACIAL_IMAGE = '/media/skincare_treatment_1782918671588.jpg';
-const FACIAL_IMAGE_ALT = 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=1000&auto=format&fit=crop';
-const ADVANCED_IMAGE = 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=1000&auto=format&fit=crop';
+const MASSAGE_IMAGE = '/media/masaje-relajacion.jpg';
+const MASSAGE_DECONTRACTURANTE_IMAGE = '/media/masaje-descontracturante.jpg';
+const MASSAGE_REDUCTIVO_IMAGE = '/media/masaje-reductivo.jpg';
+const MASSAGE_RELAJACION_IMAGE = '/media/masaje-relajacion.jpg';
+const MADEROTERAPIA_IMAGE = '/media/maderoterapia.jpg';
+const DEPILACION_CEJAS_IMAGE = '/media/depilacion-cejas.jpg';
+const LAMINADO_CEJAS_IMAGE = '/media/laminado-cejas.jpg';
+const DEPILACION_CERA_IMAGE = '/media/depilacion-cera.jpg';
+const DRENAJE_LINFATICO_IMAGE = MASSAGE_DECONTRACTURANTE_IMAGE;
+const DRENAJE_POST_OPERATORIO_VIDEO = '/media/drenaje-linfatico-post-operatorio.mp4';
+const TRATAMIENTO_FACIAL_LUZ_LED_VIDEO = '/media/tratamiento-facial-luz-led.mp4';
+const FACIAL_IMAGE = '/media/limpieza-facial.jpg';
+const MASAJE_YOGA_FACIAL_IMAGE = '/media/masaje-yoga-facial.jpg';
+const LIMPIEZA_FACIAL_HIDRATANTE_IMAGE = '/media/limpieza-facial-hidratante.jpg';
+const LIMPIEZA_FACIAL_DESPIGMENTACION_IMAGE = '/media/limpieza-facial-despigmentacion.jpg';
+const HIDRAFACIAL_IMAGE = '/media/hidrafacial.jpg';
+const PLASMA_RPP_IMAGE = '/media/plasma-ric-plaquetas.jpg';
+const PDRN_SALMON_IMAGE = '/media/pdrn-salmon.jpg';
+const EXOSOMAS_IMAGE = '/media/exosomas.jpg';
+const TRATAMIENTO_FACIAL_LUZ_LED_IMAGE = '/media/tratamiento-facial-luz-led.jpg';
 
 const consultPrice = {
   price: 'Consultar precio',
@@ -26,7 +41,7 @@ export const SPA_SERVICES: SpaService[] = [
     id: '2',
     name: 'Masaje Descontracturante',
     category: 'Masajes',
-    image: MASSAGE_IMAGE,
+    image: MASSAGE_DECONTRACTURANTE_IMAGE,
     duration: '60 minutos',
     ...consultPrice,
     benefits: ['Liberación de contracturas', 'Alivio de dolor muscular', 'Mayor movilidad', 'Descarga de zonas tensas'],
@@ -36,7 +51,7 @@ export const SPA_SERVICES: SpaService[] = [
     id: '3',
     name: 'Masaje de Relajación',
     category: 'Masajes',
-    image: MASSAGE_IMAGE,
+    image: MASSAGE_RELAJACION_IMAGE,
     duration: '60 minutos',
     ...consultPrice,
     benefits: ['Relajación profunda', 'Equilibrio nervioso', 'Descanso corporal', 'Bienestar emocional'],
@@ -46,7 +61,7 @@ export const SPA_SERVICES: SpaService[] = [
     id: '4',
     name: 'Masaje Reductivo',
     category: 'Masajes',
-    image: BODY_IMAGE,
+    image: MASSAGE_REDUCTIVO_IMAGE,
     duration: '60 minutos',
     ...consultPrice,
     benefits: ['Estimulación del metabolismo local', 'Modelado corporal', 'Reducción de retención de líquidos', 'Piel más firme'],
@@ -56,7 +71,7 @@ export const SPA_SERVICES: SpaService[] = [
     id: '5',
     name: 'Masaje Drenaje Linfático',
     category: 'Masajes',
-    image: BODY_IMAGE,
+    image: DRENAJE_LINFATICO_IMAGE,
     duration: '60 minutos',
     ...consultPrice,
     benefits: ['Eliminación de toxinas', 'Reducción de inflamación', 'Mejora de la circulación linfática', 'Sensación de ligereza'],
@@ -66,7 +81,7 @@ export const SPA_SERVICES: SpaService[] = [
     id: '6',
     name: 'Masaje Yoga Facial',
     category: 'Masajes',
-    image: FACIAL_IMAGE_ALT,
+    image: MASAJE_YOGA_FACIAL_IMAGE,
     duration: '45 minutos',
     ...consultPrice,
     benefits: ['Tonificación facial natural', 'Lifting sin cirugía', 'Mejora del contorno', 'Relajación de expresión'],
@@ -76,7 +91,8 @@ export const SPA_SERVICES: SpaService[] = [
     id: '7',
     name: 'Drenaje Linfático Post Operatorio',
     category: 'Masajes',
-    image: BODY_IMAGE,
+    image: DRENAJE_LINFATICO_IMAGE,
+    video: DRENAJE_POST_OPERATORIO_VIDEO,
     duration: '60 minutos',
     ...consultPrice,
     benefits: ['Reducción de edemas', 'Recuperación postquirúrgica', 'Mejora de la cicatrización', 'Alivio de inflamación'],
@@ -86,7 +102,7 @@ export const SPA_SERVICES: SpaService[] = [
     id: '8',
     name: 'Maderoterapia',
     category: 'Masajes',
-    image: BODY_IMAGE,
+    image: MADEROTERAPIA_IMAGE,
     duration: '60 minutos',
     ...consultPrice,
     benefits: ['Modelado corporal', 'Activación circulatoria', 'Reducción de celulitis', 'Tonificación de tejidos'],
@@ -116,7 +132,7 @@ export const SPA_SERVICES: SpaService[] = [
     id: '11',
     name: 'Limpieza Facial Hidratante',
     category: 'Limpieza Facial',
-    image: FACIAL_IMAGE_ALT,
+    image: LIMPIEZA_FACIAL_HIDRATANTE_IMAGE,
     duration: '60 minutos',
     ...consultPrice,
     benefits: ['Hidratación intensa', 'Restauración de la barrera cutánea', 'Suavidad inmediata', 'Piel confortable y luminosa'],
@@ -136,7 +152,7 @@ export const SPA_SERVICES: SpaService[] = [
     id: '13',
     name: 'Limpieza Facial Despigmentación',
     category: 'Limpieza Facial',
-    image: FACIAL_IMAGE_ALT,
+    image: LIMPIEZA_FACIAL_DESPIGMENTACION_IMAGE,
     duration: '75 minutos',
     ...consultPrice,
     benefits: ['Unificación del tono', 'Reducción de manchas', 'Piel más homogénea', 'Luminosidad renovada'],
@@ -156,7 +172,7 @@ export const SPA_SERVICES: SpaService[] = [
     id: '15',
     name: 'Hidrafacial',
     category: 'Limpieza Facial',
-    image: FACIAL_IMAGE_ALT,
+    image: HIDRAFACIAL_IMAGE,
     duration: '60 minutos',
     ...consultPrice,
     benefits: ['Limpieza con tecnología', 'Hidratación profunda', 'Brillo inmediato', 'Sin tiempo de recuperación'],
@@ -186,7 +202,7 @@ export const SPA_SERVICES: SpaService[] = [
     id: '18',
     name: 'Plasma Rico en Plaquetas',
     category: 'Tratamientos Avanzados',
-    image: ADVANCED_IMAGE,
+    image: PLASMA_RPP_IMAGE,
     duration: '60 minutos',
     ...consultPrice,
     benefits: ['Regeneración tisular', 'Estímulo de colágeno', 'Mejora de textura', 'Rejuvenecimiento natural'],
@@ -196,7 +212,7 @@ export const SPA_SERVICES: SpaService[] = [
     id: '19',
     name: 'PDRN de Salmón',
     category: 'Tratamientos Avanzados',
-    image: ADVANCED_IMAGE,
+    image: PDRN_SALMON_IMAGE,
     duration: '60 minutos',
     ...consultPrice,
     benefits: ['Reparación celular', 'Hidratación profunda', 'Mejora de elasticidad', 'Piel más resistente'],
@@ -206,7 +222,7 @@ export const SPA_SERVICES: SpaService[] = [
     id: '20',
     name: 'Exosomas',
     category: 'Tratamientos Avanzados',
-    image: ADVANCED_IMAGE,
+    image: EXOSOMAS_IMAGE,
     duration: '60 minutos',
     ...consultPrice,
     benefits: ['Regeneración avanzada', 'Comunicación celular', 'Antiedad de nueva generación', 'Piel renovada y luminosa'],
@@ -216,7 +232,7 @@ export const SPA_SERVICES: SpaService[] = [
     id: '21',
     name: 'Depilación con Cera',
     category: 'Depilación',
-    image: BODY_IMAGE,
+    image: DEPILACION_CERA_IMAGE,
     duration: '45 minutos',
     ...consultPrice,
     benefits: ['Piel suave y libre de vello', 'Resultados duraderos', 'Aplicación higiénica y precisa', 'Ideal para rostro y cuerpo'],
@@ -224,29 +240,40 @@ export const SPA_SERVICES: SpaService[] = [
   },
   {
     id: '22',
-    name: 'Diseño de Cejas',
+    name: 'Depilación de Cejas',
     category: 'Cejas y Rostro',
-    image: FACIAL_IMAGE_ALT,
+    image: DEPILACION_CEJAS_IMAGE,
     duration: '30 minutos',
     ...consultPrice,
-    benefits: ['Cejas simétricas y armoniosas', 'Rostro más definido', 'Diseño personalizado', 'Acabado natural y elegante'],
-    description: 'Diseño profesional de cejas adaptado a la forma de tu rostro, resaltando tu mirada con técnicas de perfilado, depilación y acabado de precisión.',
+    benefits: ['Cejas definidas y simétricas', 'Eliminación precisa del vello', 'Acabado limpio y natural', 'Mirada más armoniosa'],
+    description: 'Depilación profesional de cejas con cera o pinza, adaptada a la forma de tu rostro para lograr un perfil limpio, simétrico y natural.',
   },
   {
     id: '23',
-    name: 'Brow Laminate',
+    name: 'Laminado de Cejas',
     category: 'Cejas y Rostro',
-    image: FACIAL_IMAGE_ALT,
+    image: LAMINADO_CEJAS_IMAGE,
     duration: '45 minutos',
     ...consultPrice,
     benefits: ['Cejas más pobladas visualmente', 'Efecto peinado y ordenado', 'Mayor definición', 'Resultado de larga duración'],
     description: 'Tratamiento de laminado de cejas que alisa, fija y da dirección al vello para lograr un look más lleno, estructurado y pulido durante semanas.',
   },
+  {
+    id: '24',
+    name: 'Tratamiento Facial Luz LED',
+    category: 'Tratamientos Avanzados',
+    image: TRATAMIENTO_FACIAL_LUZ_LED_IMAGE,
+    video: TRATAMIENTO_FACIAL_LUZ_LED_VIDEO,
+    duration: '45 minutos',
+    ...consultPrice,
+    benefits: ['Estimulación celular', 'Mejora de luminosidad', 'Acción antiinflamatoria', 'Piel más uniforme y saludable'],
+    description: 'Tratamiento facial con fototerapia LED que utiliza longitudes de luz específicas para estimular la piel, reducir inflamación y potenciar la regeneración cutánea.',
+  },
 ];
 
 export const FAQ_ITEMS = [
   {
-    question: '¿Qué tipos de masajes ofrece Yoly Studio?',
+    question: '¿Qué tipos de masajes ofrece YolyStudio?',
     answer: 'Ofrecemos masaje relajante, descontracturante, de relajación, reductivo, drenaje linfático, yoga facial, drenaje linfático post operatorio y maderoterapia, siempre adaptados a tus necesidades.',
   },
   {
@@ -263,7 +290,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: '¿Ofrecen depilación y servicios de cejas?',
-    answer: 'Sí. Realizamos depilación con cera, diseño de cejas y Brow Laminate con técnicas profesionales adaptadas a cada rostro.',
+    answer: 'Sí. Realizamos depilación con cera, depilación de cejas y laminado de cejas con técnicas profesionales adaptadas a cada rostro.',
   },
   {
     question: '¿Cómo funciona el proceso de reserva y cancelación de citas?',

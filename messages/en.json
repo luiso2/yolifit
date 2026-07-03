@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "homeTitle": "Yoly Studio | Aesthetics, Wellness & Notary in Miami",
+    "homeTitle": "YolyStudio | Aesthetics, Wellness & Notary in Miami",
     "homeDescription": "A boutique sanctuary for high-end cosmetology and aesthetics with official notary services in Miami, Florida.",
-    "reservasTitle": "Bookings | Yoly Studio",
-    "reservasDescription": "Book your wellness experience or notary service at Yoly Studio, Miami. Choose your service, date, and time in one place."
+    "reservasTitle": "Bookings | YolyStudio",
+    "reservasDescription": "Book your wellness experience or notary service at YolyStudio, Miami. Choose your service, date, and time in one place."
   },
   "nav": {
     "services": "Services",
@@ -35,14 +35,15 @@
       "For Yoly, every treatment is an opportunity to enhance her clients' natural beauty, always offering service grounded in knowledge, experience, and care."
     ],
     "quote": "True beauty emerges when care, health, and wellness come together in perfect harmony.",
-    "portraitAlt": "Yoly, cosmetologist and notary at Yoly Studio",
+    "portraitAlt": "Yoly Aleman, cosmetologist and notary at YolyStudio",
+    "portraitName": "Yoly Aleman",
     "credentialsLine1": "Skin Specialist · Medical Clinical Assistant",
     "credentialsLine2": "Cosmetologist · Notary Public"
   },
   "video": {
     "eyebrow": "Inside the studio",
     "title": "Experience",
-    "titleScript": "Yoly Studio",
+    "titleScript": "YolyStudio",
     "description": "A boutique sanctuary in Miami where every detail is designed for your well-being. Discover the atmosphere, warmth, and care that set us apart.",
     "cta": "Book your moment"
   },
@@ -70,7 +71,7 @@
   },
   "footer": {
     "description": "A boutique sanctuary for licensed cosmetology and notary services in Miami, Florida. Designed to beautify your skin, relax your body, and handle your official legal documents in one place.",
-    "copyright": "© {year} Clinic Yoly Studio. All rights reserved. Florida Cosmetology License.",
+    "copyright": "© {year} Clinic YolyStudio. All rights reserved. Florida Cosmetology License.",
     "instagram": "Instagram"
   },
   "serviceCard": {
@@ -98,11 +99,6 @@
     "successTitle": "Appointment Requested!",
     "successMessage": "Thank you {name}, we have received your appointment request for {service} on {date} at {time}. Yoly will contact you at {phone} to confirm your appointment."
   },
-  "aiChat": {
-    "initialMessage": "Hello! I'm Yoly AI, your personal beauty, aesthetics, and notary assistant. ✨ Do you have questions about our rejuvenating facials, massages, or notary services? Tell me, I'm here to help! 🌸🖋️",
-    "placeholder": "Ask about facials, body treatments, pricing, notary...",
-    "connectionError": "Connection lost. Please try again."
-  },
   "reservasPage": {
     "tagline": "AESTHETICS & NOTARY",
     "backToStudio": "Back to studio"
@@ -110,7 +106,7 @@
   "reservas": {
     "headline": "Book Your Wellness Experience Online",
     "ticketConfirmed": "WELLNESS PASS CONFIRMED",
-    "studioName": "Yoly Studio Boutique",
+    "studioName": "YolyStudio Boutique",
     "studioTagline": "Miami, Florida · Aesthetics & Notary Public",
     "client": "CLIENT",
     "treatment": "TREATMENT",
@@ -157,7 +153,7 @@
     "backToDateTime": "Back to Date & Time",
     "availableSchedules": "Available Times:",
     "closed": "closed",
-    "closedSunday": "Yoly Studio is closed on Sundays for rest. Please select another day on the calendar.",
+    "closedSunday": "YolyStudio is closed on Sundays for rest. Please select another day on the calendar.",
     "namePlaceholder": "Your full name",
     "emailPlaceholder": "example@email.com",
     "phonePlaceholder": "+1 (305) 000-0000",

@@ -37,13 +37,15 @@ export default async function ReservasPage({
       <header className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 md:px-12 py-5 bg-brand-cream/85 backdrop-blur-md border-b border-black/[0.05]">
         <Link
           href="/"
-          className="font-heading text-xl md:text-2xl font-bold tracking-tight text-black flex flex-col items-start leading-none"
+          className="flex items-center gap-3 font-heading text-xl md:text-2xl tracking-tight text-black leading-none"
         >
-          <div className="flex items-center gap-1.5">
-            <span className="font-semibold tracking-widest text-brand-bronze">YOLY</span>
-            <span className="font-light text-gray-500">STUDIO</span>
+          <img src="/media/logo.png" alt="Clinic YolyStudio logo" className="w-12 h-12 md:w-14 md:h-14 object-contain shrink-0" />
+          <div className="flex flex-col items-start leading-none">
+            <span className="font-script text-2xl md:text-[1.75rem] text-brand-bronze leading-none">Clinic</span>
+            <span className="font-medium text-brand-bronze mt-1 leading-none">
+              Yoly<span className="font-light text-gray-500">Studio</span>
+            </span>
           </div>
-          <span className="text-[9px] font-mono tracking-[0.25em] text-brand-caramel mt-1">{t('tagline')}</span>
         </Link>
 
         <Link

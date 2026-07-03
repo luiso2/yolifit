@@ -69,7 +69,7 @@ const InstagramCta: React.FC = () => {
                 <Instagram className="w-4.5 h-4.5" />
               </div>
               <div className="w-full h-full rounded-2xl overflow-hidden relative group">
-                <img src={featuredImage} alt="Facial Skincare Treatment at Yoly Studio" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
+                <img src={featuredImage} alt="Facial Skincare Treatment at YolyStudio" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                   <span className="text-[10px] font-mono font-semibold tracking-widest text-white uppercase">{t('imageOverlay')}</span>
                 </div>

@@ -28,18 +28,25 @@ const Hero: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.4, ease: 'circOut' }}
-        className="hidden md:block absolute inset-y-0 right-0 z-0 w-[52%] pointer-events-none"
+        className="absolute inset-y-0 right-0 z-0 w-[72%] sm:w-[65%] md:w-[52%] pointer-events-none"
         style={{
-          maskImage: 'linear-gradient(to right, transparent, rgba(0,0,0,0.9) 55%, black 75%)',
-          WebkitMaskImage: 'linear-gradient(to right, transparent, rgba(0,0,0,0.9) 55%, black 75%)',
+          maskImage: 'linear-gradient(to right, transparent, rgba(0,0,0,0.88) 48%, black 72%)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent, rgba(0,0,0,0.88) 48%, black 72%)',
         }}
       >
-        <Image src="/media/yoly-laptop-hero.jpg" alt="" fill priority sizes="58vw" className="object-cover object-top opacity-55" />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-cream via-transparent to-transparent" />
+        <Image
+          src="/media/yoly-laptop-hero.jpg"
+          alt=""
+          fill
+          priority
+          sizes="(max-width: 768px) 72vw, 58vw"
+          className="object-cover object-[center_top] md:object-top opacity-50 md:opacity-55"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-cream via-brand-cream/70 md:via-transparent to-transparent" />
       </motion.div>
 
       <motion.div style={{ y, opacity }} className="z-10 w-full max-w-6xl">
-        <div className="flex flex-col items-center md:items-start text-center md:text-left md:max-w-sm">
+        <div className="flex flex-col items-start text-left max-w-sm">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -51,12 +58,11 @@ const Hero: React.FC = () => {
             <span>{t('tag2')}</span>
           </motion.div>
 
-          <div className="relative w-full flex flex-col items-center md:items-start">
-            <h1 className="text-center md:text-left leading-none">
+          <div className="relative w-full flex flex-col items-start">
+            <h1 className="text-left leading-none">
               <span className="block font-script text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] text-brand-bronze leading-none mb-2 md:mb-4">Clinic</span>
-              <span className="block text-[13vw] md:text-[4.75rem] lg:text-[5.5rem] font-heading font-medium leading-[0.95]">
-                <span className="text-brand-bronze">Yoly</span>{' '}
-                <span className="font-light text-brand-bronze">Studio</span>
+              <span className="block text-[13vw] md:text-[4.75rem] lg:text-[5.5rem] font-heading font-medium leading-[0.95] text-brand-bronze">
+                Yoly<span className="font-light">Studio</span>
               </span>
             </h1>
             <motion.div
@@ -71,14 +77,14 @@ const Hero: React.FC = () => {
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 1.5, delay: 0.4, ease: 'circOut' }}
-            className="w-full max-w-lg h-px bg-gradient-to-r from-transparent via-brand-caramel/40 to-transparent mt-5 md:mt-8 mb-5 md:mb-8 md:from-brand-caramel/40 md:via-brand-caramel/10 md:to-transparent"
+            className="w-full max-w-lg h-px bg-gradient-to-r from-brand-caramel/40 via-brand-caramel/10 to-transparent mt-5 md:mt-8 mb-5 md:mb-8"
           />
 
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 1 }}
-            className="text-sm md:text-lg font-light max-w-xl mx-auto md:mx-0 text-gray-700 leading-relaxed px-4 md:px-0"
+            className="text-sm md:text-lg font-light max-w-xl text-gray-700 leading-relaxed"
           >
             &quot;{t('quote')}&quot;
           </motion.p>
