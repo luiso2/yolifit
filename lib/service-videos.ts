@@ -12,7 +12,6 @@ export const SERVICE_VIDEO_PATHS: Partial<Record<string, string>> = {
 export const SERVICE_VIDEO_SLUGS: Record<string, string> = {
   '1': 'masaje-relajante',
   '2': 'masaje-descontracturante',
-  '3': 'masaje-relajacion',
   '4': 'masaje-reductivo',
   '5': 'masaje-drenaje-linfatico',
   '6': 'masaje-yoga-facial',

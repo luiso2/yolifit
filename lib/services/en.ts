@@ -3,7 +3,6 @@ import { SpaService } from '@/lib/types';
 const MASSAGE_IMAGE = '/media/masaje-relajacion.jpg';
 const MASSAGE_DECONTRACTURANTE_IMAGE = '/media/masaje-descontracturante.jpg';
 const MASSAGE_REDUCTIVO_IMAGE = '/media/masaje-reductivo.jpg';
-const MASSAGE_RELAJACION_IMAGE = '/media/masaje-relajacion-sesion.jpg';
 const MADEROTERAPIA_IMAGE = '/media/maderoterapia.jpg';
 const DEPILACION_CEJAS_IMAGE = '/media/depilacion-cejas.jpg';
 const LAMINADO_CEJAS_IMAGE = '/media/laminado-cejas.jpg';
@@ -50,16 +49,6 @@ export const SPA_SERVICES: SpaService[] = [
     ...askForPrice,
     benefits: ['Release of muscle knots', 'Relief from muscle pain', 'Greater mobility', 'Release of tense areas'],
     description: 'Moderate to deep pressure technique focused on knots, muscle tension, and tight areas in the back, neck, and shoulders.',
-  },
-  {
-    id: '3',
-    name: 'Relaxation Massage',
-    category: 'Massages',
-    image: MASSAGE_RELAJACION_IMAGE,
-    duration: '60 minutes',
-    ...askForPrice,
-    benefits: ['Deep relaxation', 'Nervous system balance', 'Physical rest', 'Emotional well-being'],
-    description: 'A full sensory relaxation experience with harmonious movements that promote physical and mental rest.',
   },
   {
     id: '4',
@@ -276,7 +265,7 @@ export const SPA_SERVICES: SpaService[] = [
 export const FAQ_ITEMS = [
   {
     question: 'What types of massages does YolyStudio offer?',
-    answer: 'We offer relaxing massage, deep tissue massage, relaxation massage, body contouring massage, lymphatic drainage, facial yoga massage, post-operative lymphatic drainage, and wood therapy, always tailored to your needs.',
+    answer: 'We offer relaxing massage, deep tissue massage, body contouring massage, lymphatic drainage, facial yoga massage, post-operative lymphatic drainage, and wood therapy, always tailored to your needs.',
   },
   {
     question: 'What facial cleansing treatments are available?',

@@ -3,7 +3,6 @@ import { SpaService } from '@/lib/types';
 const MASSAGE_IMAGE = '/media/masaje-relajacion.jpg';
 const MASSAGE_DECONTRACTURANTE_IMAGE = '/media/masaje-descontracturante.jpg';
 const MASSAGE_REDUCTIVO_IMAGE = '/media/masaje-reductivo.jpg';
-const MASSAGE_RELAJACION_IMAGE = '/media/masaje-relajacion-sesion.jpg';
 const MADEROTERAPIA_IMAGE = '/media/maderoterapia.jpg';
 const DEPILACION_CEJAS_IMAGE = '/media/depilacion-cejas.jpg';
 const LAMINADO_CEJAS_IMAGE = '/media/laminado-cejas.jpg';
@@ -50,16 +49,6 @@ export const SPA_SERVICES: SpaService[] = [
     ...consultPrice,
     benefits: ['Liberación de contracturas', 'Alivio de dolor muscular', 'Mayor movilidad', 'Descarga de zonas tensas'],
     description: 'Técnica de presión moderada a profunda enfocada en contracturas, nudos musculares y zonas de tensión en espalda, cuello y hombros.',
-  },
-  {
-    id: '3',
-    name: 'Masaje de Relajación',
-    category: 'Masajes',
-    image: MASSAGE_RELAJACION_IMAGE,
-    duration: '60 minutos',
-    ...consultPrice,
-    benefits: ['Relajación profunda', 'Equilibrio nervioso', 'Descanso corporal', 'Bienestar emocional'],
-    description: 'Experiencia sensorial de relajación integral con movimientos armoniosos que favorecen el descanso físico y mental.',
   },
   {
     id: '4',
@@ -276,7 +265,7 @@ export const SPA_SERVICES: SpaService[] = [
 export const FAQ_ITEMS = [
   {
     question: '¿Qué tipos de masajes ofrece YolyStudio?',
-    answer: 'Ofrecemos masaje relajante, descontracturante, de relajación, reductivo, drenaje linfático, yoga facial, drenaje linfático post operatorio y maderoterapia, siempre adaptados a tus necesidades.',
+    answer: 'Ofrecemos masaje relajante, descontracturante, reductivo, drenaje linfático, yoga facial, drenaje linfático post operatorio y maderoterapia, siempre adaptados a tus necesidades.',
   },
   {
     question: '¿Qué limpiezas faciales están disponibles?',
