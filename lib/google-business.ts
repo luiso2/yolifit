@@ -4,17 +4,20 @@
  */
 export const GOOGLE_PLACE_ID = '';
 
+const ADDRESS = '2500 NW 79 Ave Unit 297, Doral, FL 33122';
+const MAPS_QUERY = encodeURIComponent(`Clinic YolyStudio, ${ADDRESS}`);
+
 export const GOOGLE_BUSINESS = {
   name: 'Clinic YolyStudio',
-  locationLabel: 'Miami, Florida',
+  address: ADDRESS,
+  locationLabel: ADDRESS,
   rating: 5,
-  mapsQuery: 'Clinic YolyStudio',
-  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Clinic+YolyStudio',
-  mapsEmbedUrl:
-    'https://maps.google.com/maps?q=Clinic%20YolyStudio&hl=es&z=15&output=embed',
+  mapsQuery: `Clinic YolyStudio, ${ADDRESS}`,
+  mapsUrl: `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`,
+  mapsEmbedUrl: `https://maps.google.com/maps?q=${MAPS_QUERY}&hl=es&z=16&output=embed`,
   writeReviewUrl: GOOGLE_PLACE_ID
     ? `https://search.google.com/local/writereview?placeid=${GOOGLE_PLACE_ID}`
-    : 'https://www.google.com/maps/search/?api=1&query=Clinic+YolyStudio+Reviews',
+    : `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`,
 } as const;
 
 export type ReviewTestimonial = {
