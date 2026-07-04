@@ -15,10 +15,24 @@
 }
 
 html {
+  /* Tipografia un poco mas grande en todo el sitio. En rem, asi todas las
+     clases text-* de Tailwind (text-xs/text-sm/text-base/...) escalan con esto.
+     % respeta la preferencia de tamano del navegador (accesibilidad). */
+  font-size: 106.25%; /* ~17px base */
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Vista mobile: subir mas la escala (se veia muy pequeno) y poner un piso a los
+   tamanos fijos en px que no escalan con el root. */
+@media (max-width: 767px) {
+  html {
+    font-size: 112.5%; /* ~18px base en mobile */
+  }
+  [class*="text-[10px]"] { font-size: 12px !important; }
+  [class*="text-[11px]"] { font-size: 12.5px !important; }
 }
 
 ::-webkit-scrollbar {
