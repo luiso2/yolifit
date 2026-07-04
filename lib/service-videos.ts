@@ -7,9 +7,12 @@ export const SERVICE_VIDEO_PATHS: Partial<Record<string, string>> = {
   '6': '/media/videos/masaje-yoga-facial.mp4',
   '7': '/media/drenaje-linfatico-post-operatorio.mp4',
   '8': '/media/videos/maderoterapia.mp4',
+  '9': '/media/videos/limpieza-facial-basics.mp4',
   '14': '/media/videos/limpieza-facial-antiedad.mp4',
+  '16': '/media/videos/limpieza-facial-oxigenante.mp4',
+  '21': '/media/videos/depilacion-cera.mp4',
   '22': '/media/videos/depilacion-cejas.mp4',
-  '24': '/media/tratamiento-facial-luz-led.mp4',
+  '24': '/media/videos/tratamiento-facial-luz-led.mp4',
 };
 
 /** Nombre de archivo sugerido al grabar cada sesión (public/media/videos/{slug}.mp4) */
