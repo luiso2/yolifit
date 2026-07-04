@@ -4,7 +4,11 @@
  */
 export const SERVICE_VIDEO_PATHS: Partial<Record<string, string>> = {
   '5': '/media/videos/masaje-drenaje-linfatico.mp4',
+  '6': '/media/videos/masaje-yoga-facial.mp4',
   '7': '/media/drenaje-linfatico-post-operatorio.mp4',
+  '8': '/media/videos/maderoterapia.mp4',
+  '14': '/media/videos/limpieza-facial-antiedad.mp4',
+  '22': '/media/videos/depilacion-cejas.mp4',
   '24': '/media/tratamiento-facial-luz-led.mp4',
 };
 
