@@ -12,6 +12,7 @@ export function verifyMerktopSignature(args: {
   signatureHeader: string | null;
   nowSec: number;
 }): boolean {
+  if (!args.secret) return false;
   if (!args.signatureHeader) return false;
   const parts = Object.fromEntries(
     args.signatureHeader.split(',').map((kv) => {

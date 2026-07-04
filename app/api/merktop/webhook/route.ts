@@ -17,21 +17,27 @@ export async function POST(req: Request) {
   if (!ok) return NextResponse.json({ error: 'bad_signature' }, { status: 401 });
 
   const eventId = req.headers.get('merktop-event-id') ?? '';
-  if (eventId && (await wasEventProcessed(eventId))) return NextResponse.json({ ok: true });
 
-  let event: { type?: string; data?: { ref?: string | null; deposit_id?: string | null } };
-  try { event = JSON.parse(rawBody); } catch { return NextResponse.json({ ok: true }); }
-  const ref = event.data?.ref ?? null;
+  try {
+    if (eventId && (await wasEventProcessed(eventId))) return NextResponse.json({ ok: true });
 
-  if (ref) {
-    if (event.type === 'deposit.paid') {
-      await markBookingPaid(ref, event.data?.deposit_id ?? null);
-    } else if (event.type === 'deposit.refunded' || event.type === 'deposit.expired') {
-      await markBookingCanceled(ref);
+    let event: { type?: string; data?: { ref?: string | null; deposit_id?: string | null } };
+    try { event = JSON.parse(rawBody); } catch { return NextResponse.json({ ok: true }); }
+    const ref = event.data?.ref ?? null;
+
+    if (ref) {
+      if (event.type === 'deposit.paid') {
+        await markBookingPaid(ref, event.data?.deposit_id ?? null);
+      } else if (event.type === 'deposit.refunded' || event.type === 'deposit.expired') {
+        await markBookingCanceled(ref);
+      }
+      // Other event types (booking.rescheduled/updated/deleted, ping) are acknowledged only.
     }
-    // Other event types (booking.rescheduled/updated/deleted, ping) are acknowledged only.
-  }
 
-  if (eventId) await markEventProcessed(eventId);
-  return NextResponse.json({ ok: true });
+    if (eventId) await markEventProcessed(eventId);
+    return NextResponse.json({ ok: true });
+  } catch {
+    // DB error: return 500 (not 200) so Merktop's webhook sender retries delivery.
+    return NextResponse.json({ error: 'db_error' }, { status: 500 });
+  }
 }
