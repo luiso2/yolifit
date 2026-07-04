@@ -5,6 +5,9 @@ import { markBookingPaid, markBookingCanceled, wasEventProcessed, markEventProce
 export async function POST(req: Request) {
   const rawBody = await req.text();
   const secret = process.env.MERKTOP_WEBHOOK_SECRET ?? '';
+  if (!secret) {
+    return NextResponse.json({ error: 'not_configured' }, { status: 500 });
+  }
   const ok = verifyMerktopSignature({
     secret,
     rawBody,
