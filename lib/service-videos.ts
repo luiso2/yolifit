@@ -13,6 +13,7 @@ export const SERVICE_VIDEO_PATHS: Partial<Record<string, string>> = {
   '9': '/media/videos/limpieza-facial-basics.mp4',
   '10': '/media/videos/limpieza-facial-profunda.mp4',
   '11': '/media/videos/limpieza-facial-hidratante.mp4',
+  '12': '/media/videos/limpieza-facial-acneica.mp4',
   '13': '/media/videos/limpieza-facial-despigmentacion.mp4',
   '14': '/media/videos/limpieza-facial-antiedad.mp4',
   '16': '/media/videos/limpieza-facial-oxigenante.mp4',
