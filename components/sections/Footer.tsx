@@ -46,9 +46,15 @@ const Footer: React.FC = () => {
             </a>
           </div>
 
-          <div className="text-[10px] font-mono text-gray-400 flex flex-col gap-1">
-            <span>{t('copyright', { year: new Date().getFullYear() })}</span>
-            <a href="https://merktop.com" target="_blank" rel="noopener noreferrer" className="text-brand-brown/60 hover:text-brand-caramel text-xs tracking-widest uppercase transition-colors">
+          <div className="flex flex-col gap-3">
+            <span className="text-[10px] font-mono text-gray-400">{t('copyright', { year: new Date().getFullYear() })}</span>
+            <a
+              href="https://merktop.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-fit items-center gap-2 rounded-full border border-brand-bronze/30 bg-brand-bronze/10 px-4 py-2 text-[11px] font-mono font-semibold uppercase tracking-[0.18em] text-brand-bronze shadow-sm shadow-brand-bronze/10 transition-all hover:border-brand-caramel hover:bg-brand-bronze hover:text-white hover:shadow-md hover:shadow-brand-bronze/20"
+              data-hover="true"
+            >
               Powered by Merktop
             </a>
           </div>
