@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Calendar, Check, User, Mail, Phone } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { SpaService } from '@/lib/types';
 
 interface ServiceModalProps {
@@ -14,16 +14,18 @@ interface ServiceModalProps {
 
 const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose, onNavigate }) => {
   const t = useTranslations('serviceModal');
+  const tr = useTranslations('reservas');
+  const locale = useLocale();
   const [bookingName, setBookingName] = useState('');
   const [bookingEmail, setBookingEmail] = useState('');
   const [bookingPhone, setBookingPhone] = useState('');
   const [bookingDate, setBookingDate] = useState('');
   const [bookingTime, setBookingTime] = useState('');
   const [isSubmittingBooking, setIsSubmittingBooking] = useState(false);
-  const [bookingSuccess, setBookingSuccess] = useState(false);
+  const [availableSlots, setAvailableSlots] = useState<string[] | null>(null);
+  const [bookingError, setBookingError] = useState<string | null>(null);
 
-  // Reset booking success whenever the displayed service changes (navigation),
-  // and clear the full form once the modal is closed (service becomes null).
+  // Reset the form whenever the modal is closed (service becomes null).
   useEffect(() => {
     if (!service) {
       setBookingName('');
@@ -31,19 +33,58 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose, onNavigat
       setBookingPhone('');
       setBookingDate('');
       setBookingTime('');
+      setAvailableSlots(null);
+      setBookingError(null);
     }
-    setBookingSuccess(false);
   }, [service]);
 
-  const handleBookingSubmit = (e: React.FormEvent) => {
+  // Fetch real availability whenever the chosen day or service changes, mirroring
+  // the reservation wizard (components/sections/Reservas.tsx).
+  useEffect(() => {
+    if (!bookingDate || !service) {
+      setAvailableSlots(null);
+      return;
+    }
+    let active = true;
+    setAvailableSlots(null); // loading
+    fetch(`/api/availability?date=${bookingDate}&serviceId=${service.id}&locale=${locale}`)
+      .then((r) => r.json())
+      .then((d) => { if (active) setAvailableSlots(Array.isArray(d.slots) ? d.slots : []); })
+      .catch(() => { if (active) setAvailableSlots([]); });
+    return () => { active = false; };
+  }, [bookingDate, service, locale]);
+
+  const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!bookingName || !bookingEmail || !bookingPhone || !bookingDate || !bookingTime) return;
+    if (!service || !bookingName || !bookingEmail || !bookingPhone || !bookingDate || !bookingTime) return;
 
     setIsSubmittingBooking(true);
-    setTimeout(() => {
+    setBookingError(null);
+    try {
+      const res = await fetch('/api/reservas', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          serviceId: service.id,
+          dateISO: bookingDate,
+          time: bookingTime,
+          name: bookingName,
+          email: bookingEmail,
+          phone: bookingPhone,
+          locale,
+        }),
+      });
+      const data = await res.json();
+      if (res.ok && data.url) {
+        window.location.href = data.url;
+        return;
+      }
+      setBookingError(data.error ?? tr('errors.processFailed'));
+    } catch {
+      setBookingError(tr('errors.connection'));
+    } finally {
       setIsSubmittingBooking(false);
-      setBookingSuccess(true);
-    }, 2000);
+    }
   };
 
   return (
@@ -167,110 +208,90 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose, onNavigat
 
               {/* Interactive Cita Booking Form inside Modal */}
               <div className="border-t border-black/[0.05] pt-6 mt-4">
-                <AnimatePresence mode="wait">
-                  {!bookingSuccess ? (
-                    <motion.form
-                      key="booking-form"
-                      onSubmit={handleBookingSubmit}
-                      className="space-y-3"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                    >
-                      <h4 className="text-xs font-heading font-bold uppercase tracking-wider text-gray-800">{t('bookTitle')}</h4>
-                      <div className="grid grid-cols-2 gap-2">
-                        <div className="relative">
-                          <span className="absolute left-2.5 top-2.5 text-gray-400"><User className="w-3.5 h-3.5" /></span>
-                          <input
-                            type="text"
-                            required
-                            placeholder={t('namePlaceholder')}
-                            value={bookingName}
-                            onChange={(e) => setBookingName(e.target.value)}
-                            className="w-full bg-gray-50 border border-black/[0.05] rounded-lg pl-8 pr-3 py-2 text-xs text-gray-900 placeholder-gray-400 focus:outline-none focus:border-brand-bronze"
-                          />
-                        </div>
-                        <div className="relative">
-                          <span className="absolute left-2.5 top-2.5 text-gray-400"><Mail className="w-3.5 h-3.5" /></span>
-                          <input
-                            type="email"
-                            required
-                            placeholder={t('emailPlaceholder')}
-                            value={bookingEmail}
-                            onChange={(e) => setBookingEmail(e.target.value)}
-                            className="w-full bg-gray-50 border border-black/[0.05] rounded-lg pl-8 pr-3 py-2 text-xs text-gray-900 placeholder-gray-400 focus:outline-none focus:border-brand-bronze"
-                          />
-                        </div>
-                      </div>
+                <motion.form
+                  onSubmit={handleBookingSubmit}
+                  className="space-y-3"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                >
+                  <h4 className="text-xs font-heading font-bold uppercase tracking-wider text-gray-800">{t('bookTitle')}</h4>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="relative">
+                      <span className="absolute left-2.5 top-2.5 text-gray-400"><User className="w-3.5 h-3.5" /></span>
+                      <input
+                        type="text"
+                        required
+                        placeholder={t('namePlaceholder')}
+                        value={bookingName}
+                        onChange={(e) => setBookingName(e.target.value)}
+                        className="w-full bg-gray-50 border border-black/[0.05] rounded-lg pl-8 pr-3 py-2 text-xs text-gray-900 placeholder-gray-400 focus:outline-none focus:border-brand-bronze"
+                      />
+                    </div>
+                    <div className="relative">
+                      <span className="absolute left-2.5 top-2.5 text-gray-400"><Mail className="w-3.5 h-3.5" /></span>
+                      <input
+                        type="email"
+                        required
+                        placeholder={t('emailPlaceholder')}
+                        value={bookingEmail}
+                        onChange={(e) => setBookingEmail(e.target.value)}
+                        className="w-full bg-gray-50 border border-black/[0.05] rounded-lg pl-8 pr-3 py-2 text-xs text-gray-900 placeholder-gray-400 focus:outline-none focus:border-brand-bronze"
+                      />
+                    </div>
+                  </div>
 
-                      <div className="grid grid-cols-2 gap-2">
-                        <div className="relative">
-                          <span className="absolute left-2.5 top-2.5 text-gray-400"><Phone className="w-3.5 h-3.5" /></span>
-                          <input
-                            type="tel"
-                            required
-                            placeholder={t('phonePlaceholder')}
-                            value={bookingPhone}
-                            onChange={(e) => setBookingPhone(e.target.value)}
-                            className="w-full bg-gray-50 border border-black/[0.05] rounded-lg pl-8 pr-3 py-2 text-xs text-gray-900 placeholder-gray-400 focus:outline-none focus:border-brand-bronze"
-                          />
-                        </div>
-                        <input
-                          type="date"
-                          required
-                          value={bookingDate}
-                          onChange={(e) => setBookingDate(e.target.value)}
-                          className="bg-gray-50 border border-black/[0.05] rounded-lg px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-brand-bronze w-full"
-                        />
-                      </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="relative">
+                      <span className="absolute left-2.5 top-2.5 text-gray-400"><Phone className="w-3.5 h-3.5" /></span>
+                      <input
+                        type="tel"
+                        required
+                        placeholder={t('phonePlaceholder')}
+                        value={bookingPhone}
+                        onChange={(e) => setBookingPhone(e.target.value)}
+                        className="w-full bg-gray-50 border border-black/[0.05] rounded-lg pl-8 pr-3 py-2 text-xs text-gray-900 placeholder-gray-400 focus:outline-none focus:border-brand-bronze"
+                      />
+                    </div>
+                    <input
+                      type="date"
+                      required
+                      value={bookingDate}
+                      onChange={(e) => { setBookingDate(e.target.value); setBookingTime(''); }}
+                      className="bg-gray-50 border border-black/[0.05] rounded-lg px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-brand-bronze w-full"
+                    />
+                  </div>
 
-                      <div className="flex gap-2">
-                        <select
-                          required
-                          value={bookingTime}
-                          onChange={(e) => setBookingTime(e.target.value)}
-                          className="flex-1 bg-gray-50 border border-black/[0.05] rounded-lg px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-brand-bronze"
-                        >
-                          <option value="">{t('selectTime')}</option>
-                          <option value="9am">{t('timeMorning9')}</option>
-                          <option value="11am">{t('timeMorning11')}</option>
-                          <option value="2pm">{t('timeAfternoon2')}</option>
-                          <option value="4pm">{t('timeAfternoon4')}</option>
-                          <option value="6pm">{t('timeAfternoon6')}</option>
-                        </select>
-                        <button
-                          type="submit"
-                          disabled={isSubmittingBooking}
-                          className="px-6 bg-brand-bronze text-white font-bold uppercase text-[10px] tracking-widest hover:bg-brand-brown transition-colors rounded-lg font-heading disabled:opacity-50"
-                        >
-                          {isSubmittingBooking ? t('registering') : t('reserve')}
-                        </button>
-                      </div>
-                    </motion.form>
-                  ) : (
-                    <motion.div
-                      key="booking-success"
-                      className="bg-brand-bronze/20 border border-brand-caramel/30 p-4 rounded-xl flex flex-col items-center text-center space-y-2"
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0 }}
+                  <div className="flex gap-2">
+                    <select
+                      required
+                      value={bookingTime}
+                      onChange={(e) => setBookingTime(e.target.value)}
+                      className="flex-1 bg-gray-50 border border-black/[0.05] rounded-lg px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-brand-bronze"
                     >
-                      <div className="w-10 h-10 rounded-full bg-brand-bronze text-white flex items-center justify-center font-bold">
-                        <Check className="w-5 h-5" />
-                      </div>
-                      <h4 className="text-sm font-heading font-bold text-gray-950 uppercase tracking-wider">{t('successTitle')}</h4>
-                      <p className="text-xs text-gray-700 max-w-sm font-light">
-                        {t('successMessage', {
-                          name: bookingName,
-                          service: service.name,
-                          date: bookingDate,
-                          time: bookingTime,
-                          phone: bookingPhone,
-                        })}
-                      </p>
-                    </motion.div>
+                      <option value="">{t('selectTime')}</option>
+                      {(availableSlots ?? []).map((slot) => (
+                        <option key={slot} value={slot}>{slot}</option>
+                      ))}
+                    </select>
+                    <button
+                      type="submit"
+                      disabled={isSubmittingBooking}
+                      className="px-6 bg-brand-bronze text-white font-bold uppercase text-[10px] tracking-widest hover:bg-brand-brown transition-colors rounded-lg font-heading disabled:opacity-50"
+                    >
+                      {isSubmittingBooking ? tr('verifying') : tr('reserveWithDeposit')}
+                    </button>
+                  </div>
+
+                  <p className="text-[10px] text-gray-500 leading-relaxed font-light">
+                    {tr('depositNote')}
+                  </p>
+
+                  {bookingError && (
+                    <p className="text-xs text-red-700 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
+                      {bookingError}
+                    </p>
                   )}
-                </AnimatePresence>
+                </motion.form>
               </div>
             </div>
           </motion.div>
