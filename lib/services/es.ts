@@ -6,6 +6,7 @@ const MASSAGE_REDUCTIVO_IMAGE = '/media/masaje-reductivo.jpg';
 const MADEROTERAPIA_IMAGE = '/media/maderoterapia.jpg';
 const DEPILACION_CEJAS_IMAGE = '/media/depilacion-cejas.jpg';
 const LAMINADO_CEJAS_IMAGE = '/media/laminado-cejas.jpg';
+const LIFTING_PESTANAS_IMAGE = '/media/lifting-pestanas.jpg';
 const DEPILACION_CERA_IMAGE = '/media/depilacion-cera.jpg';
 const DRENAJE_LINFATICO_IMAGE = MASSAGE_DECONTRACTURANTE_IMAGE;
 const FACIAL_IMAGE = '/media/limpieza-facial.jpg';
@@ -249,6 +250,16 @@ export const SPA_SERVICES: SpaService[] = [
     ...consultPrice,
     benefits: ['Cejas más pobladas visualmente', 'Efecto peinado y ordenado', 'Mayor definición', 'Resultado de larga duración'],
     description: 'Tratamiento de laminado de cejas que alisa, fija y da dirección al vello para lograr un look más lleno, estructurado y pulido durante semanas.',
+  },
+  {
+    id: '25',
+    name: 'Lifting de Pestañas',
+    category: 'Cejas y Rostro',
+    image: LIFTING_PESTANAS_IMAGE,
+    duration: '60 minutos',
+    ...consultPrice,
+    benefits: ['Pestañas más curvadas y abiertas', 'Mirada más intensa sin extensiones', 'Efecto natural y duradero', 'Sin necesidad de rizador diario'],
+    description: 'Tratamiento de lifting de pestañas que eleva, curva y realza el vello natural para una mirada más abierta, definida y elegante durante semanas.',
   },
   {
     id: '24',

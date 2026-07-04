@@ -6,6 +6,7 @@ const MASSAGE_REDUCTIVO_IMAGE = '/media/masaje-reductivo.jpg';
 const MADEROTERAPIA_IMAGE = '/media/maderoterapia.jpg';
 const DEPILACION_CEJAS_IMAGE = '/media/depilacion-cejas.jpg';
 const LAMINADO_CEJAS_IMAGE = '/media/laminado-cejas.jpg';
+const LIFTING_PESTANAS_IMAGE = '/media/lifting-pestanas.jpg';
 const DEPILACION_CERA_IMAGE = '/media/depilacion-cera.jpg';
 const DRENAJE_LINFATICO_IMAGE = MASSAGE_DECONTRACTURANTE_IMAGE;
 const FACIAL_IMAGE = '/media/limpieza-facial.jpg';
@@ -249,6 +250,16 @@ export const SPA_SERVICES: SpaService[] = [
     ...askForPrice,
     benefits: ['Visually fuller brows', 'Groomed, styled effect', 'Enhanced definition', 'Long-lasting results'],
     description: 'Brow lamination treatment that smooths, sets, and directs brow hairs for a fuller, structured, polished look that lasts for weeks.',
+  },
+  {
+    id: '25',
+    name: 'Lash Lift',
+    category: 'Brows & Face',
+    image: LIFTING_PESTANAS_IMAGE,
+    duration: '60 minutes',
+    ...askForPrice,
+    benefits: ['More curled, open lashes', 'Intense gaze without extensions', 'Natural, long-lasting effect', 'No daily curler needed'],
+    description: 'Lash lift treatment that lifts, curls, and enhances natural lashes for a more open, defined, and elegant gaze that lasts for weeks.',
   },
   {
     id: '24',
