@@ -142,6 +142,16 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, setMobileMenuOpen }) =>
                 {t('bookNow')}
               </Link>
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.58, ease: 'easeOut', duration: 0.4 }}
+              onClick={() => setMobileMenuOpen(false)}
+              className="mt-2 scale-125"
+            >
+              <LanguageSwitcher />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
