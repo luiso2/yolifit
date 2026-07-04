@@ -299,10 +299,13 @@ describe('computeAvailableSlots', () => {
     expect(computeAvailableSlots(base, 60, [])).toEqual(base);
   });
   it('blocks a slot whose candidate range reaches into a later booking', () => {
-    // 90-min candidate at 12:00 (720..810) overlaps a booking at 01:30 (810..870)? edge-open -> free.
-    // 90-min candidate at 10:30 (630..780) overlaps booking at 12:00 (720..780) -> blocked.
+    // Booking at 12:00 PM, 60 min: blocks 720..780.
+    // 90-min candidate at 09:00 (540..630): free.
+    // 90-min candidate at 10:30 (630..720): ends exactly at 720, edge-touching -> free.
+    // 90-min candidate at 12:00 (720..810): starts at 720, inside booking -> blocked.
+    // 90-min candidate at 01:30 (810..900): starts after booking ends (780) -> free.
     const paid = [{ startMin: 720, durationMin: 60 }];
-    expect(computeAvailableSlots(base, 90, paid)).toEqual(['09:00 AM', '01:30 PM']);
+    expect(computeAvailableSlots(base, 90, paid)).toEqual(['09:00 AM', '10:30 AM', '01:30 PM']);
   });
 });
 ```
