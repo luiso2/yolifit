@@ -12,6 +12,7 @@ export const SERVICE_VIDEO_PATHS: Partial<Record<string, string>> = {
   '10': '/media/videos/limpieza-facial-profunda.mp4',
   '14': '/media/videos/limpieza-facial-antiedad.mp4',
   '16': '/media/videos/limpieza-facial-oxigenante.mp4',
+  '20': '/media/videos/exosomas.mp4',
   '21': '/media/videos/depilacion-cera.mp4',
   '22': '/media/videos/depilacion-cejas.mp4',
   '24': '/media/videos/tratamiento-facial-luz-led.mp4',
