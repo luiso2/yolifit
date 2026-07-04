@@ -55,6 +55,7 @@ export default function Reservas() {
   const [calSuccess, setCalSuccess] = useState(false);
   const [calSuccessTicket, setCalSuccessTicket] = useState<SuccessTicket | null>(null);
   const [calError, setCalError] = useState<string | null>(null);
+  const [availableSlots, setAvailableSlots] = useState<string[] | null>(null);
 
   // Number of days in the current month
   const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
@@ -140,7 +141,19 @@ export default function Reservas() {
     return ['09:00 AM', '10:30 AM', '12:00 PM', '01:30 PM', '03:00 PM', '04:30 PM', '06:00 PM'];
   };
 
-  const activeSlots = getTimeSlots(calDate);
+  React.useEffect(() => {
+    if (!calDate) { setAvailableSlots([]); return; }
+    const dateISO = calDate.toISOString().slice(0, 10);
+    let active = true;
+    setAvailableSlots(null); // loading
+    fetch(`/api/availability?date=${dateISO}&serviceId=${calService.id}&locale=${locale}`)
+      .then((r) => r.json())
+      .then((d) => { if (active) setAvailableSlots(Array.isArray(d.slots) ? d.slots : getTimeSlots(calDate)); })
+      .catch(() => { if (active) setAvailableSlots(getTimeSlots(calDate)); });
+    return () => { active = false; };
+  }, [calDate, calService.id, locale]);
+
+  const activeSlots = availableSlots ?? getTimeSlots(calDate);
 
   const handleCalBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
