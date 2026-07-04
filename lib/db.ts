@@ -58,9 +58,22 @@ export async function paidBookingsForDate(dateISO: string): Promise<Array<{ star
 }
 
 export async function markBookingPaid(ref: string, depositPiId: string | null): Promise<void> {
-  await sql`
-    UPDATE bookings SET status = 'paid', paid_at = now(), deposit_pi_id = ${depositPiId}
-    WHERE ref = ${ref} AND status = 'pending_deposit'`;
+  try {
+    await sql`
+      UPDATE bookings SET status = 'paid', paid_at = now(), deposit_pi_id = ${depositPiId}
+      WHERE ref = ${ref} AND status = 'pending_deposit'`;
+  } catch (e) {
+    // 23505 = unique_violation on idx_bookings_paid_slot: another booking already
+    // won this exact slot (first payment wins). Mark this one 'paid_conflict' so
+    // the merchant can refund/reschedule it manually; never double-book the agenda.
+    if ((e as { code?: string }).code === '23505') {
+      await sql`
+        UPDATE bookings SET status = 'paid_conflict', paid_at = now(), deposit_pi_id = ${depositPiId}
+        WHERE ref = ${ref} AND status = 'pending_deposit'`;
+      return;
+    }
+    throw e;
+  }
 }
 
 export async function markBookingCanceled(ref: string): Promise<void> {

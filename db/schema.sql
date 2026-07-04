@@ -16,6 +16,11 @@ CREATE TABLE IF NOT EXISTS bookings (
 );
 CREATE INDEX IF NOT EXISTS idx_bookings_paid_starts ON bookings (starts_at) WHERE status = 'paid';
 
+-- First-payment-wins: at most one PAID booking per exact start time. A second
+-- paid booking for the same slot violates this and is caught in markBookingPaid,
+-- which marks it 'paid_conflict' instead of double-booking the agenda.
+CREATE UNIQUE INDEX IF NOT EXISTS idx_bookings_paid_slot ON bookings (starts_at) WHERE status = 'paid';
+
 CREATE TABLE IF NOT EXISTS webhook_events (
   event_id     TEXT PRIMARY KEY,
   processed_at TIMESTAMPTZ NOT NULL DEFAULT now()
