@@ -177,22 +177,7 @@ export default function Reservas() {
       });
       const data = await res.json();
       if (res.ok && data.url) {
-        window.location.href = data.url; // Stripe Checkout
-        return;
-      }
-      if (res.ok && data.ticket) {
-        // Servicio sin pago online (notaría): ticket directo
-        setCalSuccess(true);
-        setCalSuccessTicket({
-          code: data.ticket,
-          service: calService,
-          date: calDate,
-          time: calTime,
-          name: calName,
-          email: calEmail,
-          phone: calPhone,
-          notes: calNotes,
-        });
+        window.location.href = data.url;
         return;
       }
       setCalError(data.error ?? t('errors.processFailed'));
@@ -725,7 +710,7 @@ export default function Reservas() {
                           <div className="text-xs font-bold text-gray-900 mt-0.5">{calService.name}</div>
                           <div className="flex justify-between items-center mt-2 pt-2 border-t border-black/[0.03]">
                             <span className="font-mono text-[10px] text-gray-500">
-                              {calService.duration} • {calService.priceCents !== null ? t('secureOnline') : t('payInStudio')}
+                              {calService.duration} • {t('secureOnline')}
                             </span>
                             <span className="font-mono text-xs text-brand-bronze font-bold">{calService.price}</span>
                           </div>
@@ -926,12 +911,12 @@ export default function Reservas() {
                                     : 'bg-brand-bronze hover:bg-brand-brown text-white cursor-pointer hover:shadow-lg hover:scale-[1.01]'
                               }`}
                           >
-                            {calSubmitting
-                              ? t('verifying')
-                              : calService.priceCents !== null
-                                ? t('payAndBook', { price: calService.price })
-                                : t('bookNowPrice', { price: calService.price })}
+                            {calSubmitting ? t('verifying') : t('reserveWithDeposit')}
                           </button>
+
+                          <p className="text-[10px] text-gray-500 text-center leading-relaxed font-light">
+                            {t('depositNote')}
+                          </p>
 
                           {calError && (
                             <p className="mt-4 text-sm text-red-700 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
@@ -942,7 +927,7 @@ export default function Reservas() {
                           <div className="flex items-center justify-center gap-1.5 text-[9px] font-mono text-gray-400 uppercase tracking-wider text-center">
                             <ShieldCheck className="w-4 h-4 text-brand-bronze" />
                             <span>
-                              {calService.priceCents !== null ? t('secureOnline') : t('payInStudio')} • {t('encryptedConnection')}
+                              {t('secureOnline')} • {t('encryptedConnection')}
                             </span>
                           </div>
                         </div>
