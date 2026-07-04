@@ -3,11 +3,13 @@
  * Al recibir un .mp4 nuevo: guardarlo en public/media/videos/ y añadir el id aquí.
  */
 export const SERVICE_VIDEO_PATHS: Partial<Record<string, string>> = {
+  '2': '/media/videos/masaje-descontracturante.mp4',
   '5': '/media/videos/masaje-drenaje-linfatico.mp4',
   '6': '/media/videos/masaje-yoga-facial.mp4',
   '7': '/media/drenaje-linfatico-post-operatorio.mp4',
   '8': '/media/videos/maderoterapia.mp4',
   '9': '/media/videos/limpieza-facial-basics.mp4',
+  '10': '/media/videos/limpieza-facial-profunda.mp4',
   '14': '/media/videos/limpieza-facial-antiedad.mp4',
   '16': '/media/videos/limpieza-facial-oxigenante.mp4',
   '21': '/media/videos/depilacion-cera.mp4',
