@@ -11,6 +11,7 @@
     "reviews": "Reviews",
     "instagram": "Instagram",
     "reservas": "Bookings",
+    "giftCards": "Gift Cards",
     "bookNow": "Book Now"
   },
   "hero": {
@@ -206,6 +207,39 @@
     "contact": "Contact:",
     "notes": "Notes:",
     "followUp": "Yoly will confirm your appointment personally. You will receive your Stripe receipt by email."
+  },
+  "giftCards": {
+    "section": {
+      "eyebrow": "Gifting",
+      "title": "Give a Gift Card",
+      "description": "Give the gift of wellness. A Clinic YolyStudio gift card works toward any service, with no expiration.",
+      "cta": "Buy a gift card"
+    },
+    "page": {
+      "title": "Gift Cards",
+      "subtitle": "Gift a wellness experience at Clinic YolyStudio.",
+      "backToStudio": "Back to studio"
+    },
+    "form": {
+      "amountLabel": "Amount (USD)",
+      "amountPlaceholder": "e.g. 100",
+      "amountHint": "Minimum $5.00. No expiration.",
+      "buyerName": "Your name",
+      "buyerEmail": "Your email",
+      "recipientTitle": "For someone else? (optional)",
+      "recipientName": "Recipient name",
+      "recipientEmail": "Recipient email",
+      "messageLabel": "Personal message",
+      "messagePlaceholder": "Happy birthday! Enjoy a moment at YolyStudio.",
+      "submit": "Buy gift card",
+      "submitting": "Opening secure checkout..."
+    },
+    "errors": {
+      "minAmount": "The minimum amount is $5.00.",
+      "notReady": "Gift cards are not available right now.",
+      "checkoutFailed": "We could not start the payment. Please try again.",
+      "connection": "Connection error. Please try again."
+    }
   },
   "common": {
     "from": "From",
