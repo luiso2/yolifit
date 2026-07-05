@@ -223,22 +223,22 @@
     "form": {
       "amountLabel": "Monto (USD)",
       "amountPlaceholder": "Ej. 100",
-      "amountHint": "Minimo $5.00. Sin fecha de vencimiento.",
+      "amountHint": "Mínimo $5.00. Sin fecha de vencimiento.",
       "buyerName": "Tu nombre",
       "buyerEmail": "Tu correo",
       "recipientTitle": "Para otra persona (opcional)",
       "recipientName": "Nombre del destinatario",
       "recipientEmail": "Correo del destinatario",
       "messageLabel": "Mensaje personal",
-      "messagePlaceholder": "Feliz cumpleanos! Disfruta un momento en YolyStudio.",
+      "messagePlaceholder": "¡Feliz cumpleaños! Disfruta un momento en YolyStudio.",
       "submit": "Comprar gift card",
       "submitting": "Abriendo pago seguro..."
     },
     "errors": {
-      "minAmount": "El monto minimo es $5.00.",
-      "notReady": "Las gift cards no estan disponibles por ahora.",
+      "minAmount": "El monto mínimo es $5.00.",
+      "notReady": "Las gift cards no están disponibles por ahora.",
       "checkoutFailed": "No pudimos iniciar el pago. Intenta de nuevo.",
-      "connection": "Error de conexion. Intenta de nuevo."
+      "connection": "Error de conexión. Intenta de nuevo."
     }
   },
   "common": {
