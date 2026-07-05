@@ -55,7 +55,7 @@ const Experience: React.FC = () => {
                 <div className="text-3xl md:text-5xl font-heading font-semibold tracking-wide text-white portrait-neon-title">
                   {t('portraitName')}
                 </div>
-                <div className="text-[10px] md:text-xs font-mono font-medium tracking-[0.16em] uppercase mt-2 text-brand-caramel portrait-neon-sub leading-relaxed max-w-[280px] md:max-w-sm">
+                <div className="text-[10px] md:text-xs font-mono font-medium tracking-[0.16em] uppercase mt-2 text-white leading-relaxed max-w-[280px] md:max-w-sm">
                   {t('credentialsLine1')}
                   <br />
                   {t('credentialsLine2')}
