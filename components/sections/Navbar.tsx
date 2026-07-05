@@ -23,6 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, setMobileMenuOpen }) =>
     { key: 'reviews', id: 'resenas', label: t('reviews') },
     { key: 'instagram', id: 'instagram', label: t('instagram') },
     { key: 'reservas', id: 'reservas', href: '/reservas', label: t('reservas') },
+    { key: 'giftCards', id: 'gift-cards', href: '/gift-cards', label: t('giftCards') },
   ] as const;
 
   const scrollToSection = (id: string) => {
