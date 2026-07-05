@@ -11,6 +11,7 @@ import Services from '@/components/sections/Services';
 import Experience from '@/components/sections/Experience';
 import VideoShowcase from '@/components/sections/VideoShowcase';
 import InstagramCta from '@/components/sections/InstagramCta';
+import GiftCardsSection from '@/components/sections/GiftCardsSection';
 import Reviews from '@/components/sections/Reviews';
 import Faq from '@/components/sections/Faq';
 import Footer from '@/components/sections/Footer';
@@ -58,6 +59,8 @@ const HomePage: React.FC = () => {
       <VideoShowcase />
       <InstagramCta />
       <Reviews />
+
+      <GiftCardsSection />
 
       <section id="reservas" className="relative z-10 py-16 md:py-20 px-4 md:px-6 bg-brand-ink text-brand-cream overflow-hidden">
         <div className="pointer-events-none absolute inset-0 opacity-40" style={{ background: 'radial-gradient(circle at 50% 0%, rgba(162,112,67,0.35), transparent 60%)' }} aria-hidden />
