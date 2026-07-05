@@ -107,7 +107,7 @@ export const SPA_SERVICES: SpaService[] = [
   },
   {
     id: '9',
-    name: 'Limpieza Facial Básics',
+    name: 'Limpieza Facial Básica',
     category: 'Limpieza Facial',
     image: LIMPIEZA_FACIAL_BASICS_IMAGE,
     duration: '45 minutos',
@@ -293,7 +293,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: '¿Qué limpiezas faciales están disponibles?',
-    answer: 'Contamos con limpieza facial basics, profunda, hidratante, para piel acnéica, despigmentación, antiedad, oxigenante y premium, además de Hidrafacial.',
+    answer: 'Contamos con limpieza facial básica, profunda, hidratante, para piel acnéica, despigmentación, antiedad, oxigenante y premium, además de Hidrafacial.',
   },
   {
     question: '¿Qué tratamientos avanzados realizan?',

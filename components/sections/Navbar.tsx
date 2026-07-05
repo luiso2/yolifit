@@ -21,7 +21,7 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, setMobileMenuOpen }) =>
     { key: 'services', id: 'servicios', label: t('services') },
     { key: 'experience', id: 'experiencia', label: t('experience') },
     { key: 'reviews', id: 'resenas', label: t('reviews') },
-    { key: 'instagram', id: 'instagram', label: t('instagram') },
+    { key: 'instagram', externalHref: 'https://www.instagram.com/yolystudio.fit', label: t('instagram') },
     { key: 'reservas', id: 'reservas', href: '/reservas', label: t('reservas') },
     { key: 'giftCards', id: 'gift-cards', href: '/gift-cards', label: t('giftCards') },
   ] as const;
@@ -66,6 +66,17 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, setMobileMenuOpen }) =>
               >
                 {item.label}
               </Link>
+            ) : 'externalHref' in item ? (
+              <a
+                key={item.key}
+                href={item.externalHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-brand-caramel transition-colors cursor-pointer bg-transparent border-none font-heading text-xs tracking-widest uppercase font-medium whitespace-nowrap"
+                data-hover="true"
+              >
+                {item.label}
+              </a>
             ) : (
               <button
                 key={item.key}
@@ -119,6 +130,18 @@ const Navbar: React.FC<NavbarProps> = ({ mobileMenuOpen, setMobileMenuOpen }) =>
                   >
                     {item.label}
                   </Link>
+                </motion.div>
+              ) : 'externalHref' in item ? (
+                <motion.div key={item.key} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 + idx * 0.08, ease: 'easeOut', duration: 0.4 }}>
+                  <a
+                    href={item.externalHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-3xl font-heading font-medium text-gray-900 hover:text-brand-caramel transition-colors uppercase bg-transparent border-none cursor-pointer"
+                  >
+                    {item.label}
+                  </a>
                 </motion.div>
               ) : (
                 <motion.button
