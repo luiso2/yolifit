@@ -352,7 +352,7 @@
         <h2><svg data-lucide="triangle-alert"></svg> Posibles Efectos Secundarios</h2>
         <p style="font-size:13px;color:var(--muted);margin:0 0 10px;">Entiendo que después del tratamiento pueden presentarse de forma temporal:</p>
         <div class="side-effects" id="sideEffectsList"></div>
-        <div class="note-box">He tenido la oportunidad de hacer preguntas y todas han sido respondidas satisfactoriamente. Declaro que participo en este tratamiento de manera voluntaria y libero a la especialista y al establecimiento de cualquier responsabilidad derivada de información médica omitida por mí o del incumplimiento de las recomendaciones proporcionadas.</div>
+        <div class="note-box" id="releaseNote"></div>
       </div>
 
       <div class="panel" id="photoPanel" style="display:none;">
@@ -909,6 +909,12 @@ function renderGrid(){
   lucide.createIcons();
 }
 
+// Fuente unica del texto de liberacion: lo usan el formulario y el PDF.
+function releaseTextFor(t){
+  const scope = t.isPostOp ? 'las recomendaciones médicas y estéticas' : 'las recomendaciones';
+  return `Declaro que participo en este tratamiento de manera voluntaria y libero a la especialista y al establecimiento de cualquier responsabilidad derivada de información médica omitida por mí o del incumplimiento de ${scope} proporcionadas.`;
+}
+
 function openForm(id){
   current = TREATMENTS.find(t=>t.id===id);
   document.getElementById('consentForm').reset();
@@ -931,6 +937,9 @@ function openForm(id){
 
   document.getElementById('sideEffectsList').innerHTML =
     current.sideEffects.map(s=>`<span class="side-tag">${s}</span>`).join('');
+
+  document.getElementById('releaseNote').textContent =
+    `He tenido la oportunidad de hacer preguntas y todas han sido respondidas satisfactoriamente. ${releaseTextFor(current)}`;
 
   document.getElementById('photoPanel').style.display = current.hasPhoto ? 'block' : 'none';
 
@@ -1120,9 +1129,7 @@ function buildAndDownloadPdf(){
       </div>`;
   }
 
-  const releaseText = current.isPostOp
-    ? 'Declaro que participo en este tratamiento de manera voluntaria y libero a la especialista y al establecimiento de cualquier responsabilidad derivada de información médica omitida por mí o del incumplimiento de las recomendaciones médicas y estéticas proporcionadas.'
-    : 'Declaro que participo en este tratamiento de manera voluntaria y libero a la especialista y al establecimiento de cualquier responsabilidad derivada de información médica omitida por mí o del incumplimiento de las recomendaciones proporcionadas.';
+  const releaseText = releaseTextFor(current);
 
   const html = `
   <div style="font-family:'Inter',Arial,sans-serif;color:#161616;padding:36px 40px;font-size:12.5px;line-height:1.5;">
